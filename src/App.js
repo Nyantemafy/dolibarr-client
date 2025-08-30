@@ -1,36 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from 'react';
+import Navigation from './Navigation';
+import DashboardScreen from './components/screen/DashboardScreen';
+import StockScreen from './components/screen/StockScreen';
+import OrdersScreen from './components/screen/OrdersScreen';
+import FileImportScreen from './components/screen/FileImportScreen';
 
 function App() {
-  const [products, setProducts] = useState([]);
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const [customMenuItems, setCustomMenuItems] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost/dolibarr/htdocs/api/index.php/products?limit=10", {
-      method: "GET",
-      headers: {
-        "DOLAPIKEY": "wf1WlH719z7B4VyNwLeY3k18WScWHog8", 
-        "Accept": "application/json"
-      }
-    })
-      .then(res => {
-        if (!res.ok) {
-          throw new Error("Erreur API " + res.status);
-        }
-        return res.json();
-      })
-      .then(data => setProducts(data))
-      .catch(err => console.error(err));
-  }, []);
+  const handleAddMenuItem = (newItem) => {
+    setCustomMenuItems([...customMenuItems, newItem]);
+  };
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'dashboard':
+        return <DashboardScreen />;
+      case 'stock':
+        return <StockScreen />;
+      case 'orders':
+        return <OrdersScreen />;
+      case 'import':
+        return <FileImportScreen />;
+      default:
+        // For custom menu items
+        return <div className="p-6">Contenu de {activeTab}</div>;
+    }
+  };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Liste des produits Dolibarr</h1>
-      <ul>
-        {products.map((p) => (
-          <li key={p.id}>
-            {p.ref} - {p.label} - {p.price} €
-          </li>
-        ))}
-      </ul>
+    <div className="flex h-screen bg-gray-100">
+      <Navigation 
+        activeTab={activeTab} 
+        setActiveTab={setActiveTab}
+        customMenuItems={customMenuItems}
+        onAddMenuItem={handleAddMenuItem}
+      />
+      <main className="flex-1 overflow-auto">
+        {renderContent()}
+      </main>
     </div>
   );
 }
