@@ -31,22 +31,12 @@ const ResetDataButton = () => {
   const executeReset = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/reset/all', {
-        method: 'DELETE',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
+      // Use apiService.delete instead of fetch
+      const result = await apiService.delete('/api/reset/all');
 
-      const result = await response.json();
-
-      if (response.ok) {
-        setResetResults(result);
-        showNotification(result.message || 'Réinitialisation terminée avec succès', 'success');
-      } else {
-        throw new Error(result.error || 'Erreur lors de la réinitialisation');
-      }
+      setResetResults(result);
+      showNotification(result.message || 'Réinitialisation terminée avec succès', 'success');
+      
     } catch (error) {
       showNotification('Erreur lors de la réinitialisation: ' + error.message, 'error');
       console.error('Erreur reset:', error);

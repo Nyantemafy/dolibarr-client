@@ -4,6 +4,7 @@ const logger = require('../utils/logger');
 class DolibarrService {
   constructor() {
     this.apiUrl = process.env.DOLIBARR_API_URL;
+    console.log('Dolibarr API URL:', this.apiUrl);
     this.apiKey = process.env.DOLIBARR_API_KEY;
     this.client = axios.create({
       baseURL: this.apiUrl,
@@ -55,6 +56,7 @@ class DolibarrService {
 
   async get(endpoint) {
     try {
+      logger.info(`Dolibarr GET request: ${this.apiUrl}${endpoint}`);
       const response = await this.client.get(endpoint);
       return response.data;
     } catch (error) {

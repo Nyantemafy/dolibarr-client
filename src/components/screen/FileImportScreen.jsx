@@ -100,177 +100,66 @@ const FileImportScreen = () => {
     }
 
     setImporting(true);
-    const results = {
-      products: [],
-      boms: []
-    };
+    setImportResults({ products: [], boms: [] });
 
     try {
-      let successCount = 0;
-      let errorCount = 0;
+      showNotification('Traitement des produits et BOM en cours...', 'info');
 
-      // Traitement des produits d'abord
-      showNotification('Traitement des produits en cours...', 'info');
-      
-      for (let i = 0; i < productData.length; i++) {
-        const productItem = productData[i];
-        const result = {
-          index: productItem._originalIndex,
-          data: productItem,
-          status: 'processing',
-          error: null,
-          createdId: null
-        };
+      // Construire le payload complet
+      const productsPayload = productData.map((item) => ({
+        ref: item.produit_ref?.toString().trim(),
+        label: item.produit_nom?.toString().trim(),
+        type: item.produit_type === 'Service' ? 1 : 0,
+        status: 1,
+        status_buy: 1,
+        status_sell: 1,
+        price: parseFloat(item.prix_vente) || undefined,
+        stock_initial: parseFloat(item.stock_initial) || undefined,
+        valeur_stock_initial: parseFloat(item.valeur_stock_initial) || 0
+      }));
 
-        try {
-          // Validation des champs obligatoires
-          if (!productItem.produit_ref?.toString().trim()) {
-            throw new Error('Référence produit manquante');
-          }
-          if (!productItem.produit_nom?.toString().trim()) {
-            throw new Error('Nom produit manquant');
-          }
+      const bomsPayload = bomData.map((item) => ({
+        ref: item.bom_numero?.toString().trim(),
+        label: item.bom_libelle?.toString().trim(),
+        bomtype: item.bom_type === 'assembly' ? 1 : 0,
+        qty: parseFloat(item.bom_qte) || 1,
+        status: 1,
+        fk_product: item.bom_produit?.toString().trim() || null,
+        lines: parseBOMComposition(item.bom_composition)
+      }));
 
-          // Construction du payload pour l'API Dolibarr
-          const productPayload = {
-            ref: productItem.produit_ref.toString().trim(),
-            label: productItem.produit_nom.toString().trim(),
-            type: productItem.produit_type === 'Service' ? 1 : 0,
-            status: 1, // Actif
-            status_buy: 1, // Peut être acheté
-            status_sell: 1, // Peut être vendu
-          };
+      // Appel au backend tout-en-un
+      const response = await apiService.post('/api/import/importAll', {
+        products: productsPayload,
+        boms: bomsPayload
+      });
 
-          // Ajouter le prix seulement s'il est défini et valide
-          const prix = parseFloat(productItem.prix_vente);
-          if (!isNaN(prix) && prix > 0) {
-            productPayload.price = prix;
-          }
-
-          console.log(`Création produit ligne ${i + 1}:`, productPayload);
-          
-          const newProduct = await apiService.post('/products', productPayload);
-          
-          if (!newProduct || (!newProduct.id && !newProduct.success)) {
-            throw new Error('Réponse API invalide: pas d\'ID retourné');
-          }
-
-          // L'ID peut être dans newProduct.id ou être le newProduct lui-même si c'est un nombre
-          const productId = newProduct.id || (typeof newProduct === 'number' ? newProduct : null);
-          
-          if (productId) {
-            result.createdId = productId;
-            result.status = 'success';
-            
-            // Gestion du stock initial si présent
-            const stockInitial = parseFloat(productItem.stock_initial);
-            if (!isNaN(stockInitial) && stockInitial > 0) {
-              try {
-                const stockPayload = {
-                  qty: stockInitial,
-                  warehouse_id: 1, // Entrepôt par défaut
-                  price: parseFloat(productItem.valeur_stock_initial) || 0
-                };
-                
-                await apiService.post(`/products/${productId}/stock/correction`, stockPayload);
-              } catch (stockError) {
-                result.error = `Produit créé mais erreur stock: ${stockError.message}`;
-                result.status = 'warning';
-              }
-            }
-          } else {
-            result.status = 'success';
-            result.error = 'Produit créé (ID non retourné par l\'API)';
-          }
-          
-          successCount++;
-        } catch (error) {
-          result.status = 'error';
-          result.error = error.message || 'Erreur inconnue';
-          console.error(`Erreur produit ligne ${i + 1}:`, error);
-          errorCount++;
-        }
-
-        results.products.push(result);
-        
-        // Mise à jour progressive de l'affichage
-        if (i % 5 === 0) {
-          setImportResults({ ...results });
-        }
+      if (response.data.success) {
+        setImportResults({
+          products: response.data.data.products.map(p => ({
+            index: p.index,
+            data: p.originalData,
+            status: p.status,
+            error: p.error || null,
+            createdId: p.createdId || null
+          })),
+          boms: response.data.data.boms.map(b => ({
+            index: b.index,
+            data: b.originalData,
+            status: b.status,
+            error: b.error || null,
+            createdId: b.createdId || null
+          }))
+        });
+        showNotification('Import terminé avec succès !', 'success');
+      } else {
+        // Tout ou rien : si backend renvoie une erreur, afficher l’erreur globale
+        showNotification(response.data.error || 'Erreur lors de l’import', 'error');
       }
-
-      showNotification('Traitement des BOM en cours...', 'info');
-
-      // Traitement des BOM
-      for (let i = 0; i < bomData.length; i++) {
-        const bomItem = bomData[i];
-        const result = {
-          index: bomItem._originalIndex,
-          data: bomItem,
-          status: 'processing',
-          error: null,
-          createdId: null
-        };
-
-        try {
-          // Validation des champs obligatoires
-          if (!bomItem.bom_numero?.toString().trim()) {
-            throw new Error('Numéro BOM manquant');
-          }
-          if (!bomItem.bom_libelle?.toString().trim()) {
-            throw new Error('Libellé BOM manquant');
-          }
-
-          // Parser la composition
-          const lines = parseBOMComposition(bomItem.bom_composition);
-
-          const bomPayload = {
-            ref: bomItem.bom_numero.toString().trim(),
-            label: bomItem.bom_libelle.toString().trim(),
-            bomtype: bomItem.bom_type === 'assembly' ? 1 : 0, 
-            qty: parseFloat(bomItem.bom_qte) || 1,
-            status: 1,
-            fk_product: parseInt(bomItem.bom_produit) || null,
-            lines: lines
-          };
-
-          // Ajouter le produit fini si spécifié
-          if (bomItem.bom_produit?.toString().trim()) {
-            bomPayload.fk_product = bomItem.bom_produit.toString().trim();
-          }
-
-          console.log(`Création BOM ligne ${i + 1}:`, bomPayload);
-          const newBom = await apiService.post('/boms', bomPayload);
-          
-          const bomId = newBom.id || (typeof newBom === 'number' ? newBom : null);
-          result.createdId = bomId;
-          result.status = 'success';
-          successCount++;
-        } catch (error) {
-          result.status = 'error';
-          result.error = error.message || 'Erreur inconnue';
-          console.error(`Erreur BOM ligne ${i + 1}:`, error);
-          errorCount++;
-        }
-
-        results.boms.push(result);
-        
-        // Mise à jour progressive de l'affichage
-        if (i % 5 === 0) {
-          setImportResults({ ...results });
-        }
-      }
-
-      setImportResults(results);
-      
-      showNotification(
-        `Import terminé: ${successCount} éléments créés avec succès, ${errorCount} erreurs`, 
-        errorCount === 0 ? 'success' : 'error'
-      );
 
     } catch (error) {
-      showNotification('Erreur lors du traitement des données', 'error');
       console.error('Erreur traitement:', error);
+      showNotification(error.response?.data?.error || error.message || 'Erreur inconnue', 'error');
     } finally {
       setImporting(false);
     }
@@ -330,7 +219,7 @@ const FileImportScreen = () => {
             </button>
           )}
         </div>
-        
+
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
