@@ -1,0 +1,18 @@
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-08-30T11:28:22.080Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-08-30T11:28:22.086Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-08-30T11:28:22.088Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-08-30T11:44:02.227Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-08-30T11:44:02.232Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-08-30T11:44:02.233Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-08-30T11:54:38.570Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-08-30T11:54:38.579Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-08-30T11:54:38.581Z"}
+{"level":"info","message":"GET /reset/confirm","service":"dolibarr-import","timestamp":"2025-08-30T11:56:16.411Z"}
+{"level":"info","message":"GET /api/reset/confirm","service":"dolibarr-import","timestamp":"2025-08-30T11:57:39.920Z"}
+{"level":"error","message":"Dolibarr API Setup Error:","service":"dolibarr-import","timestamp":"2025-08-30T11:57:39.945Z"}
+{"level":"error","message":"Dolibarr API Setup Error:","service":"dolibarr-import","timestamp":"2025-08-30T11:57:39.968Z"}
+{"level":"error","message":"Dolibarr API Setup Error:","service":"dolibarr-import","timestamp":"2025-08-30T11:57:39.970Z"}
+{"level":"info","message":"GET /api/reset/confirm","service":"dolibarr-import","timestamp":"2025-08-30T11:58:04.493Z"}
+{"level":"error","message":"Dolibarr API Setup Error:","service":"dolibarr-import","timestamp":"2025-08-30T11:58:04.496Z"}
+{"level":"error","message":"Dolibarr API Setup Error:","service":"dolibarr-import","timestamp":"2025-08-30T11:58:04.502Z"}
+{"level":"error","message":"Dolibarr API Setup Error:","service":"dolibarr-import","timestamp":"2025-08-30T11:58:04.520Z"}
