@@ -134,21 +134,21 @@ const FileImportScreen = () => {
         boms: bomsPayload
       });
 
-      if (response.data.success) {
+      if (response.success) {
         setImportResults({
-          products: response.data.data.products.map(p => ({
-            index: p.index,
-            data: p.originalData,
-            status: p.status,
-            error: p.error || null,
-            createdId: p.createdId || null
+          products: productData.map((item, index) => ({
+            index: index,
+            data: item,
+            status: 'success',
+            error: null,
+            createdId: response.data.products[index] || null  // ← response.data.products
           })),
-          boms: response.data.data.boms.map(b => ({
-            index: b.index,
-            data: b.originalData,
-            status: b.status,
-            error: b.error || null,
-            createdId: b.createdId || null
+          boms: bomData.map((item, index) => ({
+            index: index,
+            data: item,
+            status: 'success', 
+            error: null,
+            createdId: response.data.boms[index] || null  // ← response.data.boms
           }))
         });
         showNotification('Import terminé avec succès !', 'success');
