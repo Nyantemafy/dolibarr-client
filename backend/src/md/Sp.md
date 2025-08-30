@@ -1,0 +1,59 @@
+## Sp
+
+---
+
+- constructor(db)
+    - **But** : Initialise une instance de la classe avec la connexion à la base de données.
+    - **Paramètre** : `db` (objet de connexion à la base de données).
+- async create(req, res)
+    - **But** : (Non implémenté) Prévu pour créer un SP.
+- static async get(db, id)
+    - **But** : Récupère un SP par son identifiant.
+    - **Paramètres** :
+        - `db` (connexion)
+        - `id` (identifiant SP)
+    - **Retour** : Instance de `Sp`.
+- async statParAct(act)
+    - **But** : Retourne les statistiques du SP pour une activité donnée.
+    - **Paramètre** : `act` (instance d'Activites)
+    - **Retour** : Objet statistique (id, description, région, membres, montants, etc.).
+- static async getAll(db)
+    - **But** : Récupère tous les SP.
+    - **Paramètre** : `db` (connexion)
+    - **Retour** : Tableau d'instances `Sp`.
+- async nbMembreAct(act)
+    - **But** : Compte le nombre de membres du SP présents à une activité.
+    - **Paramètre** : `act`
+    - **Retour** : Nombre de membres.
+- async nbNonMembreAct(act)
+    - **But** : Compte le nombre de non-membres du SP présents à une activité.
+    - **Paramètre** : `act`
+    - **Retour** : Nombre de non-membres.
+- async montantPrevue(act)
+    - **But** : Calcule le montant prévu pour le SP sur une activité.
+    - **Paramètre** : `act`
+    - **Retour** : Montant prévu.
+- async montantTotal(act)
+    - **But** : Calcule le montant total collecté pour le SP sur une activité.
+    - **Paramètre** : `act`
+    - **Retour** : Montant total.
+- async montantReste(act)
+    - **But** : Calcule le montant restant à collecter pour le SP sur une activité.
+    - **Paramètre** : `act`
+    - **Retour** : Montant restant.
+- async idMembres()
+    - **But** : Récupère la liste des identifiants des membres du SP.
+    - **Retour** : Tableau d'identifiants membres.
+- async idNonMembres()
+    - **But** : Récupère la liste des identifiants des non-membres du SP.
+    - **Retour** : Tableau d'identifiants personnes.
+- async membrePresent(act)
+    - **But** : Liste les membres du SP présents à une activité.
+    - **Paramètre** : `act`
+    - **Retour** : Tableau d'objets membres.
+- async personnePresent(act)
+    - **But** : Liste les personnes non-membres du SP présentes à une activité.
+    - **Paramètre** : `act`
+    - **Retour** : Tableau d'objets personnes.
+
+---
