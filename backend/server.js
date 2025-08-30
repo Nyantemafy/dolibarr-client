@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import helmet from 'helmet';
 dotenv.config();
 
-const helmet = require('helmet');
 const logger = require('./src/utils/logger');
 const errorHandler = require('./src/middleware/errorHandler');
 
