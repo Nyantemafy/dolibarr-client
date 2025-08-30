@@ -3,6 +3,7 @@ import { Upload, Package, FileSpreadsheet, AlertCircle, CheckCircle, X } from 'l
 import Papa from 'papaparse';
 import apiService from '../service/apiService';
 import Notification from '../indicateur/Notification';
+import ResetDataButton from '../btn/ResetDataButton';
 
 const FileImportScreen = () => {
   const [bomFile, setBomFile] = useState(null);
@@ -313,15 +314,23 @@ const FileImportScreen = () => {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold text-gray-800">Import de fichiers</h2>
-        {(importResults.products.length > 0 || importResults.boms.length > 0) && (
-          <button
-            onClick={clearResults}
-            className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 flex items-center"
-          >
-            <X className="mr-2" size={16} />
-            Réinitialiser
-          </button>
-        )}
+
+        <div className="flex space-x-3">
+          {/* Bouton de réinitialisation des données */}
+          <ResetDataButton />
+          
+          {/* Bouton de réinitialisation des résultats existant */}
+          {(importResults.products.length > 0 || importResults.boms.length > 0) && (
+            <button
+              onClick={clearResults}
+              className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 flex items-center"
+            >
+              <X className="mr-2" size={16} />
+              Réinitialiser
+            </button>
+          )}
+        </div>
+        
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">

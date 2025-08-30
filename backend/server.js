@@ -2,15 +2,14 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
+
+import logger from './src/utils/logger.js';
+import errorHandler from './src/middleware/errorHandler.js';
+
+import resetRoutes from './src/routes/reset.js';
+import importRoutes from './src/routes/import.js';
+
 dotenv.config();
-
-const logger = require('./src/utils/logger');
-const errorHandler = require('./src/middleware/errorHandler');
-
-const productRoutes = require('./src/routes/products');
-const bomRoutes = require('./src/routes/boms');
-const stockRoutes = require('./src/routes/stock');
-const importRoutes = require('./src/routes/import');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -28,9 +27,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/products', productRoutes);
-app.use('/api/boms', bomRoutes);
-app.use('/api/stock', stockRoutes);
+app.use('/api/reset', resetRoutes);
 app.use('/api/import', importRoutes);
 
 app.get('/health', (req, res) => {
@@ -49,4 +46,4 @@ app.listen(PORT, () => {
   logger.info(`🔗 Dolibarr API: ${process.env.DOLIBARR_API_URL}`);
 });
 
-module.exports = app;
+export default app;
