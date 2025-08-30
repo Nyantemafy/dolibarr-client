@@ -3,7 +3,6 @@ import importController from '../controller/importController.js';
 
 const router = express.Router();
 
-router.post('/products', importController.importProducts);
-router.post('/boms', importController.importBOMs);
+router.post('/importAll', importController.importAll);
 
 export default router;

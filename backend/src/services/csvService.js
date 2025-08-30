@@ -1,20 +1,15 @@
 class CsvService {
   parseBOMComposition(compositionString) {
-    if (!compositionString || typeof compositionString !== 'string') {
-      return [];
-    }
+    if (!compositionString || typeof compositionString !== 'string') return [];
 
-    // Format attendu: (P2,1)+(P1,3)+(P3,4)
     const components = compositionString.match(/\(([^,]+),([^)]+)\)/g);
-    if (!components) {
-      return [];
-    }
+    if (!components) return [];
 
     return components.map(component => {
       const match = component.match(/\(([^,]+),([^)]+)\)/);
       if (match) {
         return {
-          fk_product: match[1].trim(),
+          ref: match[1].trim(),   // <-- renvoyer 'ref' ici
           qty: parseFloat(match[2]) || 1
         };
       }

@@ -79,7 +79,7 @@ const apiService = {
       
       try {
         const result = JSON.parse(responseText);
-        return result.data || result;
+        return result;
       } catch {
         return { success: true, response: responseText };
       }

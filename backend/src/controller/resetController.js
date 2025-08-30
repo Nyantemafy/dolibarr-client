@@ -3,216 +3,209 @@ const logger = require('../utils/logger');
 
 class ResetController {
   async resetAllData(req, res) {
+    const backup = {
+      manufacturing_orders: [],
+      boms: [],
+      products: [],
+      stock: []
+    };
+
     try {
-      logger.info('Début de la réinitialisation des données Dolibarr');
-      
-      const results = {
-        manufacturing_orders: { deleted: 0, errors: [] },
-        boms: { deleted: 0, errors: [] },
-        stock_movements: { deleted: 0, errors: [] },
-        products: { deleted: 0, errors: [] }
-      };
+      logger.info('Début de la réinitialisation des données Dolibarr (tout ou rien)');
 
-      // 1. Supprimer les ordres de fabrication (Manufacturing Orders)
+      // 1️⃣ Backup des données
+      logger.info('Récupération des ordres de fabrication...');
+      backup.manufacturing_orders = await dolibarrService.get('/mos').catch(() => []) || [];
+
+      logger.info('Récupération des BOMs...');
+      backup.boms = await dolibarrService.get('/boms').catch(() => []) || [];
+
+      logger.info('Récupération des produits...');
+      backup.products = await dolibarrService.get('/products').catch(() => []) || [];
+
+      // Backup des stocks
+      for (const product of backup.products) {
+        try {
+          const stockRaw = await dolibarrService.get(`/products/${product.id}/stock`).catch(() => []);
+          const stockInfo = Array.isArray(stockRaw) ? stockRaw : (stockRaw?.data || []);
+          backup.stock.push({ product_id: product.id, stock: stockInfo });
+        } catch (error) {
+          logger.warn(`Impossible de récupérer le stock pour le produit ${product.id}: ${error.message}`);
+          backup.stock.push({ product_id: product.id, stock: [] });
+        }
+      }
+
+      // 2️⃣ Suppression des données
       logger.info('Suppression des ordres de fabrication...');
-      try {
-        const manufacturingOrders = await dolibarrService.get('/mrp');
-        if (Array.isArray(manufacturingOrders)) {
-          for (const order of manufacturingOrders) {
-            try {
-              await dolibarrService.delete(`/mrp/${order.id}`);
-              results.manufacturing_orders.deleted++;
-              logger.debug(`Ordre de fabrication ${order.id} supprimé`);
-            } catch (error) {
-              results.manufacturing_orders.errors.push({
-                id: order.id,
-                error: error.message
-              });
-              logger.error(`Erreur suppression ordre ${order.id}:`, error.message);
-            }
-          }
-        }
-      } catch (error) {
-        logger.error('Erreur lors de la récupération des ordres de fabrication:', error.message);
-        results.manufacturing_orders.errors.push({
-          general: 'Impossible de récupérer les ordres de fabrication'
+      for (const mo of backup.manufacturing_orders) {
+        await dolibarrService.delete(`/mos/${mo.id}`).catch(err => {
+          logger.warn(`Impossible de supprimer l'ordre de fabrication ${mo.id}: ${err.message}`);
         });
       }
 
-      // 2. Supprimer les nomenclatures (BOMs)
-      logger.info('Suppression des nomenclatures...');
-      try {
-        const boms = await dolibarrService.get('/boms');
-        if (Array.isArray(boms)) {
-          for (const bom of boms) {
-            try {
-              await dolibarrService.delete(`/boms/${bom.id}`);
-              results.boms.deleted++;
-              logger.debug(`BOM ${bom.id} supprimée`);
-            } catch (error) {
-              results.boms.errors.push({
-                id: bom.id,
-                error: error.message
-              });
-              logger.error(`Erreur suppression BOM ${bom.id}:`, error.message);
-            }
-          }
-        }
-      } catch (error) {
-        logger.error('Erreur lors de la récupération des BOMs:', error.message);
-        results.boms.errors.push({
-          general: 'Impossible de récupérer les nomenclatures'
+      logger.info('Suppression des BOMs...');
+      for (const bom of backup.boms) {
+        await dolibarrService.delete(`/boms/${bom.id}`).catch(err => {
+          logger.warn(`Impossible de supprimer le BOM ${bom.id}: ${err.message}`);
         });
       }
 
-      // 3. Réinitialiser les stocks (Stock Movements)
-      logger.info('Réinitialisation des stocks...');
-      try {
-        const products = await dolibarrService.get('/products');
-        if (Array.isArray(products)) {
-          for (const product of products) {
-            try {
-              // Récupérer le stock actuel
-              const stockInfo = await dolibarrService.get(`/products/${product.id}/stock`);
-              
-              if (Array.isArray(stockInfo)) {
-                for (const stock of stockInfo) {
-                  if (stock.real && parseFloat(stock.real) !== 0) {
-                    // Créer un mouvement de correction pour remettre à zéro
-                    const correctionQty = -parseFloat(stock.real);
-                    await dolibarrService.post(`/products/${product.id}/stock/correction`, {
-                      qty: correctionQty,
-                      warehouse_id: stock.warehouse_id || 1,
-                      price: 0,
-                      label: 'Réinitialisation automatique'
-                    });
-                    results.stock_movements.deleted++;
-                  }
-                }
-              }
-              logger.debug(`Stock du produit ${product.id} réinitialisé`);
-            } catch (error) {
-              results.stock_movements.errors.push({
-                product_id: product.id,
-                error: error.message
-              });
-              logger.error(`Erreur réinitialisation stock produit ${product.id}:`, error.message);
-            }
-          }
-        }
-      } catch (error) {
-        logger.error('Erreur lors de la réinitialisation des stocks:', error.message);
-        results.stock_movements.errors.push({
-          general: 'Impossible de réinitialiser les stocks'
-        });
-      }
-
-      // 4. Supprimer les produits
       logger.info('Suppression des produits...');
-      try {
-        const products = await dolibarrService.get('/products');
-        if (Array.isArray(products)) {
-          for (const product of products) {
-            try {
-              await dolibarrService.delete(`/products/${product.id}`);
-              results.products.deleted++;
-              logger.debug(`Produit ${product.id} supprimé`);
-            } catch (error) {
-              results.products.errors.push({
-                id: product.id,
-                error: error.message
-              });
-              logger.error(`Erreur suppression produit ${product.id}:`, error.message);
-            }
-          }
-        }
-      } catch (error) {
-        logger.error('Erreur lors de la récupération des produits:', error.message);
-        results.products.errors.push({
-          general: 'Impossible de récupérer les produits'
+      for (const product of backup.products) {
+        await dolibarrService.delete(`/products/${product.id}`).catch(err => {
+          logger.warn(`Impossible de supprimer le produit ${product.id}: ${err.message}`);
         });
       }
 
-      // Calcul du résumé
-      const totalDeleted = results.manufacturing_orders.deleted + 
-                          results.boms.deleted + 
-                          results.stock_movements.deleted + 
-                          results.products.deleted;
-      
-      const totalErrors = results.manufacturing_orders.errors.length + 
-                         results.boms.errors.length + 
-                         results.stock_movements.errors.length + 
-                         results.products.errors.length;
-
-      logger.info(`Réinitialisation terminée: ${totalDeleted} éléments supprimés, ${totalErrors} erreurs`);
-
-      res.json({
-        success: true,
-        message: `Réinitialisation terminée: ${totalDeleted} éléments supprimés`,
-        data: results,
-        summary: {
-          total_deleted: totalDeleted,
-          total_errors: totalErrors,
-          details: {
-            manufacturing_orders: `${results.manufacturing_orders.deleted} supprimés`,
-            boms: `${results.boms.deleted} supprimées`,
-            stock_resets: `${results.stock_movements.deleted} réinitialisés`,
-            products: `${results.products.deleted} supprimés`
+      logger.info('Réinitialisation des stocks...');
+      for (const stockEntry of backup.stock) {
+        const stocks = Array.isArray(stockEntry.stock) ? stockEntry.stock : [];
+        for (const stock of stocks) {
+          if (stock.real && parseFloat(stock.real) !== 0) {
+            const correctionQty = -parseFloat(stock.real);
+            await dolibarrService.post(`/products/${stockEntry.product_id}/stock/correction`, {
+              qty: correctionQty,
+              warehouse_id: stock.warehouse_id || 1,
+              price: 0,
+              label: 'Réinitialisation automatique'
+            }).catch(err => {
+              logger.warn(`Impossible de corriger le stock pour le produit ${stockEntry.product_id}: ${err.message}`);
+            });
           }
         }
-      });
+      }
+
+      logger.info('Réinitialisation terminée avec succès');
+      return res.json({ success: true, message: 'Toutes les données ont été supprimées avec succès' });
 
     } catch (error) {
-      logger.error('Erreur générale lors de la réinitialisation:', error);
-      res.status(500).json({
-        success: false,
-        error: 'Erreur lors de la réinitialisation des données',
-        details: error.message
-      });
+      logger.error('Erreur détectée, restauration des données...', error);
+
+      // 3️⃣ Restauration depuis le backup
+      try {
+        // Restaurer produits d'abord
+        for (const product of backup.products) {
+          const existing = await dolibarrService.get(`/products/${product.id}`).catch(() => null);
+          if (!existing) {
+            await dolibarrService.post('/products', product).catch(err => {
+              logger.error(`Erreur restauration produit ${product.id}: ${err.message}`);
+            });
+          } else {
+            await dolibarrService.put(`/products/${product.id}`, product).catch(err => {
+              logger.error(`Erreur mise à jour produit ${product.id}: ${err.message}`);
+            });
+          }
+        }
+
+        // Restaurer BOM
+        for (const bom of backup.boms) {
+          await dolibarrService.post('/boms', bom).catch(err => {
+            logger.error(`Erreur restauration BOM ${bom.id}: ${err.message}`);
+          });
+        }
+
+        // Restaurer MO
+        for (const mo of backup.manufacturing_orders) {
+          await dolibarrService.post('/mos', mo).catch(err => {
+            logger.error(`Erreur restauration MO ${mo.id}: ${err.message}`);
+          });
+        }
+
+        // Restaurer stocks
+        for (const stockEntry of backup.stock) {
+          const stocks = Array.isArray(stockEntry.stock) ? stockEntry.stock : [];
+          for (const stock of stocks) {
+            if (stock.real && parseFloat(stock.real) !== 0) {
+              await dolibarrService.post(`/products/${stockEntry.product_id}/stock/correction`, {
+                qty: parseFloat(stock.real),
+                warehouse_id: stock.warehouse_id || 1,
+                price: 0,
+                label: 'Restauration automatique'
+              }).catch(err => {
+                logger.error(`Erreur restauration stock produit ${stockEntry.product_id}: ${err.message}`);
+              });
+            }
+          }
+        }
+
+        logger.info('Restauration terminée après erreur');
+        return res.status(500).json({
+          success: false,
+          error: 'Erreur pendant la réinitialisation, données partiellement restaurées',
+          details: error.message
+        });
+
+      } catch (restoreError) {
+        logger.error('Erreur critique restauration des données:', restoreError);
+        return res.status(500).json({
+          success: false,
+          error: 'Erreur critique : impossible de restaurer complètement les données',
+          details: restoreError.message
+        });
+      }
     }
   }
 
   async resetConfirm(req, res) {
-    // Endpoint pour confirmer avant suppression
     try {
       const counts = {
         products: 0,
-        boms: 0,
-        manufacturing_orders: 0,
-        stock_entries: 0
+        boms: 0
       };
 
-      // Compter les éléments à supprimer
+      try {
+        const mos = await dolibarrService.get('/mos');
+        counts.mos = Array.isArray(mos) ? mos.length : 0;
+      } catch (error) {
+        logger.error('Erreur lors de la récupération des Ordre de fabrication:', error);
+        return res.status(500).json({
+          success: false,
+          error: 'Impossible de récupérer les Ordre de fabrication',
+          details: error.message
+        });
+      }
+
       try {
         const products = await dolibarrService.get('/products');
         counts.products = Array.isArray(products) ? products.length : 0;
-      } catch (e) { /* ignore */ }
+      } catch (error) {
+        logger.error('Erreur lors de la récupération des produits:', error);
+        return res.status(500).json({
+          success: false,
+          error: 'Impossible de récupérer les produits',
+          details: error.message
+        });
+      }
 
       try {
         const boms = await dolibarrService.get('/boms');
         counts.boms = Array.isArray(boms) ? boms.length : 0;
-      } catch (e) { /* ignore */ }
-
-      try {
-        const mrp = await dolibarrService.get('/mrp');
-        counts.manufacturing_orders = Array.isArray(mrp) ? mrp.length : 0;
-      } catch (e) { /* ignore */ }
+      } catch (error) {
+        logger.error('Erreur lors de la récupération des BOMs:', error);
+        return res.status(500).json({
+          success: false,
+          error: 'Impossible de récupérer les BOMs',
+          details: error.message
+        });
+      }
 
       res.json({
         success: true,
         message: 'Données à supprimer',
         data: counts,
-        total: counts.products + counts.boms + counts.manufacturing_orders
+        total: counts.products + counts.boms
       });
 
     } catch (error) {
-      logger.error('Erreur lors de la vérification des données:', error);
+      logger.error('Erreur inattendue lors de la vérification des données:', error);
       res.status(500).json({
         success: false,
-        error: 'Impossible de vérifier les données à supprimer'
+        error: 'Erreur inattendue lors de la vérification des données',
+        details: error.message
       });
     }
   }
+
 }
 
 module.exports = new ResetController();

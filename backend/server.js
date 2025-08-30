@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import helmet from 'helmet';
 
 import logger from './src/utils/logger.js';
@@ -8,8 +7,6 @@ import errorHandler from './src/middleware/errorHandler.js';
 
 import resetRoutes from './src/routes/reset.js';
 import importRoutes from './src/routes/import.js';
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;

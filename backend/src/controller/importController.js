@@ -1,160 +1,177 @@
-const dolibarrService = require('../services/dolibarrService');
 const csvService = require('../services/csvService');
+const dolibarrService = require('../services/dolibarrService');
 const validationService = require('../services/validationService');
 const logger = require('../utils/logger');
 
 class ImportController {
-  async importProducts(req, res) {
+  async importAll(req, res) {
+    const createdProducts = [];
+    const createdBOMs = [];
+
     try {
-      const { products } = req.body;
-      
-      if (!Array.isArray(products) || products.length === 0) {
+      const { products, boms } = req.body;
+
+      if (!Array.isArray(products) || products.length === 0 ||
+          !Array.isArray(boms) || boms.length === 0) {
         return res.status(400).json({
           success: false,
-          error: 'No products provided'
+          error: 'Products and BOMs must both be provided'
         });
       }
 
-      const results = [];
-      let successCount = 0;
-      let errorCount = 0;
+      // ---- Étape 1 : Validation ----
+      products.forEach((p, i) => {
+        const { error } = validationService.validateProduct(p);
+        if (error) throw new Error(`Product line ${i + 1} validation failed: ${error.details[0].message}`);
+      });
 
+      boms.forEach((b, i) => {
+        const { error } = validationService.validateBOM(b);
+        if (error) throw new Error(`BOM line ${i + 1} validation failed: ${error.details[0].message}`);
+      });
+
+      // ---- Étape 2 : Vérification existence produits ----
       for (let i = 0; i < products.length; i++) {
-        const productData = products[i];
-        const result = {
-          index: i,
-          originalData: productData,
-          status: 'processing'
+        const p = products[i];
+        const existing = await dolibarrService.get(`/products?ref=${p.ref}`).catch(() => []);
+        if (Array.isArray(existing) && existing.length > 0) {
+          throw new Error(`Product line ${i + 1} already exists (ref=${p.ref})`);
+        }
+      }
+
+      // ---- Étape 3 : Création produits ----
+      for (let i = 0; i < products.length; i++) {
+        const p = products[i];
+        const createdProduct = await dolibarrService.post('/products', p);
+
+        let productId = null;
+
+        if (typeof createdProduct === 'number') {
+            productId = createdProduct;  
+        } else {
+            productId = createdProduct?.id || createdProduct?.rowid || createdProduct?.product?.id;
+        }
+
+        if (!productId) {
+            throw new Error(`Produit créé mais aucun ID détecté pour ref=${p.ref}`);
+        } else {
+            console.log(`Produit créé avec ID=${productId} pour ref=${p.ref}`);
+        }
+
+        // Gestion stock initial
+        const initialStock = parseFloat(p.stock_initial) || 0;
+        const initialPrice = parseFloat(p.valeur_stock_initial) || 0;
+
+        if (initialStock > 0) {
+          await dolibarrService.post(`/stockmovements`, {
+            product_id: productId,
+            qty: initialStock,
+            warehouse_id: 1,
+            price: initialPrice,
+            label: 'Stock initial import automatique'
+          });
+        }
+
+        createdProducts.push(productId);
+      }
+
+      // ---- Étape 4 : Création BOMs ----
+      for (let i = 0; i < boms.length; i++) {
+        const b = boms[i];
+        console.log('BOM actuel:', b);
+
+        // Produit fini
+        const finishedRef = b.bom_produit || b.fk_product;
+        if (!finishedRef) throw new Error(`BOM ${i + 1} n'a pas de produit fini (champ bom_produit manquant)`);
+
+        const finishedProduct = products.find(p => p.ref?.trim() === finishedRef?.trim());
+        if (!finishedProduct) throw new Error(`Produit fini ${finishedRef} introuvable dans les produits`);
+
+        const finishedIdx = products.indexOf(finishedProduct);
+        const finishedId = createdProducts[finishedIdx];
+
+        // Composition des composants
+        let lines = [];
+        if (Array.isArray(b.lines) && b.lines.length > 0) {
+          lines = b.lines.map(line => {
+            const comp = products.find(p => p.ref?.trim() === line.fk_product?.trim());
+            if (!comp) throw new Error(`Composant ${line.fk_product} introuvable`);
+            const compIdx = products.indexOf(comp);
+            return { fk_product: createdProducts[compIdx], qty: line.qty };
+          });
+        }
+
+        const bomPayload = {
+          ref: b.ref,
+          label: b.label,
+          fk_product: finishedId,
+          bomtype: b.bomtype ?? 0,
+          qty: b.qty ?? 1,
+          description: b.description ?? '',
+          status: 1
         };
 
         try {
-          // Validation
-          const { error, value } = validationService.validateProduct(productData);
-          if (error) {
-            throw new Error(error.details[0].message);
-          }
-
-          // Création du produit
-          const createdProduct = await dolibarrService.post('/products', value);
+          console.log('Creating BOM with payload:', bomPayload);
           
-          result.status = 'success';
-          result.createdId = createdProduct.id || createdProduct;
-          successCount++;
+          const createdBOM = await dolibarrService.post('/boms', bomPayload);
+          console.log('BOM creation response:', createdBOM);
+          
+          // L'API Dolibarr retourne l'ID directement (pas d'objet avec propriété id/rowid)
+          const bomId = createdBOM;
+          
+          if (!bomId || isNaN(bomId)) {
+            console.error('Response structure:', createdBOM);
+            throw new Error(`Erreur création BOM ${i + 1}: Aucun ID valide retourné. Réponse: ${JSON.stringify(createdBOM)}`);
+          }
+          
+          console.log(`BOM créé avec ID=${bomId}`);
+          createdBOMs.push(bomId);
 
-          // Gestion du stock initial
-          if (productData.stock_initial && productData.stock_initial > 0) {
+          // Ajouter les lignes après création
+          for (const line of lines) {
             try {
-              await dolibarrService.post(`/products/${result.createdId}/stock/correction`, {
-                qty: parseFloat(productData.stock_initial),
-                warehouse_id: 1,
-                price: parseFloat(productData.valeur_stock_initial) || 0
+              await dolibarrService.post(`/boms/${bomId}/lines`, {
+                fk_product: line.fk_product,
+                qty: line.qty
               });
-            } catch (stockError) {
-              result.status = 'warning';
-              result.error = `Product created but stock error: ${stockError.message}`;
+              console.log(`Ligne ajoutée pour le composant ${line.fk_product}`);
+            } catch (lineError) {
+              console.error(`Erreur lors de l'ajout de la ligne pour le composant ${line.fk_product}:`, lineError);
+              throw lineError;
             }
           }
-
         } catch (error) {
-          result.status = 'error';
-          result.error = error.message;
-          errorCount++;
-          logger.error(`Product import error line ${i + 1}:`, error);
+          console.error('Erreur détaillée lors de la création du BOM:', error);
+          throw error;
         }
-
-        results.push(result);
       }
-
-      res.json({
-        success: true,
-        data: {
-          results,
-          summary: {
-            total: products.length,
-            success: successCount,
-            errors: errorCount
-          }
-        }
-      });
+      res.json({ success: true, data: { products: createdProducts, boms: createdBOMs } });
 
     } catch (error) {
-      logger.error('Import products error:', error);
-      res.status(500).json({
-        success: false,
-        error: error.message
-      });
-    }
-  }
+      logger.error('Import all failed, rollback...', error);
 
-  async importBOMs(req, res) {
-    try {
-      const { boms } = req.body;
-      
-      if (!Array.isArray(boms) || boms.length === 0) {
-        return res.status(400).json({
-          success: false,
-          error: 'No BOMs provided'
-        });
-      }
-
-      const results = [];
-      let successCount = 0;
-      let errorCount = 0;
-
-      for (let i = 0; i < boms.length; i++) {
-        const bomData = boms[i];
-        const result = {
-          index: i,
-          originalData: bomData,
-          status: 'processing'
-        };
-
+      // ---- Rollback automatique ----
+      for (const bomId of createdBOMs) {
         try {
-          // Validation
-          const { error, value } = validationService.validateBOM(bomData);
-          if (error) {
-            throw new Error(error.details[0].message);
-          }
-
-          // Parser la composition
-          if (bomData.bom_composition) {
-            value.lines = csvService.parseBOMComposition(bomData.bom_composition);
-          }
-
-          // Création de la BOM
-          const createdBOM = await dolibarrService.post('/boms', value);
-          
-          result.status = 'success';
-          result.createdId = createdBOM.id || createdBOM;
-          successCount++;
-
-        } catch (error) {
-          result.status = 'error';
-          result.error = error.message;
-          errorCount++;
-          logger.error(`BOM import error line ${i + 1}:`, error);
+          await dolibarrService.delete(`/boms/${bomId}`);
+        } catch (err) {
+          logger.warn(`Impossible de supprimer le BOM ${bomId}: ${err.message}`);
         }
-
-        results.push(result);
       }
 
-      res.json({
-        success: true,
-        data: {
-          results,
-          summary: {
-            total: boms.length,
-            success: successCount,
-            errors: errorCount
-          }
+      for (const productId of createdProducts) {
+        try {
+          await dolibarrService.delete(`/products/${productId}`);
+        } catch (err) {
+          logger.warn(`Impossible de supprimer le produit ${productId}: ${err.message}`);
         }
-      });
+      }
 
-    } catch (error) {
-      logger.error('Import BOMs error:', error);
       res.status(500).json({
         success: false,
-        error: error.message
+        error: 'Import failed, all changes rolled back',
+        details: error.message
       });
     }
   }
