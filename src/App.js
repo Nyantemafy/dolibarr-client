@@ -4,6 +4,7 @@ import DashboardScreen from './components/screen/DashboardScreen';
 import StockScreen from './components/screen/StockScreen';
 import FileImportScreen from './components/screen/FileImportScreen';
 import CreateOfScreen from './components/screen/create/CreateOfScreen';
+import ManufacturingOrdersPage from './components/screen/liste/ManufacturingOrdersPage';
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -19,6 +20,8 @@ function App() {
         return <DashboardScreen />;
       case 'stock':
         return <StockScreen />;
+      case 'orders':
+        return <ManufacturingOrdersPage />;
       case 'create-order':
         return <CreateOfScreen />;
       case 'import':
