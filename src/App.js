@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Navigation from './Navigation';
 import DashboardScreen from './components/screen/DashboardScreen';
-import StockScreen from './components/screen/StockScreen';
+import StockManagementPage from './components/screen/liste/StockManagementPage';
 import FileImportScreen from './components/screen/FileImportScreen';
 import CreateOfScreen from './components/screen/create/CreateOfScreen';
 import ManufacturingOrdersPage from './components/screen/liste/ManufacturingOrdersPage';
@@ -19,7 +19,7 @@ function App() {
       case 'dashboard':
         return <DashboardScreen />;
       case 'stock':
-        return <StockScreen />;
+        return <StockManagementPage />;
       case 'orders':
         return <ManufacturingOrdersPage />;
       case 'create-order':

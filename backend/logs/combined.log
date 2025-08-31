@@ -1842,3 +1842,84 @@
 {"data":{"debug":{"source":"Routes.php:457 at route stage","stages":{"failure":["route","negotiate","message"],"success":["get"]}},"error":{"code":404,"message":"Not Found"}},"level":"error","message":"Dolibarr API Error 404:","service":"dolibarr-import","status":404,"timestamp":"2025-08-31T12:01:57.061Z","url":"/mos/4/consumeandproduceall"}
 {"level":"warn","message":"Endpoint consumeandproduceall non disponible, utilisation méthode alternative","service":"dolibarr-import","timestamp":"2025-08-31T12:01:57.063Z"}
 {"level":"info","message":"Ordre de fabrication 4 produit avec succès","service":"dolibarr-import","timestamp":"2025-08-31T12:01:57.180Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-08-31T12:23:23.084Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-08-31T12:23:23.099Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-08-31T12:23:23.100Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-08-31T12:23:25.258Z"}
+{"level":"info","message":"Fetching BOMs from Dolibarr","service":"dolibarr-import","timestamp":"2025-08-31T12:23:25.260Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-08-31T12:23:25.261Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-08-31T12:23:25.548Z"}
+{"level":"info","message":"Fetching BOMs from Dolibarr","service":"dolibarr-import","timestamp":"2025-08-31T12:23:25.550Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-08-31T12:23:25.550Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-08-31T12:23:52.068Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-08-31T12:23:52.076Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-08-31T12:23:52.077Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/215/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:23:52.700Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/216/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:23:52.702Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/218/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:23:52.703Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/217/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:23:52.704Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/219/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:23:52.711Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=218","service":"dolibarr-import","timestamp":"2025-08-31T12:23:53.580Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=216","service":"dolibarr-import","timestamp":"2025-08-31T12:23:53.586Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=219","service":"dolibarr-import","timestamp":"2025-08-31T12:23:53.629Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=215","service":"dolibarr-import","timestamp":"2025-08-31T12:23:53.632Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=217","service":"dolibarr-import","timestamp":"2025-08-31T12:23:53.648Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-08-31T12:23:54.430Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-08-31T12:23:54.432Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-08-31T12:23:54.432Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/215/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:23:54.580Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/216/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:23:54.580Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/218/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:23:54.581Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/217/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:23:54.582Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/219/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:23:54.583Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=218","service":"dolibarr-import","timestamp":"2025-08-31T12:23:54.756Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=215","service":"dolibarr-import","timestamp":"2025-08-31T12:23:54.814Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=216","service":"dolibarr-import","timestamp":"2025-08-31T12:23:54.822Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=219","service":"dolibarr-import","timestamp":"2025-08-31T12:23:54.868Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=217","service":"dolibarr-import","timestamp":"2025-08-31T12:23:54.877Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-08-31T12:25:34.017Z"}
+{"level":"info","message":"Fetching BOMs from Dolibarr","service":"dolibarr-import","timestamp":"2025-08-31T12:25:34.018Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-08-31T12:25:34.018Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-08-31T12:25:34.250Z"}
+{"level":"info","message":"Fetching BOMs from Dolibarr","service":"dolibarr-import","timestamp":"2025-08-31T12:25:34.251Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-08-31T12:25:34.251Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-08-31T12:25:35.106Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-08-31T12:25:35.107Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-08-31T12:25:35.108Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/215/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:35.263Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/216/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:35.264Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/218/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:35.265Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/217/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:35.265Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/219/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:35.266Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=217","service":"dolibarr-import","timestamp":"2025-08-31T12:25:35.522Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=216","service":"dolibarr-import","timestamp":"2025-08-31T12:25:35.565Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=219","service":"dolibarr-import","timestamp":"2025-08-31T12:25:35.584Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=218","service":"dolibarr-import","timestamp":"2025-08-31T12:25:35.656Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=215","service":"dolibarr-import","timestamp":"2025-08-31T12:25:35.670Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-08-31T12:25:36.129Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-08-31T12:25:36.129Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-08-31T12:25:36.129Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/215/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:36.249Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/216/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:36.250Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/218/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:36.250Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/217/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:36.251Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/219/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:36.253Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=215","service":"dolibarr-import","timestamp":"2025-08-31T12:25:36.393Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=216","service":"dolibarr-import","timestamp":"2025-08-31T12:25:36.433Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=219","service":"dolibarr-import","timestamp":"2025-08-31T12:25:36.478Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=217","service":"dolibarr-import","timestamp":"2025-08-31T12:25:36.500Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=218","service":"dolibarr-import","timestamp":"2025-08-31T12:25:36.530Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-08-31T12:25:39.868Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-08-31T12:25:39.868Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-08-31T12:25:39.869Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/215/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:39.980Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/216/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:39.981Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/218/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:39.981Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/217/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:39.982Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/219/stock","service":"dolibarr-import","timestamp":"2025-08-31T12:25:39.982Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=216","service":"dolibarr-import","timestamp":"2025-08-31T12:25:40.190Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=215","service":"dolibarr-import","timestamp":"2025-08-31T12:25:40.243Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=219","service":"dolibarr-import","timestamp":"2025-08-31T12:25:40.246Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=218","service":"dolibarr-import","timestamp":"2025-08-31T12:25:40.271Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=217","service":"dolibarr-import","timestamp":"2025-08-31T12:25:40.375Z"}
+{"level":"info","message":"GET /api/stock/movements/215","service":"dolibarr-import","timestamp":"2025-08-31T12:25:44.198Z"}
