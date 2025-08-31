@@ -8,6 +8,8 @@ const logger = require('./utils/logger');
 
 // Import des routes
 const importRoutes = require('./routes/import');
+const bomsRoutes = require('./routes/boms');
+const manufacturingRoutes = require('./routes/manufacturing');
 const productRoutes = require('./routes/products');
 
 const app = express();
@@ -38,6 +40,8 @@ app.use(morgan('combined', {
 // Routes
 app.use('/api/import', importRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/boms', bomsRoutes);
+app.use('/api/manufacturing', manufacturingRoutes);
 
 // Route de santé
 app.get('/health', (req, res) => {
