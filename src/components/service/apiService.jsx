@@ -37,7 +37,7 @@ const apiService = {
       }
       
       const result = await response.json();
-      return result.data || result;
+      return result;
     } catch (error) {
       console.error(`Erreur GET ${endpoint}:`, error);
       throw error;
