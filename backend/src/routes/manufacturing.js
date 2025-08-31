@@ -5,5 +5,7 @@ const router = express.Router();
 
 router.post('/create', ManufacturingController.createManufacturingOrder);
 router.get('/liste', ManufacturingController.getManufacturingOrders);
+router.post('/validation/:id', ManufacturingController.validateOrder);
+router.post('/produire/:id', ManufacturingController.produceOrder);
 
 export default router;
