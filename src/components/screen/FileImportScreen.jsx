@@ -1,17 +1,18 @@
 import { useState } from 'react';
-import { Upload, Package, FileSpreadsheet, AlertCircle, CheckCircle, X } from 'lucide-react';
+import { Upload, Package, FileSpreadsheet, AlertCircle, CheckCircle, X, Eye } from 'lucide-react';
 import Papa from 'papaparse';
 import apiService from '../service/apiService';
 import Notification from '../indicateur/Notification';
 import ResetDataButton from '../btn/ResetDataButton';
+import ImportPreview from './ImportPreview'; // Nouveau composant de prévisualisation
 
 const FileImportScreen = () => {
   const [bomFile, setBomFile] = useState(null);
-  
   const [productFile, setProductFile] = useState(null);
   const [bomData, setBomData] = useState([]);
   const [productData, setProductData] = useState([]);
   const [importing, setImporting] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
   const [notification, setNotification] = useState(null);
   const [importResults, setImportResults] = useState({
     products: [],
@@ -75,7 +76,6 @@ const FileImportScreen = () => {
       return [];
     }
 
-    // Format attendu: (P2,1)+(P1,3)+(P3,4)
     const components = compositionString.match(/\(([^,]+),([^)]+)\)/g);
     if (!components) {
       return [];
@@ -93,45 +93,55 @@ const FileImportScreen = () => {
     }).filter(Boolean);
   };
 
-  const processImport = async () => {
+  // Fonction pour préparer les données pour l'aperçu/import
+  const prepareImportData = () => {
+    const productsPayload = productData.map((item) => ({
+      ref: item.produit_ref?.toString().trim(),
+      label: item.produit_nom?.toString().trim(),
+      entrepot: item.entrepot?.toString().trim(),
+      type: item.produit_type === 'Service' ? 1 : 0,
+      status: 1,
+      status_buy: 1,
+      status_sell: 1,
+      price: parseFloat(item.prix_vente) || undefined,
+      stock_initial: parseFloat(item.stock_initial) || undefined,
+      valeur_stock_initial: parseFloat(item.valeur_stock_initial) || 0
+    }));
+
+    const bomsPayload = bomData.map((item) => ({
+      ref: item.bom_numero?.toString().trim(),
+      label: item.bom_libelle?.toString().trim(),
+      bomtype: item.bom_type === 'assembly' ? 1 : 0,
+      qty: parseFloat(item.bom_qte) || 1,
+      status: 1,
+      bom_produit: item.bom_produit?.toString().trim() || null,
+      lines: parseBOMComposition(item.bom_composition)
+    }));
+
+    return { products: productsPayload, boms: bomsPayload };
+  };
+
+  // Fonction pour ouvrir l'aperçu
+  const handlePreview = () => {
     if (!bomData.length || !productData.length) {
-      showNotification('Veuillez importer les deux fichiers avant de continuer', 'error');
+      showNotification('Veuillez importer les deux fichiers avant de voir l\'aperçu', 'error');
       return;
     }
+    setShowPreview(true);
+  };
 
+  // Fonction appelée depuis l'aperçu pour confirmer l'import
+  const handleConfirmImport = async (confirmedData) => {
     setImporting(true);
     setImportResults({ products: [], boms: [] });
+    setShowPreview(false);
 
     try {
-      showNotification('Traitement des produits et BOM en cours...', 'info');
+      showNotification('Import en cours...', 'info');
 
-      // Construire le payload complet
-      const productsPayload = productData.map((item) => ({
-        ref: item.produit_ref?.toString().trim(),
-        label: item.produit_nom?.toString().trim(),
-        type: item.produit_type === 'Service' ? 1 : 0,
-        status: 1,
-        status_buy: 1,
-        status_sell: 1,
-        price: parseFloat(item.prix_vente) || undefined,
-        stock_initial: parseFloat(item.stock_initial) || undefined,
-        valeur_stock_initial: parseFloat(item.valeur_stock_initial) || 0
-      }));
-
-      const bomsPayload = bomData.map((item) => ({
-        ref: item.bom_numero?.toString().trim(),
-        label: item.bom_libelle?.toString().trim(),
-        bomtype: item.bom_type === 'assembly' ? 1 : 0,
-        qty: parseFloat(item.bom_qte) || 1,
-        status: 1,
-        fk_product: item.bom_produit?.toString().trim() || null,
-        lines: parseBOMComposition(item.bom_composition)
-      }));
-
-      // Appel au backend tout-en-un
       const response = await apiService.post('/api/import/importAll', {
-        products: productsPayload,
-        boms: bomsPayload
+        ...confirmedData,
+        confirmed: true
       });
 
       if (response.success) {
@@ -141,20 +151,19 @@ const FileImportScreen = () => {
             data: item,
             status: 'success',
             error: null,
-            createdId: response.data.products[index] || null  // ← response.data.products
+            createdId: response.data.products[index] || null  
           })),
           boms: bomData.map((item, index) => ({
             index: index,
             data: item,
             status: 'success', 
             error: null,
-            createdId: response.data.boms[index] || null  // ← response.data.boms
+            createdId: response.data.boms[index] || null  
           }))
         });
         showNotification('Import terminé avec succès !', 'success');
       } else {
-        // Tout ou rien : si backend renvoie une erreur, afficher l’erreur globale
-        showNotification(response.data.error || 'Erreur lors de l’import', 'error');
+        showNotification(response.data.error || 'Erreur lors de l import', 'error');
       }
 
     } catch (error) {
@@ -163,6 +172,11 @@ const FileImportScreen = () => {
     } finally {
       setImporting(false);
     }
+  };
+
+  const processImport = async () => {
+    const importData = prepareImportData();
+    await handleConfirmImport(importData);
   };
 
   const getStatusIcon = (status) => {
@@ -199,16 +213,26 @@ const FileImportScreen = () => {
     setProductFile(null);
   };
 
+  // Si on est en mode aperçu, afficher le composant ImportPreview
+  if (showPreview) {
+    return (
+      <ImportPreview
+        importData={prepareImportData()}
+        onBack={() => setShowPreview(false)}
+        onConfirm={handleConfirmImport}
+        isLoading={importing}
+      />
+    );
+  }
+
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold text-gray-800">Import de fichiers</h2>
 
         <div className="flex space-x-3">
-          {/* Bouton de réinitialisation des données */}
           <ResetDataButton />
           
-          {/* Bouton de réinitialisation des résultats existant */}
           {(importResults.products.length > 0 || importResults.boms.length > 0) && (
             <button
               onClick={clearResults}
@@ -219,7 +243,6 @@ const FileImportScreen = () => {
             </button>
           )}
         </div>
-
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -389,7 +412,7 @@ const FileImportScreen = () => {
         </div>
       )}
 
-      {/* Aperçu des données avant import */}
+      {/* Aperçu des données avant import
       {bomData.length > 0 && importResults.boms.length === 0 && (
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-3">Aperçu BOM ({bomData.length} entrées)</h4>
@@ -452,26 +475,39 @@ const FileImportScreen = () => {
             {productData.length > 5 && <p className="text-xs text-gray-500 mt-2">... et {productData.length - 5} autres entrées</p>}
           </div>
         </div>
-      )}
+      )} */}
 
-      {/* Bouton de traitement */}
-      <button
-        onClick={processImport}
-        disabled={!bomData.length || !productData.length || importing}
-        className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center"
-      >
-        {importing ? (
-          <>
-            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-            Traitement en cours...
-          </>
-        ) : (
-          <>
-            <Upload className="mr-2" size={16} />
-            Traiter les imports
-          </>
-        )}
-      </button>
+      {/* Boutons d'action */}
+      <div className="flex space-x-4">
+        {/* Nouveau bouton Aperçu */}
+        <button
+          onClick={handlePreview}
+          disabled={!bomData.length || !productData.length || importing}
+          className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center"
+        >
+          <Eye className="mr-2" size={16} />
+          Voir aperçu
+        </button>
+
+        {/* Bouton de traitement direct */}
+        <button
+          onClick={processImport}
+          disabled={!bomData.length || !productData.length || importing}
+          className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center"
+        >
+          {importing ? (
+            <>
+              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+              Import en cours...
+            </>
+          ) : (
+            <>
+              <Upload className="mr-2" size={16} />
+              Import direct
+            </>
+          )}
+        </button>
+      </div>
 
       {notification && (
         <Notification
@@ -485,4 +521,3 @@ const FileImportScreen = () => {
 };
 
 export default FileImportScreen;
-

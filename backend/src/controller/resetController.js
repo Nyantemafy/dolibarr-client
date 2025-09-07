@@ -14,6 +14,9 @@ class ResetController {
       logger.info('Début de la réinitialisation des données Dolibarr (tout ou rien)');
 
       // 1️⃣ Backup des données
+      logger.info('Récupération des entrepôts...');
+      backup.warehouses = await dolibarrService.get('/warehouses').catch(() => []) || [];
+
       logger.info('Récupération des ordres de fabrication...');
       backup.manufacturing_orders = await dolibarrService.get('/mos').catch(() => []) || [];
 
@@ -36,6 +39,13 @@ class ResetController {
       }
 
       // 2️⃣ Suppression des données
+      logger.info('Suppression des entrepôts...');
+      for (const wh of backup.warehouses) {
+        await dolibarrService.delete(`/warehouses/${wh.id}`).catch(err => {
+          logger.warn(`Impossible de supprimer l'entrepôt ${wh.id}: ${err.message}`);
+        });
+      }
+
       logger.info('Suppression des ordres de fabrication...');
       for (const mo of backup.manufacturing_orders) {
         await dolibarrService.delete(`/mos/${mo.id}`).catch(err => {
