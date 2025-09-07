@@ -3,7 +3,6 @@ import { Factory, Hash, Save, ArrowLeft, AlertCircle, CheckCircle, Package } fro
 import apiService from '../../service/apiService';
 import Notification from '../../indicateur/Notification'; 
 
-
 const CreateOfScreen = ({ onBack }) => {
   const [boms, setBoms] = useState([]);
   const [selectedBom, setSelectedBom] = useState('');
