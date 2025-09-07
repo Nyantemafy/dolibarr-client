@@ -7,6 +7,9 @@ import errorHandler from './src/middleware/errorHandler.js';
 
 import resetRoutes from './src/routes/reset.js';
 import importRoutes from './src/routes/import.js';
+import stockRoutes from './src/routes/stock.js';
+import manufacturingRoutes from './src/routes/manufacturing.js';
+import bomsRoutes from './src/routes/boms.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -26,6 +29,9 @@ app.use((req, res, next) => {
 
 app.use('/api/reset', resetRoutes);
 app.use('/api/import', importRoutes);
+app.use('/api/boms', bomsRoutes);
+app.use('/api/manufacturing', manufacturingRoutes);
+app.use('/api/stock', stockRoutes);
 
 app.get('/health', (req, res) => {
   res.status(200).json({ 

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Navigation from './Navigation';
 import DashboardScreen from './components/screen/DashboardScreen';
-import StockScreen from './components/screen/StockScreen';
-import OrdersScreen from './components/screen/OrdersScreen';
+import StockManagementPage from './components/screen/liste/StockManagementPage';
 import FileImportScreen from './components/screen/FileImportScreen';
+import CreateOfScreen from './components/screen/create/CreateOfScreen';
+import ManufacturingOrdersPage from './components/screen/liste/ManufacturingOrdersPage';
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -18,9 +19,11 @@ function App() {
       case 'dashboard':
         return <DashboardScreen />;
       case 'stock':
-        return <StockScreen />;
+        return <StockManagementPage />;
       case 'orders':
-        return <OrdersScreen />;
+        return <ManufacturingOrdersPage />;
+      case 'create-order':
+        return <CreateOfScreen />;
       case 'import':
         return <FileImportScreen />;
       default:
