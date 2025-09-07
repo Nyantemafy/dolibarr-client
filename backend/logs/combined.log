@@ -1987,3 +1987,28 @@
 {"level":"info","message":"Création de 1 ordres de fabrication en lot","service":"dolibarr-import","timestamp":"2025-09-07T11:32:00.246Z"}
 {"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/67","service":"dolibarr-import","timestamp":"2025-09-07T11:32:00.247Z"}
 {"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/20","service":"dolibarr-import","timestamp":"2025-09-07T11:32:00.812Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-09-07T12:35:27.569Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-09-07T12:35:27.616Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-09-07T12:35:27.617Z"}
+{"level":"info","message":"POST /api/import/importAll","service":"dolibarr-import","timestamp":"2025-09-07T12:35:33.100Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-07T12:35:33.108Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products?ref=P6","service":"dolibarr-import","timestamp":"2025-09-07T12:35:33.515Z"}
+{"level":"error","message":"Import all failed, rollback... Product line 1 already exists (ref=P6)","service":"dolibarr-import","stack":"Error: Product line 1 already exists (ref=P6)\n    at importAll (/home/antema/dolibarr-client/backend/src/controller/importController.js:41:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-09-07T12:35:33.660Z"}
+{"level":"info","message":"POST /api/import/importAll","service":"dolibarr-import","timestamp":"2025-09-07T12:35:58.099Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-07T12:35:58.102Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products?ref=P6","service":"dolibarr-import","timestamp":"2025-09-07T12:35:58.524Z"}
+{"level":"error","message":"Import all failed, rollback... Product line 1 already exists (ref=P6)","service":"dolibarr-import","stack":"Error: Product line 1 already exists (ref=P6)\n    at importAll (/home/antema/dolibarr-client/backend/src/controller/importController.js:41:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-09-07T12:35:58.669Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-09-07T12:36:14.018Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-09-07T12:36:14.024Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-09-07T12:36:14.026Z"}
+{"level":"info","message":"POST /api/import/importAll","service":"dolibarr-import","timestamp":"2025-09-07T12:36:17.716Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-07T12:36:17.731Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products?ref=P6","service":"dolibarr-import","timestamp":"2025-09-07T12:36:18.150Z"}
+{"level":"error","message":"Import all failed, rollback... Product line 1 already exists (ref=P6)","service":"dolibarr-import","stack":"Error: Product line 1 already exists (ref=P6)\n    at importAll (/home/antema/dolibarr-client/backend/src/controller/importController.js:41:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-09-07T12:36:18.262Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-09-07T12:39:00.530Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-09-07T12:39:00.547Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-09-07T12:39:00.573Z"}
+{"level":"info","message":"POST /api/import/importAll","service":"dolibarr-import","timestamp":"2025-09-07T12:39:07.932Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-07T12:39:07.940Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products?ref=P6","service":"dolibarr-import","timestamp":"2025-09-07T12:39:08.339Z"}
+{"level":"error","message":"Import all failed, rollback... Product line 1 already exists (ref=P6)","service":"dolibarr-import","stack":"Error: Product line 1 already exists (ref=P6)\n    at importAll (/home/antema/dolibarr-client/backend/src/controller/importController.js:42:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-09-07T12:39:08.495Z"}
