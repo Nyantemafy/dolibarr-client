@@ -4,7 +4,7 @@ import Papa from 'papaparse';
 import apiService from '../service/apiService';
 import Notification from '../indicateur/Notification';
 import ResetDataButton from '../btn/ResetDataButton';
-import ImportPreview from './ImportPreview'; // Nouveau composant de prévisualisation
+import ImportPreview from './ImportPreview';
 
 const FileImportScreen = () => {
   const [bomFile, setBomFile] = useState(null);

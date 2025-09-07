@@ -86,7 +86,24 @@ class ResetController {
       }
 
       logger.info('Réinitialisation terminée avec succès');
-      return res.json({ success: true, message: 'Toutes les données ont été supprimées avec succès' });
+      return res.json({
+        success: true,
+        message: 'Toutes les données ont été supprimées avec succès',
+        summary: {
+          total_deleted: 
+            (backup.warehouses?.length || 0) +
+            (backup.manufacturing_orders?.length || 0) +
+            (backup.boms?.length || 0) +
+            (backup.products?.length || 0),
+          total_errors: 0, // tu peux incrémenter ça si tu comptes les erreurs
+          details: {
+            warehouses: backup.warehouses?.length || 0,
+            manufacturing_orders: backup.manufacturing_orders?.length || 0,
+            boms: backup.boms?.length || 0,
+            products: backup.products?.length || 0
+          }
+        }
+      });
 
     } catch (error) {
       logger.error('Erreur détectée, restauration des données...', error);
