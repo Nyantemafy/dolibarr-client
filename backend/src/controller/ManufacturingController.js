@@ -211,6 +211,115 @@ class ManufacturingController {
     }
   }
 
+  async createBatchManufacturingOrders(req, res) {
+    try {
+      const { orders } = req.body;
+      
+      if (!Array.isArray(orders) || orders.length === 0) {
+        return res.status(400).json({
+          success: false,
+          error: 'Liste des ordres requise'
+        });
+      }
+
+      logger.info(`Création de ${orders.length} ordres de fabrication en lot`);
+
+      const results = [];
+      const errors = [];
+
+      for (let i = 0; i < orders.length; i++) {
+        const order = orders[i];
+        
+        try {
+          // 1. Récupération du BOM
+          const bom = await dolibarrService.get(`/boms/${order.bom_id}`);
+          
+          // 2. Création de l'ordre de fabrication
+          const orderData = {
+            ref: `MO-BATCH-${Date.now()}-${i + 1}`,
+            label: order.label || `Fabrication lot ${bom.ref}`,
+            fk_bom: order.bom_id,
+            fk_product: bom.fk_product,
+            qty: parseFloat(order.qty),
+            mrptype: 0, 
+            status: 0, // Brouillon
+            date_creation: new Date().toISOString(),
+            fk_user_creat: 1
+          };
+          
+          const createdOrderId = await dolibarrService.post('/mos', orderData);
+
+          // 3. Validation automatique (comme validateOrder)
+          const validationData = {
+            status: 1, // validé
+            date_valid: new Date().toISOString().split('T')[0]
+          };
+          await dolibarrService.put(`/mos/${createdOrderId}`, validationData);
+
+          // 4. Production automatique → passage au statut "produit"
+          const productionData = {
+            status: 2, // produit
+            date_end: new Date().toISOString().split('T')[0]
+          };
+          await dolibarrService.put(`/mos/${createdOrderId}`, productionData);
+
+          // 5. Récupération finale de l’ordre pour les infos
+          const createdOrderInfo = await dolibarrService.get(`/mos/${createdOrderId}`);
+
+          results.push({
+            order_index: i,
+            bom_id: order.bom_id,
+            bom_ref: bom.ref,
+            qty: order.qty,
+            mo_id: createdOrderId,
+            mo_ref: createdOrderInfo.ref,
+            status: 'success'
+          });
+
+        } catch (error) {
+          logger.error(`Erreur ordre ${i}:`, error);
+          errors.push({
+            order_index: i,
+            bom_id: order.bom_id,
+            qty: order.qty,
+            error: error.message,
+            status: 'error'
+          });
+        }
+      }
+
+      res.json({
+        success: errors.length === 0,
+        data: {
+          total_orders: orders.length,
+          successful: results.length,
+          failed: errors.length,
+          results: results,
+          errors: errors
+        }
+      });
+
+    } catch (error) {
+      logger.error('Erreur création lot ordres fabrication:', error);
+      res.status(500).json({
+        success: false,
+        error: 'Erreur lors de la création du lot d\'ordres de fabrication',
+        details: error.message
+      });
+    }
+  }
+
+  getStatusLabel(status) {
+    const statusMap = {
+      0: 'Brouillon',
+      1: 'Validé',
+      2: 'En production',
+      3: 'Produit',
+      9: 'Annulé'
+    };
+    return statusMap[status] || 'Inconnu';
+  }
+
 }
 
 module.exports = new ManufacturingController();

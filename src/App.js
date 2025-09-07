@@ -4,6 +4,7 @@ import DashboardScreen from './components/screen/DashboardScreen';
 import StockManagementPage from './components/screen/liste/StockManagementPage';
 import FileImportScreen from './components/screen/FileImportScreen';
 import CreateOfScreen from './components/screen/create/CreateOfScreen';
+import BatchManufacturingPage from './components/screen/create/BatchManufacturingPage';
 import ManufacturingOrdersPage from './components/screen/liste/ManufacturingOrdersPage';
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
         return <ManufacturingOrdersPage />;
       case 'create-order':
         return <CreateOfScreen />;
+      case 'multiple-product':
+        return <BatchManufacturingPage />;
       case 'import':
         return <FileImportScreen />;
       default:
