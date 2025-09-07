@@ -30,6 +30,10 @@ class ImportController {
         if (error) throw new Error(`BOM line ${i + 1} validation failed: ${error.details[0].message}`);
       });
 
+      const productsAll = await dolibarrService.get(`/products`).catch(() => []);
+      const refs = productsAll.map(product => product.ref);
+      console.log(refs);
+
       // ---- Étape 2 : Vérification existence produits ----
       for (let i = 0; i < products.length; i++) {
         const p = products[i];
