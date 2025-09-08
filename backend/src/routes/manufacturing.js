@@ -8,5 +8,7 @@ router.get('/liste', ManufacturingController.getManufacturingOrders);
 router.post('/validation/:id', ManufacturingController.validateOrder);
 router.post('/produire/:id', ManufacturingController.produceOrder);
 router.post('/orders/batch', ManufacturingController.createBatchManufacturingOrders);
+router.get("/getById/:id", ManufacturingController.getManufacturingOrderById);
+router.get("/fetchdetail/:id", ManufacturingController.fetchOrderWithDetails);
 
 export default router;

@@ -1,7 +1,14 @@
 const dolibarrService = require('../services/dolibarrService');
+const productController = require('./ProductController');
+const bomsController = require('./BOMsController');
 const logger = require('../utils/logger');
 
 class ManufacturingController {
+  constructor() {
+    this.getManufacturingOrderById = this.getManufacturingOrderById.bind(this);
+    this.fetchOrderWithDetails = this.fetchOrderWithDetails.bind(this);
+  }
+
   async createManufacturingOrder(req, res) {
     try {
       const { fk_bom, qty, label, description } = req.body;
@@ -88,13 +95,37 @@ class ManufacturingController {
 
   async getManufacturingOrders(req, res) {
     try {
-      logger.info('Fetching BOMs from Dolibarr');
-      const boms = await dolibarrService.get('/mos');
+      logger.info('Fetching all manufacturing orders from Dolibarr');
+      const orders = await dolibarrService.get('/mos');
+      
+      if (!Array.isArray(orders)) {
+        return res.json({ success: true, data: [] });
+      }
+
+      // Enrichir chaque ordre avec produit et BOM/composants
+      const enrichedOrders = await Promise.all(
+        orders.map(async (order) => {
+          // Produit principal
+          const product = order.fk_product
+            ? await productController.getProductById(order.fk_product)
+            : null;
+
+          // BOM + composants
+          const bom = order.fk_bom
+            ? await bomsController.fetchBomWithComponents(order.fk_bom)
+            : null;
+
+          const components = bom?.components || [];
+
+          return { ...order, product, bom, components };
+        })
+      );
+
       res.json({
         success: true,
-        data: Array.isArray(boms) ? boms : []
+        data: enrichedOrders
       });
-      
+
     } catch (error) {
       logger.error('Error fetching manufacturing orders:', error);
       res.status(500).json({
@@ -103,6 +134,41 @@ class ManufacturingController {
         details: error.message
       });
     }
+  }
+
+  async getManufacturingOrderById(req, res) {
+    try {
+      const { id } = req.params;
+      if (!id || isNaN(id)) return res.status(400).json({ success: false, error: "ID requis" });
+
+      const order = await this.fetchOrderWithDetails(Number(id));
+      if (!order) return res.status(404).json({ success: false, error: "Introuvable" });
+
+      return res.json({ success: true, data: order });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async fetchOrderWithDetails(id) {
+    const order = await dolibarrService.get(`/mos/${id}`);
+    if (!order) return null;
+
+    // Produit principal
+    const product = order.fk_product 
+      ? await productController.getProductById(order.fk_product)
+      : null;
+
+    // BOM + composants
+    const bom = order.fk_bom 
+      ? await bomsController.fetchBomWithComponents(order.fk_bom)
+      : null;
+
+    // BOM components: vérifier si la fonction renvoie bien une liste
+    const components = bom?.components || [];
+
+    return { ...order, product, bom, components };
   }
 
   async validateOrder(req, res) {
@@ -214,12 +280,9 @@ class ManufacturingController {
   async createBatchManufacturingOrders(req, res) {
     try {
       const { orders } = req.body;
-      
+
       if (!Array.isArray(orders) || orders.length === 0) {
-        return res.status(400).json({
-          success: false,
-          error: 'Liste des ordres requise'
-        });
+        return res.status(400).json({ success: false, error: 'Liste des ordres requise' });
       }
 
       logger.info(`Création de ${orders.length} ordres de fabrication en lot`);
@@ -229,11 +292,11 @@ class ManufacturingController {
 
       for (let i = 0; i < orders.length; i++) {
         const order = orders[i];
-        
+
         try {
           // 1. Récupération du BOM
           const bom = await dolibarrService.get(`/boms/${order.bom_id}`);
-          
+
           // 2. Création de l'ordre de fabrication
           const orderData = {
             ref: `MO-BATCH-${Date.now()}-${i + 1}`,
@@ -241,29 +304,31 @@ class ManufacturingController {
             fk_bom: order.bom_id,
             fk_product: bom.fk_product,
             qty: parseFloat(order.qty),
-            mrptype: 0, 
+            mrptype: 0,
             status: 0, // Brouillon
             date_creation: new Date().toISOString(),
             fk_user_creat: 1
           };
-          
+
           const createdOrderId = await dolibarrService.post('/mos', orderData);
 
-          // 3. Validation automatique (comme validateOrder)
-          const validationData = {
-            status: 1, // validé
+           // Valide
+          await dolibarrService.put(`/mos/${createdOrderId}`, {
+            status: 1,
             date_valid: new Date().toISOString().split('T')[0]
-          };
-          await dolibarrService.put(`/mos/${createdOrderId}`, validationData);
+          });
 
-          // 4. Production automatique → passage au statut "produit"
-          const productionData = {
-            status: 2, // produit
-            date_end: new Date().toISOString().split('T')[0]
-          };
-          await dolibarrService.put(`/mos/${createdOrderId}`, productionData);
+          // Produire
+          try {
+            await dolibarrService.post(`/mos/${createdOrderId}/consumeandproduceall`, { closemo: 1 });
+          } catch {
+            await dolibarrService.put(`/mos/${createdOrderId}`, {
+              status: 3,
+              date_production: new Date().toISOString().split('T')[0]
+            });
+          }
 
-          // 5. Récupération finale de l’ordre pour les infos
+          // 5. Récupération finale pour infos
           const createdOrderInfo = await dolibarrService.get(`/mos/${createdOrderId}`);
 
           results.push({

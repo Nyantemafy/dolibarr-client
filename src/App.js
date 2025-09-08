@@ -6,10 +6,12 @@ import FileImportScreen from './components/screen/FileImportScreen';
 import CreateOfScreen from './components/screen/create/CreateOfScreen';
 import BatchManufacturingPage from './components/screen/create/BatchManufacturingPage';
 import ManufacturingOrdersPage from './components/screen/liste/ManufacturingOrdersPage';
+import ManufacturingOrderDetail from './components/screen/details/ManufacturingOrderDetail';
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [customMenuItems, setCustomMenuItems] = useState([]);
+  const [selectedOrderId, setSelectedOrderId] = useState(null);
 
   const handleAddMenuItem = (newItem) => {
     setCustomMenuItems([...customMenuItems, newItem]);
@@ -22,7 +24,9 @@ function App() {
       case 'stock':
         return <StockManagementPage />;
       case 'orders':
-        return <ManufacturingOrdersPage />;
+        return <ManufacturingOrdersPage setActiveTab={setActiveTab} setSelectedOrderId={setSelectedOrderId} />;
+      case 'order-detail':
+        return <ManufacturingOrderDetail orderId={selectedOrderId} setActiveTab={setActiveTab} />;
       case 'create-order':
         return <CreateOfScreen />;
       case 'multiple-product':

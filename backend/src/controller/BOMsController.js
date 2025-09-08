@@ -1,5 +1,6 @@
 const dolibarrService = require('../services/dolibarrService');
 const logger = require('../utils/logger');
+const productController = require('./ProductController'); 
 
 class BOMsController {
   async getBOMs(req, res) {
@@ -102,6 +103,33 @@ class BOMsController {
         error: 'Erreur lors de la récupération des détails de la BOM',
         details: error.message
       });
+    }
+  }
+
+  async fetchBomWithComponents(bomId) {
+    if (!bomId) return null;
+    try {
+      const bom = await dolibarrService.get(`/boms/${bomId}`);
+
+      // Créer la liste des composants avec les infos produit
+      const components = [];
+      if (bom.lines && bom.lines.length > 0) {
+        for (let line of bom.lines) {
+          let product = null;
+          if (line.fk_product) {
+            product = await productController.getProductById(line.fk_product);
+          }
+          components.push({
+            ...line,
+            product,
+          });
+        }
+      }
+
+      return { ...bom, components }; 
+    } catch (err) {
+      logger.warn(`Impossible de récupérer le BOM ${bomId}: ${err.message}`);
+      return null;
     }
   }
 

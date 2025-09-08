@@ -3,12 +3,24 @@ import { RefreshCw, Check, Play, AlertCircle, Eye, Calendar, Package, Factory } 
 import apiService from '../../service/apiService';
 import Notification from '../../indicateur/Notification'; 
 
-const ManufacturingOrdersPage = () => {
+const ManufacturingOrdersPage = ({ setActiveTab, setSelectedOrderId }) => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [actionLoading, setActionLoading] = useState({});
   const [notification, setNotification] = useState(null);
   const [selectedOrder, setSelectedOrder] = useState(null);
+  const [productLabels, setProductLabels] = useState([]);
+  const [filters, setFilters] = useState({
+    status: '',
+    ref: '',
+    label: '',
+    product: '',
+    qtyMin: '',
+    qtyMax: '',
+    dateFrom: '',
+    dateTo: ''
+  });
+  const [filteredOrders, setFilteredOrders] = useState([]);
 
   const statusLabels = {
     0: { label: 'Brouillon', color: 'bg-gray-100 text-gray-800', icon: '📝' },
@@ -26,12 +38,23 @@ const ManufacturingOrdersPage = () => {
     try {
       setLoading(true);
       const response = await apiService.get('/api/manufacturing/liste');
+      console.log(response.data);
       setOrders(response.data || []);
     } catch (error) {
       showNotification('Erreur lors du chargement des ordres de fabrication: ' + error.message, 'error');
       console.error('Erreur chargement:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadProduct = async () => {
+    try {
+      const response = await apiService.get('/api/products/liste');
+      console.log(response.data);
+      setProductLabels(response.data || []);
+    } catch (error) {
+      console.error('Erreur chargement produits:', error);
     }
   };
 
@@ -81,8 +104,70 @@ const ManufacturingOrdersPage = () => {
     setSelectedOrder(order);
   };
 
+  const applyFilters = () => {
+    let result = [...orders];
+
+    // Filtre par statut
+    if (filters.status !== '') {
+      result = result.filter(order => order.status === parseInt(filters.status));
+    }
+
+    // Filtre par référence
+    if (filters.ref) {
+      result = result.filter(order => 
+        order.ref.toLowerCase().includes(filters.ref.toLowerCase())
+      );
+    }
+
+    // Filtre par libellé
+    if (filters.label) {
+      result = result.filter(order => 
+        order.label.toLowerCase().includes(filters.label.toLowerCase())
+      );
+    }
+
+    // Filtre par produit
+    if (filters.product) {
+      result = result.filter(order => order.fk_product === parseInt(filters.product));
+    }
+
+    // Filtre par quantité minimale
+    if (filters.qtyMin) {
+      result = result.filter(order => order.qty >= parseInt(filters.qtyMin));
+    }
+
+    // Filtre par quantité maximale
+    if (filters.qtyMax) {
+      result = result.filter(order => order.qty <= parseInt(filters.qtyMax));
+    }
+
+    // Filtre par date de création
+    if (filters.dateFrom) {
+      const fromDate = new Date(filters.dateFrom);
+      result = result.filter(order => new Date(order.date_creation) >= fromDate);
+    }
+
+    if (filters.dateTo) {
+      const toDate = new Date(filters.dateTo);
+      toDate.setHours(23, 59, 59); // Inclure toute la journée
+      result = result.filter(order => new Date(order.date_creation) <= toDate);
+    }
+
+    setFilteredOrders(result);
+  };
+
+  // Mettre à jour les résultats filtrés quand les commandes ou les filtres changent
+  useEffect(() => {
+    setFilteredOrders(orders);
+  }, [orders]);
+
+  useEffect(() => {
+    applyFilters();
+  }, [filters, orders]);
+
   useEffect(() => {
     loadOrders();
+    loadProduct();
   }, []);
 
   return (
@@ -121,6 +206,132 @@ const ManufacturingOrdersPage = () => {
         })}
       </div>
 
+      {/* Filtres multicritères */}
+      <div className="bg-white rounded-lg border shadow-sm p-4 mb-6">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">Filtres</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Filtre par statut */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">État</label>
+            <select
+              value={filters.status}
+              onChange={(e) => setFilters({...filters, status: e.target.value})}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="">Tous les états</option>
+              {Object.entries(statusLabels).map(([value, config]) => (
+                <option key={value} value={value}>{config.label}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Filtre par référence */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Référence</label>
+            <input
+              type="text"
+              value={filters.ref}
+              onChange={(e) => setFilters({...filters, ref: e.target.value})}
+              placeholder="Filtrer par référence"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Filtre par libellé */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Libellé</label>
+            <input
+              type="text"
+              value={filters.label}
+              onChange={(e) => setFilters({...filters, label: e.target.value})}
+              placeholder="Filtrer par libellé"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Filtre par produit */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Produits</label>
+            <select
+              value={filters.product}
+              onChange={(e) => setFilters({...filters, product: e.target.value})}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="">Tous les produits</option>
+              {productLabels.map((product) => (
+                <option key={product.id} value={product.id}>
+                  {product.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Filtre par quantité */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Quantité min</label>
+            <input
+              type="number"
+              value={filters.qtyMin}
+              onChange={(e) => setFilters({...filters, qtyMin: e.target.value})}
+              placeholder="Quantité minimale"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Quantité max</label>
+            <input
+              type="number"
+              value={filters.qtyMax}
+              onChange={(e) => setFilters({...filters, qtyMax: e.target.value})}
+              placeholder="Quantité maximale"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Filtre par date */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Date de création (début)</label>
+            <input
+              type="date"
+              value={filters.dateFrom}
+              onChange={(e) => setFilters({...filters, dateFrom: e.target.value})}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Date de création (fin)</label>
+            <input
+              type="date"
+              value={filters.dateTo}
+              onChange={(e) => setFilters({...filters, dateTo: e.target.value})}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+        </div>
+
+        {/* Bouton réinitialiser */}
+        <div className="mt-4 flex justify-end">
+          <button
+            onClick={() => setFilters({
+              status: '',
+              ref: '',
+              label: '',
+              product: '',
+              qtyMin: '',
+              qtyMax: '',
+              dateFrom: '',
+              dateTo: ''
+            })}
+            className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
+          >
+            Réinitialiser les filtres
+          </button>
+        </div>
+      </div>
+
       {/* Table des ordres */}
       <div className="bg-white rounded-lg border shadow-sm">
         <div className="p-4 border-b border-gray-200">
@@ -132,10 +343,12 @@ const ManufacturingOrdersPage = () => {
             <RefreshCw className="animate-spin mx-auto mb-2" size={24} />
             <p className="text-gray-600">Chargement des ordres...</p>
           </div>
-        ) : orders.length === 0 ? (
+        ) : filteredOrders.length === 0 ? (
           <div className="p-8 text-center">
             <Factory className="mx-auto mb-2 text-gray-400" size={48} />
-            <p className="text-gray-600">Aucun ordre de fabrication trouvé</p>
+            <p className="text-gray-600">
+              {orders.length === 0 ? 'Aucun ordre de fabrication trouvé' : 'Aucun résultat ne correspond aux filtres'}
+            </p>
           </div>
         ) : (
           <div className="overflow-x-auto">
@@ -152,20 +365,27 @@ const ManufacturingOrdersPage = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {orders.map((order) => {
+                {filteredOrders.map((order) => {
                   const statusConfig = statusLabels[order.status];
                   return (
                     <tr key={order.id} className="hover:bg-gray-50">
-                      <td className="px-4 py-3">
-                        <div className="font-medium text-gray-900">{order.ref}</div>
+                      <td 
+                        className="px-4 py-3 cursor-pointer text-blue-600 hover:underline"
+                        onClick={() => {
+                          setSelectedOrderId(order.id);
+                          setActiveTab('order-detail');
+                        }}
+                      >
+                        <div className="font-medium">{order.ref}</div>
                       </td>
+
                       <td className="px-4 py-3">
                         <div className="text-gray-900">{order.label}</div>
                       </td>
                       <td className="px-4 py-3">
                         <div className="text-gray-900">
                           <div className="font-medium">{order.product_ref}</div>
-                          <div className="text-sm text-gray-600">{order.product_label}</div>
+                          <div className="text-sm text-gray-600">{order.product?.label}</div>
                         </div>
                       </td>
                       <td className="px-4 py-3 text-center">
@@ -240,6 +460,18 @@ const ManufacturingOrdersPage = () => {
             </table>
           </div>
         )}
+      </div>
+
+      {/* Dans l'en-tête de la table, remplacez ou ajoutez */}
+      <div className="p-4 border-b border-gray-200 flex justify-between items-center">
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900">Liste des ordres</h2>
+          {filteredOrders.length !== orders.length && (
+            <p className="text-sm text-gray-600">
+              {filteredOrders.length} résultat(s) sur {orders.length}
+            </p>
+          )}
+        </div>
       </div>
 
       {/* Modal de détails */}
