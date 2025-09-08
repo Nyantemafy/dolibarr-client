@@ -134,6 +134,7 @@ class StockController {
 
       // Récupération des mouvements
       const movements = await dolibarrService.get(`/stockmovements?product_id=${productId}`) || [];
+      console.log('🔍 fetchmovements:', movements);
 
       // Enrichissement des mouvements avec détails supplémentaires
       const enrichedMovements = movements.map(movement => {

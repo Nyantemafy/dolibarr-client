@@ -1,7 +1,13 @@
 const dolibarrService = require('../services/dolibarrService');
 const logger = require('../utils/logger');
+const productController = require('./ProductController'); 
 
 class BOMsController {
+  constructor() {
+    this.fetchBomWithComponents = this.fetchBomWithComponents.bind(this);
+    this.getBOMWithComponents = this.getBOMWithComponents.bind(this);
+  }
+
   async getBOMs(req, res) {
     try {
       logger.info('Récupération de la liste des BOM');
@@ -102,6 +108,52 @@ class BOMsController {
         error: 'Erreur lors de la récupération des détails de la BOM',
         details: error.message
       });
+    }
+  }
+
+  async fetchBomWithComponents(bomId) {
+    console.log('🔍 fetchBomWithComponents appelée avec bomId:', bomId);
+    
+    try {
+      const bom = await dolibarrService.get(`/boms/${bomId}`);
+      
+      const bomLines = await dolibarrService.get(`/boms/${bomId}/lines`) || [];
+      
+      const components = await Promise.all(
+        bomLines.map(async (line, index) => {
+          const productId = line.fk_product || line.product_id;
+          
+          if (productId) {
+            try {
+              const product = await productController.getProductById(productId);
+              return { ...line, product };
+            } catch (err) {
+              console.warn(`❌ Produit ${productId} introuvable:`, err.message);
+              return {
+                ...line,
+                product: { id: productId, ref: `PROD_${productId}`, label: `Produit ${productId}` }
+              };
+            }
+          }
+          return line;
+        })
+      );
+      
+      return { ...bom, components };
+      
+    } catch (err) {
+      console.error('💥 Erreur dans fetchBomWithComponents:', err);
+      return null;
+    }
+  }
+
+  async getBOMWithComponents(req, res) {
+    const { id } = req.params;
+    try {
+      const bomWithComponents = await this.fetchBomWithComponents(id);
+      res.json({ success: true, data: bomWithComponents });
+    } catch (err) {
+      res.status(500).json({ success: false, error: err.message });
     }
   }
 

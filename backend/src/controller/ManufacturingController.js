@@ -1,7 +1,14 @@
 const dolibarrService = require('../services/dolibarrService');
+const productController = require('./ProductController');
+const bomsController = require('./BOMsController');
 const logger = require('../utils/logger');
 
 class ManufacturingController {
+  constructor() {
+    this.getManufacturingOrderById = this.getManufacturingOrderById.bind(this);
+    this.fetchOrderWithDetails = this.fetchOrderWithDetails.bind(this);
+  }
+
   async createManufacturingOrder(req, res) {
     try {
       const { fk_bom, qty, label, description } = req.body;
@@ -88,13 +95,37 @@ class ManufacturingController {
 
   async getManufacturingOrders(req, res) {
     try {
-      logger.info('Fetching BOMs from Dolibarr');
-      const boms = await dolibarrService.get('/mos');
+      logger.info('Fetching all manufacturing orders from Dolibarr');
+      const orders = await dolibarrService.get('/mos');
+      
+      if (!Array.isArray(orders)) {
+        return res.json({ success: true, data: [] });
+      }
+
+      // Enrichir chaque ordre avec produit et BOM/composants
+      const enrichedOrders = await Promise.all(
+        orders.map(async (order) => {
+          // Produit principal
+          const product = order.fk_product
+            ? await productController.getProductById(order.fk_product)
+            : null;
+
+          // BOM + composants
+          const bom = order.fk_bom
+            ? await bomsController.fetchBomWithComponents(order.fk_bom)
+            : null;
+
+          const components = bom?.components || [];
+
+          return { ...order, product, bom, components };
+        })
+      );
+
       res.json({
         success: true,
-        data: Array.isArray(boms) ? boms : []
+        data: enrichedOrders
       });
-      
+
     } catch (error) {
       logger.error('Error fetching manufacturing orders:', error);
       res.status(500).json({
@@ -103,6 +134,41 @@ class ManufacturingController {
         details: error.message
       });
     }
+  }
+
+  async getManufacturingOrderById(req, res) {
+    try {
+      const { id } = req.params;
+      if (!id || isNaN(id)) return res.status(400).json({ success: false, error: "ID requis" });
+
+      const order = await this.fetchOrderWithDetails(Number(id));
+      if (!order) return res.status(404).json({ success: false, error: "Introuvable" });
+
+      return res.json({ success: true, data: order });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async fetchOrderWithDetails(id) {
+    const order = await dolibarrService.get(`/mos/${id}`);
+    if (!order) return null;
+
+    // Produit principal
+    const product = order.fk_product 
+      ? await productController.getProductById(order.fk_product)
+      : null;
+
+    // BOM + composants
+    const bom = order.fk_bom 
+      ? await bomsController.fetchBomWithComponents(order.fk_bom)
+      : null;
+
+    // BOM components: vérifier si la fonction renvoie bien une liste
+    const components = bom?.components || [];
+
+    return { ...order, product, bom, components };
   }
 
   async validateOrder(req, res) {
@@ -161,7 +227,7 @@ class ManufacturingController {
 
       // Récupération de l'ordre actuel
       const currentOrder = await dolibarrService.get(`/mos/${id}`);
-      
+      console.log('mos :', currentOrder);
       if (!currentOrder) {
         return res.status(404).json({
           success: false,
@@ -176,22 +242,50 @@ class ManufacturingController {
         });
       }
 
-      // Étape 1: Consommer les matières premières
-      logger.info(`Consommation des matières premières pour l'ordre ${id}`);
-      try {
-        await dolibarrService.post(`/mos/${id}/consumeandproduceall`, {
-          closemo: 1 // Fermer l'ordre après production
-        });
-      } catch (consumeError) {
-        // Si l'endpoint consumeandproduceall n'existe pas, essayer une approche alternative
-        logger.warn('Endpoint consumeandproduceall non disponible, utilisation méthode alternative');
-        
-        // Mise à jour du statut directement
-        await dolibarrService.put(`/mos/${id}`, {
-          status: 3, // État "fabriqué"
-          date_production: new Date().toISOString().split('T')[0]
+      // Détermination de l'entrepôt (warehouse_id) si nécessaire
+      const warehouseId = currentOrder.fk_warehouse; // à adapter selon ta configuration
+
+      // Récupérer les composants depuis la BOM si besoin
+      let components = [];
+      if (currentOrder.fk_bom) {
+        const bom = await bomsController.fetchBomWithComponents(currentOrder.fk_bom);
+        console.log('bommmmmmmmm :', bom);
+        components = bom?.components || [];
+      }
+
+      // Consommation des matières premières
+      for (const component of components) {
+        if (component.type === 'raw') { // type 'raw' ou selon ton mapping
+          logger.info(`Consommation produit ${component.fk_product}, qty=${component.qty}`);
+          await dolibarrService.post('/stockmovements', {
+            product_id: component.fk_product,
+            qty: -Math.abs(component.qty),
+            warehouse_id: warehouseId,
+            movement: 2, // sortie
+            label: `Consommation OF #${id}`
+          });
+        }
+      }
+
+      // Production du produit fini
+      if (currentOrder.fk_product && currentOrder.qty) {
+        logger.info(`Production produit ${currentOrder.fk_product}, qty=${currentOrder.qty}`);
+        await dolibarrService.post('/stockmovements', {
+          product_id: currentOrder.fk_product,
+          qty: Math.abs(currentOrder.qty),
+          warehouse_id: warehouseId,
+          movement: 1, // entrée
+          label: `Production OF #${id}`
         });
       }
+
+      // Mise à jour du statut de l'ordre en "fabriqué"
+      const updateData = {
+        status: 3, // fabriqué
+        date_production: new Date().toISOString().split('T')[0]
+      };
+
+      await dolibarrService.put(`/mos/${id}`, updateData);
 
       logger.info(`Ordre de fabrication ${id} produit avec succès`);
 
@@ -214,12 +308,9 @@ class ManufacturingController {
   async createBatchManufacturingOrders(req, res) {
     try {
       const { orders } = req.body;
-      
+
       if (!Array.isArray(orders) || orders.length === 0) {
-        return res.status(400).json({
-          success: false,
-          error: 'Liste des ordres requise'
-        });
+        return res.status(400).json({ success: false, error: 'Liste des ordres requise' });
       }
 
       logger.info(`Création de ${orders.length} ordres de fabrication en lot`);
@@ -229,11 +320,11 @@ class ManufacturingController {
 
       for (let i = 0; i < orders.length; i++) {
         const order = orders[i];
-        
+
         try {
           // 1. Récupération du BOM
           const bom = await dolibarrService.get(`/boms/${order.bom_id}`);
-          
+
           // 2. Création de l'ordre de fabrication
           const orderData = {
             ref: `MO-BATCH-${Date.now()}-${i + 1}`,
@@ -241,29 +332,31 @@ class ManufacturingController {
             fk_bom: order.bom_id,
             fk_product: bom.fk_product,
             qty: parseFloat(order.qty),
-            mrptype: 0, 
+            mrptype: 0,
             status: 0, // Brouillon
             date_creation: new Date().toISOString(),
             fk_user_creat: 1
           };
-          
+
           const createdOrderId = await dolibarrService.post('/mos', orderData);
 
-          // 3. Validation automatique (comme validateOrder)
-          const validationData = {
-            status: 1, // validé
+           // Valide
+          await dolibarrService.put(`/mos/${createdOrderId}`, {
+            status: 1,
             date_valid: new Date().toISOString().split('T')[0]
-          };
-          await dolibarrService.put(`/mos/${createdOrderId}`, validationData);
+          });
 
-          // 4. Production automatique → passage au statut "produit"
-          const productionData = {
-            status: 2, // produit
-            date_end: new Date().toISOString().split('T')[0]
-          };
-          await dolibarrService.put(`/mos/${createdOrderId}`, productionData);
+          // Produire
+          try {
+            await dolibarrService.post(`/mos/${createdOrderId}/consumeandproduceall`, { closemo: 1 });
+          } catch {
+            await dolibarrService.put(`/mos/${createdOrderId}`, {
+              status: 3,
+              date_production: new Date().toISOString().split('T')[0]
+            });
+          }
 
-          // 5. Récupération finale de l’ordre pour les infos
+          // 5. Récupération finale pour infos
           const createdOrderInfo = await dolibarrService.get(`/mos/${createdOrderId}`);
 
           results.push({
@@ -309,6 +402,164 @@ class ManufacturingController {
     }
   }
 
+  async updateManufacturingOrder(req, res) {
+    try {
+      const { id } = req.params;
+      let updateData = req.body;
+
+      if (!id || isNaN(id)) {
+        return res.status(400).json({ success: false, error: "ID invalide" });
+      }
+
+      updateData = cleanUpdateData(updateData);
+
+      const updated = await dolibarrService.put(`/mos/${id}`, updateData);
+
+      return res.json({
+        success: true,
+        message: "Ordre mis à jour avec succès",
+        data: {
+          id: parseInt(id),
+          ...updateData,
+          ...(updated || {})
+        }
+      });
+    } catch (error) {
+      console.error("Error updating manufacturing order:", error);
+      return res.status(500).json({
+        success: false,
+        error: "Erreur lors de la mise à jour",
+        details: error.message
+      });
+    }
+  }
+
+  async deleteManufacturingOrder(req, res) {
+    try {
+      const { id } = req.params;
+      
+      if (!id || isNaN(id)) {
+        return res.status(400).json({ 
+          success: false, 
+          error: "ID d'ordre de fabrication invalide" 
+        });
+      }
+
+      logger.info(`Tentative de suppression de l'ordre de fabrication ${id}`);
+
+      // 1. Vérifier si l'ordre existe
+      const order = await dolibarrService.get(`/mos/${id}`);
+      if (!order) {
+        return res.status(404).json({ 
+          success: false, 
+          error: "Ordre de fabrication non trouvé" 
+        });
+      }
+
+      // 2. Vérifier si l'ordre peut être supprimé (seuls les brouillons ou certains statuts)
+      // 9 pour annule
+      // if (order.status !== 0) { // 0 = brouillon
+      //   return res.status(400).json({ 
+      //     success: false, 
+      //     error: "Seuls les ordres en statut 'Brouillon' peuvent être supprimés" 
+      //   });
+      // }
+
+      // 3. Supprimer l'ordre
+      const result = await dolibarrService.delete(`/mos/${id}`);
+
+      logger.info(`Ordre de fabrication ${id} supprimé avec succès`);
+
+      res.json({
+        success: true,
+        message: 'Ordre de fabrication supprimé avec succès',
+        data: { id: parseInt(id) }
+      });
+
+    } catch (error) {
+      logger.error(`Erreur lors de la suppression de l'ordre ${req.params.id}:`, error);
+      
+      // Gestion des erreurs spécifiques
+      if (error.response?.status === 404) {
+        return res.status(404).json({ 
+          success: false, 
+          error: 'Ordre de fabrication non trouvé' 
+        });
+      }
+
+      res.status(500).json({
+        success: false,
+        error: 'Erreur lors de la suppression de l\'ordre de fabrication',
+        details: error.message
+      });
+    }
+  }
+
+  async deleteMultipleManufacturingOrders(req, res) {
+    try {
+      const { ids } = req.body;
+
+      if (!Array.isArray(ids) || ids.length === 0) {
+        return res.status(400).json({ 
+          success: false, 
+          error: "Liste d'IDs requise" 
+        });
+      }
+
+      logger.info(`Tentative de suppression de ${ids.length} ordres de fabrication`);
+
+      const results = [];
+      const errors = [];
+
+      for (const id of ids) {
+        try {
+          // Vérifier si l'ordre existe et peut être supprimé
+          const order = await dolibarrService.get(`/mos/${id}`);
+          
+          if (!order) {
+            errors.push({ id, error: 'Non trouvé' });
+            continue;
+          }
+
+          if (order.status !== 0) {
+            errors.push({ id, error: 'Statut non autorisé pour la suppression' });
+            continue;
+          }
+
+          // Supprimer l'ordre
+          await dolibarrService.delete(`/mos/${id}`);
+          results.push(id);
+
+          logger.info(`Ordre de fabrication ${id} supprimé avec succès`);
+
+        } catch (error) {
+          logger.error(`Erreur lors de la suppression de l'ordre ${id}:`, error);
+          errors.push({ id, error: error.message });
+        }
+      }
+
+      res.json({
+        success: errors.length === 0,
+        message: `Suppression de ${results.length} ordre(s) sur ${ids.length}`,
+        data: {
+          total: ids.length,
+          successful: results.length,
+          failed: errors.length,
+          results: results,
+          errors: errors
+        }
+      });
+
+    } catch (error) {
+      logger.error('Erreur lors de la suppression multiple des ordres:', error);
+      res.status(500).json({
+        success: false,
+        error: 'Erreur lors de la suppression multiple des ordres de fabrication',
+        details: error.message
+      });
+    }
+  }
+
   getStatusLabel(status) {
     const statusMap = {
       0: 'Brouillon',
@@ -321,5 +572,15 @@ class ManufacturingController {
   }
 
 }
+
+  function cleanUpdateData(data) {
+    const cleaned = {};
+    Object.entries(data).forEach(([key, value]) => {
+      if (value !== null && value !== "") {
+        cleaned[key] = value;
+      }
+    });
+    return cleaned;
+  }
 
 module.exports = new ManufacturingController();
