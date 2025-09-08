@@ -11948,3 +11948,1073 @@
 {"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T17:34:45.359Z"}
 {"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T17:34:45.360Z"}
 {"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T17:34:45.361Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T17:43:42.525Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T17:43:42.551Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T17:43:42.557Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398/stock","service":"dolibarr-import","timestamp":"2025-09-08T17:43:42.826Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399/stock","service":"dolibarr-import","timestamp":"2025-09-08T17:43:42.827Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401/stock","service":"dolibarr-import","timestamp":"2025-09-08T17:43:42.828Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400/stock","service":"dolibarr-import","timestamp":"2025-09-08T17:43:42.829Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402/stock","service":"dolibarr-import","timestamp":"2025-09-08T17:43:42.830Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=401","service":"dolibarr-import","timestamp":"2025-09-08T17:43:43.385Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=398","service":"dolibarr-import","timestamp":"2025-09-08T17:43:43.398Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=402","service":"dolibarr-import","timestamp":"2025-09-08T17:43:43.460Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=399","service":"dolibarr-import","timestamp":"2025-09-08T17:43:43.469Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=400","service":"dolibarr-import","timestamp":"2025-09-08T17:43:43.549Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T17:43:43.935Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T17:43:43.941Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T17:43:43.941Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398/stock","service":"dolibarr-import","timestamp":"2025-09-08T17:43:44.139Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399/stock","service":"dolibarr-import","timestamp":"2025-09-08T17:43:44.140Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401/stock","service":"dolibarr-import","timestamp":"2025-09-08T17:43:44.141Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400/stock","service":"dolibarr-import","timestamp":"2025-09-08T17:43:44.141Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402/stock","service":"dolibarr-import","timestamp":"2025-09-08T17:43:44.143Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=401","service":"dolibarr-import","timestamp":"2025-09-08T17:43:44.326Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=400","service":"dolibarr-import","timestamp":"2025-09-08T17:43:44.434Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=398","service":"dolibarr-import","timestamp":"2025-09-08T17:43:44.449Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=399","service":"dolibarr-import","timestamp":"2025-09-08T17:43:44.476Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=402","service":"dolibarr-import","timestamp":"2025-09-08T17:43:44.540Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:17:42.314Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:17:42.332Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:17:42.381Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:17:42.383Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:17:42.383Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:17:42.911Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:17:42.912Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.076Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.078Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.079Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.080Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.081Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.085Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.094Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.098Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.099Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.100Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.100Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.132Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.133Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:43.814Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:44.030Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:44.229Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:44.281Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:44.299Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:44.410Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:44.526Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:44.542Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:44.680Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:44.691Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:44.859Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:44.860Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:44.863Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:44.924Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.117Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.140Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.193Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.194Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.311Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.400Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.450Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.451Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.524Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.530Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.531Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.532Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.725Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.805Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.809Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:45.967Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.229Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.360Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.414Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.467Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.482Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.483Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.484Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.541Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.677Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.764Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.765Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.775Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.877Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.879Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.880Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:46.998Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:47.063Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:47.413Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:47.414Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:47.539Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:47.539Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:47.807Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:47.808Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:47.808Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.153Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.217Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.273Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.274Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.274Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.700Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.701Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.701Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.820Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.821Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.822Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.822Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.823Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.823Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.823Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.823Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.824Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.824Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.824Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.825Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:48.825Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.129Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.363Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.465Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.632Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.789Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.798Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.800Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.813Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.816Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.819Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.823Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.857Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.865Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.872Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.884Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.887Z"}
+{"level":"info","message":"GET /api/reset/confirm","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.888Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.905Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:49.918Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.004Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.139Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.218Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.284Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.321Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.372Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.401Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.401Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.430Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.430Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.431Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.489Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.532Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.534Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.537Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.603Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.605Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.695Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.696Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.696Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.769Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.769Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.770Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.873Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.880Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.903Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.904Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.950Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.955Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:50.967Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.214Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.216Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.272Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.302Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.302Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.303Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.466Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.466Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.635Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.635Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.768Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.769Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.769Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T18:17:51.890Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.220Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.225Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.234Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.235Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.235Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.403Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.403Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.485Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.486Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.486Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.486Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.487Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.487Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.487Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.487Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.488Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.488Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.488Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.488Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.488Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.758Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.968Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:58.971Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.006Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.024Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.082Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.098Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.204Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.332Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.380Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.401Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.437Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.452Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.551Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.753Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.769Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.822Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.890Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.892Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.923Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:17:59.969Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.005Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.117Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.139Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.141Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.183Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.200Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.347Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.464Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.466Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.467Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.555Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.555Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.640Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.658Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.674Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.685Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.687Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.806Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.836Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:00.854Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.007Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.007Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.009Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.012Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.013Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.023Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.038Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.045Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.121Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.134Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.136Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.140Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.199Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.201Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.202Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.283Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.284Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:01.284Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.464Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.465Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.465Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.627Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.628Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.628Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.629Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.629Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.629Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.629Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.629Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.629Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.629Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.629Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.630Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.630Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.841Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.862Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.897Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:18:04.997Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.005Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.040Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.042Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.048Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.051Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.077Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.090Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.093Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.101Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.126Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.168Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.206Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.239Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.241Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.263Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.295Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.295Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.322Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.341Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.401Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.479Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.479Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.480Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.502Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.505Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/98/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.538Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.589Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.593Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.683Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.685Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.685Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.784Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.785Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.786Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.847Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.848Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.848Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/99/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.903Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.974Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.977Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:05.977Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.007Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.008Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.008Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.085Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.087Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.118Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.120Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.166Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.169Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.218Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.219Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.578Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.580Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401","service":"dolibarr-import","timestamp":"2025-09-08T18:18:06.581Z"}
+{"level":"info","message":"DELETE /api/manufacturing/delete/21","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.024Z"}
+{"level":"info","message":"Tentative de suppression de l'ordre de fabrication 21","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.034Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/21","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.034Z"}
+{"level":"info","message":"DELETE /api/manufacturing/delete/28","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.057Z"}
+{"level":"info","message":"Tentative de suppression de l'ordre de fabrication 28","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.058Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/28","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.058Z"}
+{"level":"info","message":"DELETE /api/manufacturing/delete/29","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.087Z"}
+{"level":"info","message":"Tentative de suppression de l'ordre de fabrication 29","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.089Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/29","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.089Z"}
+{"level":"info","message":"DELETE /api/manufacturing/delete/30","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.092Z"}
+{"level":"info","message":"Tentative de suppression de l'ordre de fabrication 30","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.092Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/30","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.117Z"}
+{"level":"info","message":"DELETE /api/manufacturing/delete/31","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.142Z"}
+{"level":"info","message":"Tentative de suppression de l'ordre de fabrication 31","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.166Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/31","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.166Z"}
+{"level":"info","message":"DELETE /api/manufacturing/delete/32","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.176Z"}
+{"level":"info","message":"Tentative de suppression de l'ordre de fabrication 32","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.177Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/32","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.177Z"}
+{"level":"info","message":"Ordre de fabrication 28 supprimé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.770Z"}
+{"level":"info","message":"DELETE /api/manufacturing/delete/33","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.781Z"}
+{"level":"info","message":"Tentative de suppression de l'ordre de fabrication 33","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.782Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/33","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.782Z"}
+{"level":"info","message":"Ordre de fabrication 32 supprimé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.850Z"}
+{"level":"info","message":"Ordre de fabrication 30 supprimé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.852Z"}
+{"level":"info","message":"Ordre de fabrication 29 supprimé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.882Z"}
+{"level":"info","message":"DELETE /api/manufacturing/delete/34","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.909Z"}
+{"level":"info","message":"Tentative de suppression de l'ordre de fabrication 34","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.909Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/34","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.910Z"}
+{"level":"info","message":"DELETE /api/manufacturing/delete/24","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.915Z"}
+{"level":"info","message":"Tentative de suppression de l'ordre de fabrication 24","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.916Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/24","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.916Z"}
+{"level":"info","message":"DELETE /api/manufacturing/delete/22","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.922Z"}
+{"level":"info","message":"Tentative de suppression de l'ordre de fabrication 22","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.924Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/22","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.924Z"}
+{"level":"info","message":"Ordre de fabrication 31 supprimé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.941Z"}
+{"level":"info","message":"Ordre de fabrication 21 supprimé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.963Z"}
+{"level":"info","message":"DELETE /api/manufacturing/delete/23","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.990Z"}
+{"level":"info","message":"Tentative de suppression de l'ordre de fabrication 23","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.992Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/23","service":"dolibarr-import","timestamp":"2025-09-08T18:18:12.993Z"}
+{"level":"info","message":"DELETE /api/manufacturing/delete/26","service":"dolibarr-import","timestamp":"2025-09-08T18:18:13.003Z"}
+{"level":"info","message":"Tentative de suppression de l'ordre de fabrication 26","service":"dolibarr-import","timestamp":"2025-09-08T18:18:13.003Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/26","service":"dolibarr-import","timestamp":"2025-09-08T18:18:13.003Z"}
+{"level":"info","message":"Ordre de fabrication 33 supprimé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:13.265Z"}
+{"level":"info","message":"DELETE /api/manufacturing/delete/27","service":"dolibarr-import","timestamp":"2025-09-08T18:18:13.271Z"}
+{"level":"info","message":"Tentative de suppression de l'ordre de fabrication 27","service":"dolibarr-import","timestamp":"2025-09-08T18:18:13.272Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/27","service":"dolibarr-import","timestamp":"2025-09-08T18:18:13.272Z"}
+{"level":"info","message":"Ordre de fabrication 24 supprimé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:13.325Z"}
+{"level":"info","message":"Ordre de fabrication 34 supprimé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:13.340Z"}
+{"level":"info","message":"Ordre de fabrication 22 supprimé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:13.417Z"}
+{"level":"info","message":"Ordre de fabrication 23 supprimé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:13.439Z"}
+{"level":"info","message":"Ordre de fabrication 26 supprimé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:13.447Z"}
+{"level":"info","message":"Ordre de fabrication 27 supprimé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:13.515Z"}
+{"level":"info","message":"GET /api/reset/confirm","service":"dolibarr-import","timestamp":"2025-09-08T18:18:20.770Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:18:20.770Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:18:20.808Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T18:18:20.884Z"}
+{"level":"info","message":"DELETE /api/reset/all","service":"dolibarr-import","timestamp":"2025-09-08T18:18:22.509Z"}
+{"level":"info","message":"Début de la réinitialisation des données Dolibarr (tout ou rien)","service":"dolibarr-import","timestamp":"2025-09-08T18:18:22.539Z"}
+{"level":"info","message":"Récupération des entrepôts...","service":"dolibarr-import","timestamp":"2025-09-08T18:18:22.539Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/warehouses","service":"dolibarr-import","timestamp":"2025-09-08T18:18:22.539Z"}
+{"level":"info","message":"Récupération des ordres de fabrication...","service":"dolibarr-import","timestamp":"2025-09-08T18:18:22.651Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:18:22.651Z"}
+{"level":"info","message":"Récupération des BOMs...","service":"dolibarr-import","timestamp":"2025-09-08T18:18:22.705Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T18:18:22.706Z"}
+{"level":"info","message":"Récupération des produits...","service":"dolibarr-import","timestamp":"2025-09-08T18:18:22.767Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:18:22.767Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/398/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:18:22.851Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/399/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:18:22.954Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/401/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:18:23.048Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/400/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:18:23.161Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/402/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:18:23.232Z"}
+{"level":"info","message":"Suppression des entrepôts...","service":"dolibarr-import","timestamp":"2025-09-08T18:18:23.335Z"}
+{"level":"info","message":"Suppression des ordres de fabrication...","service":"dolibarr-import","timestamp":"2025-09-08T18:18:23.484Z"}
+{"level":"info","message":"Suppression des BOMs...","service":"dolibarr-import","timestamp":"2025-09-08T18:18:23.484Z"}
+{"level":"info","message":"Suppression des produits...","service":"dolibarr-import","timestamp":"2025-09-08T18:18:23.676Z"}
+{"level":"info","message":"Réinitialisation des stocks...","service":"dolibarr-import","timestamp":"2025-09-08T18:18:25.074Z"}
+{"level":"info","message":"Réinitialisation terminée avec succès","service":"dolibarr-import","timestamp":"2025-09-08T18:18:25.078Z"}
+{"level":"info","message":"POST /api/import/preview","service":"dolibarr-import","timestamp":"2025-09-08T18:18:43.294Z"}
+{"level":"info","message":"Preview import: 5 produits, 2 BOMs","service":"dolibarr-import","timestamp":"2025-09-08T18:18:43.295Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:18:43.297Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T18:18:43.297Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/warehouses","service":"dolibarr-import","timestamp":"2025-09-08T18:18:43.298Z"}
+{"level":"info","message":"POST /api/import/preview","service":"dolibarr-import","timestamp":"2025-09-08T18:18:43.325Z"}
+{"level":"info","message":"Preview import: 5 produits, 2 BOMs","service":"dolibarr-import","timestamp":"2025-09-08T18:18:43.328Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:18:43.328Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T18:18:43.328Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/warehouses","service":"dolibarr-import","timestamp":"2025-09-08T18:18:43.330Z"}
+{"level":"info","message":"POST /api/import/importAll","service":"dolibarr-import","timestamp":"2025-09-08T18:18:50.471Z"}
+{"level":"info","message":"Import starting: 5 produits, 2 BOMs","service":"dolibarr-import","timestamp":"2025-09-08T18:18:50.476Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:18:50.477Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T18:18:50.477Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/warehouses","service":"dolibarr-import","timestamp":"2025-09-08T18:18:50.479Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:18:50.566Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/warehouses","service":"dolibarr-import","timestamp":"2025-09-08T18:18:50.568Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T18:18:51.595Z"}
+{"level":"info","message":"Import completed successfully: 5 produits, 2 BOMs créés","service":"dolibarr-import","timestamp":"2025-09-08T18:18:52.213Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.059Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.059Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.059Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.189Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.189Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.190Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.190Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.190Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=403","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.293Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=406","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.378Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=404","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.392Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=407","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.462Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=405","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.752Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.906Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.907Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:19:13.907Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:19:14.134Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:19:14.135Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:19:14.135Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:19:14.135Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:19:14.135Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=404","service":"dolibarr-import","timestamp":"2025-09-08T18:19:14.333Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=406","service":"dolibarr-import","timestamp":"2025-09-08T18:19:14.396Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=407","service":"dolibarr-import","timestamp":"2025-09-08T18:19:14.427Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=405","service":"dolibarr-import","timestamp":"2025-09-08T18:19:14.442Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=403","service":"dolibarr-import","timestamp":"2025-09-08T18:19:14.455Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:23:25.173Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:23:25.175Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:23:25.176Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:23:25.191Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:23:25.193Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:23:25.306Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:23:25.306Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:23:25.307Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:23:25.373Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:23:25.374Z"}
+{"level":"info","message":"GET /api/boms/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.331Z"}
+{"level":"info","message":"Récupération de la liste des BOM","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.336Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.336Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.407Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.409Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.493Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.548Z"}
+{"level":"info","message":"GET /api/boms/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.675Z"}
+{"level":"info","message":"Récupération de la liste des BOM","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.675Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.676Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.739Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.741Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.846Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:24:46.859Z"}
+{"level":"info","message":"POST /api/manufacturing/orders/batch","service":"dolibarr-import","timestamp":"2025-09-08T18:24:55.789Z"}
+{"level":"info","message":"Création de 1 ordres de fabrication en lot","service":"dolibarr-import","timestamp":"2025-09-08T18:24:55.792Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T18:24:55.792Z"}
+{"data":{"debug":{"source":"Routes.php:457 at route stage","stages":{"failure":["route","negotiate","message"],"success":["get"]}},"error":{"code":404,"message":"Not Found"}},"level":"error","message":"Dolibarr API Error 404:","service":"dolibarr-import","status":404,"timestamp":"2025-09-08T18:24:56.040Z","url":"/mos/35/consumeandproduceall"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/35","service":"dolibarr-import","timestamp":"2025-09-08T18:24:56.151Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.400Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.401Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.405Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.417Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.417Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.580Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.613Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.614Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.683Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.737Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.814Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.815Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.927Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.928Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:25:05.928Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:25:06.009Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T18:25:06.065Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:25:06.127Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T18:25:06.176Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T18:25:06.177Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:25:08.830Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T18:25:08.831Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:25:08.831Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:25:08.957Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:25:08.958Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:25:08.958Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:25:08.958Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:25:08.959Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=404","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.140Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=403","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.223Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=405","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.232Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=406","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.245Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=407","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.249Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.386Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.388Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.388Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.528Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.530Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.531Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.532Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.532Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=404","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.630Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=407","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.674Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=403","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.681Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=405","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.706Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=406","service":"dolibarr-import","timestamp":"2025-09-08T18:25:09.735Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-09-08T18:27:03.175Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-09-08T18:27:03.241Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-09-08T18:27:03.251Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:27:08.959Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:27:08.963Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:27:08.964Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:27:09.101Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:27:09.102Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:27:09.216Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T18:27:09.356Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:27:09.412Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:27:09.413Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:27:09.783Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T18:27:10.091Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T18:27:10.101Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:27:10.371Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:27:10.372Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:27:10.373Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:27:10.924Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T18:27:11.036Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:27:11.157Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T18:27:11.386Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T18:27:11.386Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:27:22.119Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T18:27:22.121Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:27:22.121Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:27:22.289Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:27:22.290Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:27:22.291Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:27:22.304Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:27:22.304Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=403","service":"dolibarr-import","timestamp":"2025-09-08T18:27:22.531Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=405","service":"dolibarr-import","timestamp":"2025-09-08T18:27:22.577Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=404","service":"dolibarr-import","timestamp":"2025-09-08T18:27:22.713Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=406","service":"dolibarr-import","timestamp":"2025-09-08T18:27:22.881Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=407","service":"dolibarr-import","timestamp":"2025-09-08T18:27:22.966Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:27:23.080Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T18:27:23.081Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:27:23.081Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:27:23.251Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:27:23.252Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:27:23.252Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:27:23.253Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:27:23.253Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=403","service":"dolibarr-import","timestamp":"2025-09-08T18:27:23.521Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=407","service":"dolibarr-import","timestamp":"2025-09-08T18:27:23.623Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=404","service":"dolibarr-import","timestamp":"2025-09-08T18:27:23.685Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=405","service":"dolibarr-import","timestamp":"2025-09-08T18:27:23.729Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=406","service":"dolibarr-import","timestamp":"2025-09-08T18:27:23.818Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-09-08T18:29:33.902Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-09-08T18:29:33.909Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-09-08T18:29:33.911Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:29:38.958Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:29:38.972Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:29:39.162Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:29:39.164Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:29:39.164Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:29:39.511Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:29:39.618Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:29:39.619Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T18:29:39.762Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:29:39.935Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T18:29:40.031Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T18:29:40.031Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:29:40.231Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:29:40.232Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:29:40.232Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:29:40.468Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T18:29:40.549Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:29:40.598Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T18:29:40.660Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T18:29:40.661Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:29:42.284Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T18:29:42.285Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:29:42.286Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:29:42.676Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:29:42.677Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:29:42.677Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:29:42.678Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:29:42.678Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=404","service":"dolibarr-import","timestamp":"2025-09-08T18:29:42.932Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=405","service":"dolibarr-import","timestamp":"2025-09-08T18:29:43.016Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=403","service":"dolibarr-import","timestamp":"2025-09-08T18:29:43.034Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=407","service":"dolibarr-import","timestamp":"2025-09-08T18:29:43.215Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=406","service":"dolibarr-import","timestamp":"2025-09-08T18:29:43.331Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:29:43.481Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T18:29:43.482Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:29:43.482Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:29:43.750Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:29:43.751Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:29:43.755Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:29:43.756Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:29:43.757Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=407","service":"dolibarr-import","timestamp":"2025-09-08T18:29:43.998Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=404","service":"dolibarr-import","timestamp":"2025-09-08T18:29:44.008Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=406","service":"dolibarr-import","timestamp":"2025-09-08T18:29:44.094Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=403","service":"dolibarr-import","timestamp":"2025-09-08T18:29:44.163Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=405","service":"dolibarr-import","timestamp":"2025-09-08T18:29:44.187Z"}
+{"level":"info","message":"GET /api/stock/movements/403","service":"dolibarr-import","timestamp":"2025-09-08T18:30:37.656Z"}
+{"level":"info","message":"GET /api/stock/movements/404","service":"dolibarr-import","timestamp":"2025-09-08T18:30:53.233Z"}
+{"level":"info","message":"GET /api/stock/movements/406","service":"dolibarr-import","timestamp":"2025-09-08T18:30:55.682Z"}
+{"level":"info","message":"GET /api/stock/movements/405","service":"dolibarr-import","timestamp":"2025-09-08T18:30:58.817Z"}
+{"level":"info","message":"GET /api/stock/movements/407","service":"dolibarr-import","timestamp":"2025-09-08T18:31:01.469Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:32:38.423Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:32:38.425Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:32:38.439Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:32:38.544Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:32:38.546Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:32:38.665Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:32:38.666Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:32:38.739Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:32:38.741Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T18:32:38.901Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T18:32:38.914Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.037Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.042Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.192Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.193Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.213Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.215Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.400Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.400Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.401Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.558Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.559Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.656Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.672Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.788Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.854Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.909Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T18:32:39.910Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T18:32:40.028Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T18:32:40.029Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:34:55.618Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T18:34:55.619Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T18:34:55.620Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:34:55.761Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T18:34:55.762Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T18:34:55.877Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T18:34:55.956Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:34:55.969Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T18:34:56.085Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T18:34:56.111Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T18:34:56.112Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T18:34:56.245Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T18:34:56.245Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:35:00.686Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T18:35:00.686Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:35:00.686Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:35:00.835Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:35:00.836Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:35:00.841Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:35:00.841Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:35:00.842Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=403","service":"dolibarr-import","timestamp":"2025-09-08T18:35:00.982Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=406","service":"dolibarr-import","timestamp":"2025-09-08T18:35:01.067Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=405","service":"dolibarr-import","timestamp":"2025-09-08T18:35:01.201Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=407","service":"dolibarr-import","timestamp":"2025-09-08T18:35:01.264Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=404","service":"dolibarr-import","timestamp":"2025-09-08T18:35:01.434Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T18:35:01.547Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T18:35:01.547Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T18:35:01.547Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:35:01.715Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:35:01.717Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:35:01.730Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:35:01.732Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407/stock","service":"dolibarr-import","timestamp":"2025-09-08T18:35:01.732Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=406","service":"dolibarr-import","timestamp":"2025-09-08T18:35:01.958Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=403","service":"dolibarr-import","timestamp":"2025-09-08T18:35:02.058Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=404","service":"dolibarr-import","timestamp":"2025-09-08T18:35:02.068Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=407","service":"dolibarr-import","timestamp":"2025-09-08T18:35:02.111Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=405","service":"dolibarr-import","timestamp":"2025-09-08T18:35:02.247Z"}
+{"level":"info","message":"GET /api/stock/movements/403","service":"dolibarr-import","timestamp":"2025-09-08T18:35:03.445Z"}
+{"level":"info","message":"GET /api/stock/movements/404","service":"dolibarr-import","timestamp":"2025-09-08T18:35:08.241Z"}
+{"level":"info","message":"GET /api/stock/movements/406","service":"dolibarr-import","timestamp":"2025-09-08T18:35:11.888Z"}
+{"level":"info","message":"GET /api/stock/movements/405","service":"dolibarr-import","timestamp":"2025-09-08T18:35:13.996Z"}
+{"level":"info","message":"GET /api/stock/movements/407","service":"dolibarr-import","timestamp":"2025-09-08T18:35:15.848Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-09-08T19:02:15.764Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-09-08T19:02:16.261Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-09-08T19:02:16.261Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:02:33.396Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T19:02:33.399Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:02:33.400Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:02:34.572Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:02:34.574Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:02:34.584Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:02:34.588Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:02:34.589Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:02:38.081Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T19:02:38.083Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T19:02:38.083Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:02:38.451Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:02:38.452Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=403","service":"dolibarr-import","timestamp":"2025-09-08T19:02:41.891Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=407","service":"dolibarr-import","timestamp":"2025-09-08T19:02:42.879Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=405","service":"dolibarr-import","timestamp":"2025-09-08T19:02:43.375Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=406","service":"dolibarr-import","timestamp":"2025-09-08T19:02:43.865Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=404","service":"dolibarr-import","timestamp":"2025-09-08T19:02:44.002Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:02:44.596Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:02:44.606Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:02:44.709Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:02:44.710Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T19:02:44.710Z"}
+{"level":"info","message":"GET /api/stock/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:02:45.267Z"}
+{"level":"info","message":"Récupération de la liste des stocks","service":"dolibarr-import","timestamp":"2025-09-08T19:02:45.275Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:02:45.365Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:02:45.560Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101","service":"dolibarr-import","timestamp":"2025-09-08T19:02:45.615Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:02:45.888Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:02:45.889Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:02:45.889Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:02:45.890Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:02:45.891Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:02:45.997Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=404","service":"dolibarr-import","timestamp":"2025-09-08T19:02:46.230Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:02:46.505Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:02:46.567Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=406","service":"dolibarr-import","timestamp":"2025-09-08T19:02:46.823Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:02:47.001Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:02:47.173Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:02:47.174Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406","service":"dolibarr-import","timestamp":"2025-09-08T19:02:47.175Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:02:47.248Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:02:47.273Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=405","service":"dolibarr-import","timestamp":"2025-09-08T19:02:47.509Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:02:47.576Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:02:47.576Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=403","service":"dolibarr-import","timestamp":"2025-09-08T19:02:47.634Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/stockmovements?product_id=407","service":"dolibarr-import","timestamp":"2025-09-08T19:02:48.661Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:02:48.823Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T19:02:48.824Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T19:02:48.824Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.006Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.006Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.007Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.136Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.234Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.330Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.437Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.455Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.508Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.723Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.724Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.745Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.745Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.755Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.756Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406","service":"dolibarr-import","timestamp":"2025-09-08T19:02:49.756Z"}
+{"level":"info","message":"GET /api/boms/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:02:55.904Z"}
+{"level":"info","message":"Récupération de la liste des BOM","service":"dolibarr-import","timestamp":"2025-09-08T19:02:55.906Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T19:02:55.909Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:02:56.185Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T19:02:56.185Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:02:56.372Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:02:56.667Z"}
+{"level":"info","message":"GET /api/boms/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:02:56.814Z"}
+{"level":"info","message":"Récupération de la liste des BOM","service":"dolibarr-import","timestamp":"2025-09-08T19:02:56.815Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T19:02:56.815Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:02:56.945Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T19:02:56.946Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:02:57.134Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:02:57.221Z"}
+{"level":"info","message":"GET /api/boms/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:03:48.595Z"}
+{"level":"info","message":"Récupération de la liste des BOM","service":"dolibarr-import","timestamp":"2025-09-08T19:03:48.597Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T19:03:48.598Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:03:48.795Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T19:03:48.796Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:03:48.921Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:03:48.979Z"}
+{"level":"info","message":"GET /api/boms/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:03:49.145Z"}
+{"level":"info","message":"Récupération de la liste des BOM","service":"dolibarr-import","timestamp":"2025-09-08T19:03:49.146Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T19:03:49.147Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:03:49.263Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T19:03:49.268Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:03:49.398Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:03:49.448Z"}
+{"level":"info","message":"POST /api/manufacturing/create","service":"dolibarr-import","timestamp":"2025-09-08T19:04:02.604Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:04:02.606Z"}
+{"date_creation":"2025-09-08","description":"","fk_bom":"100","fk_product":407,"label":"Ordre - Formule 1","level":"info","message":"Creating manufacturing order:","mrptype":0,"qty":8,"ref":"Ordre_-_Formule_1","service":"dolibarr-import","status":0,"timestamp":"2025-09-08T19:04:02.741Z"}
+{"level":"info","message":"Manufacturing order created with ID: 38","service":"dolibarr-import","timestamp":"2025-09-08T19:04:02.972Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.066Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.067Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.069Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.070Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.070Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.311Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.311Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.312Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.312Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.335Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.335Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.588Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.717Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.769Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:04:07.901Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:04:08.063Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:04:08.139Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101","service":"dolibarr-import","timestamp":"2025-09-08T19:04:08.222Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:04:08.288Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:04:08.290Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:04:08.384Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:04:08.384Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:04:08.464Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:04:08.479Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:04:08.849Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.038Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.039Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.040Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.235Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.236Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.236Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.391Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.392Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.392Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.393Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.538Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.584Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.587Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.717Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.792Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.851Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.913Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.955Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.956Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406","service":"dolibarr-import","timestamp":"2025-09-08T19:04:09.957Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:04:10.124Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:04:10.156Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:04:10.157Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:04:10.356Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:04:10.358Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:04:10.437Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:04:10.438Z"}
+{"level":"info","message":"POST /api/manufacturing/validation/38","service":"dolibarr-import","timestamp":"2025-09-08T19:04:12.375Z"}
+{"level":"info","message":"Validation de l'ordre de fabrication 38","service":"dolibarr-import","timestamp":"2025-09-08T19:04:12.376Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/38","service":"dolibarr-import","timestamp":"2025-09-08T19:04:12.377Z"}
+{"level":"info","message":"Ordre de fabrication 38 validé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T19:04:12.571Z"}
+{"level":"info","message":"POST /api/manufacturing/produire/38","service":"dolibarr-import","timestamp":"2025-09-08T19:04:13.946Z"}
+{"level":"info","message":"Production de l'ordre de fabrication 38","service":"dolibarr-import","timestamp":"2025-09-08T19:04:13.947Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/38","service":"dolibarr-import","timestamp":"2025-09-08T19:04:13.947Z"}
+{"level":"info","message":"Consommation des matières premières pour l'ordre 38","service":"dolibarr-import","timestamp":"2025-09-08T19:04:14.048Z"}
+{"data":{"debug":{"source":"Routes.php:457 at route stage","stages":{"failure":["route","negotiate","message"],"success":["get"]}},"error":{"code":404,"message":"Not Found"}},"level":"error","message":"Dolibarr API Error 404:","service":"dolibarr-import","status":404,"timestamp":"2025-09-08T19:04:14.113Z","url":"/mos/38/consumeandproduceall"}
+{"level":"warn","message":"Endpoint consumeandproduceall non disponible, utilisation méthode alternative","service":"dolibarr-import","timestamp":"2025-09-08T19:04:14.119Z"}
+{"level":"info","message":"Ordre de fabrication 38 produit avec succès","service":"dolibarr-import","timestamp":"2025-09-08T19:04:14.259Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-09-08T19:16:48.403Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-09-08T19:16:48.411Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-09-08T19:16:48.413Z"}
+{"level":"info","message":"GET /api/boms/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:17:18.467Z"}
+{"level":"info","message":"Récupération de la liste des BOM","service":"dolibarr-import","timestamp":"2025-09-08T19:17:18.469Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T19:17:18.470Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:17:18.928Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T19:17:18.930Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:19.074Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:19.274Z"}
+{"level":"info","message":"GET /api/boms/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:17:19.463Z"}
+{"level":"info","message":"Récupération de la liste des BOM","service":"dolibarr-import","timestamp":"2025-09-08T19:17:19.465Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T19:17:19.466Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:17:19.608Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T19:17:19.611Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:19.789Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:19.815Z"}
+{"level":"info","message":"POST /api/manufacturing/create","service":"dolibarr-import","timestamp":"2025-09-08T19:17:34.257Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:17:34.259Z"}
+{"date_creation":"2025-09-08","description":"","fk_bom":"100","fk_product":407,"label":"Ordre - Formule 2","level":"info","message":"Creating manufacturing order:","mrptype":0,"qty":4,"ref":"Ordre_-_Formule_2","service":"dolibarr-import","status":0,"timestamp":"2025-09-08T19:17:34.455Z"}
+{"level":"info","message":"Manufacturing order created with ID: 39","service":"dolibarr-import","timestamp":"2025-09-08T19:17:34.572Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:17:48.592Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:17:48.593Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:17:48.728Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T19:17:48.728Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T19:17:48.730Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:17:48.987Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:17:48.987Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.122Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.123Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.123Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.124Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.124Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.334Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.450Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.538Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.579Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.582Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.784Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.843Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.861Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:49.865Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:17:50.136Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:17:50.137Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:17:50.227Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:17:50.228Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:17:50.475Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:17:50.476Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406","service":"dolibarr-import","timestamp":"2025-09-08T19:17:50.477Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:17:50.656Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:17:50.666Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:50.670Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:17:50.885Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:17:50.886Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.054Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.055Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.055Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.203Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.203Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.204Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.204Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.204Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.363Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.369Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.447Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.458Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.519Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.573Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.662Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.701Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.794Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.794Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.857Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/101/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.960Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.991Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:17:51.992Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:17:52.212Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:17:52.212Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:17:52.228Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:17:52.228Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:17:52.378Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:17:52.379Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406","service":"dolibarr-import","timestamp":"2025-09-08T19:17:52.379Z"}
+{"level":"info","message":"POST /api/manufacturing/validation/39","service":"dolibarr-import","timestamp":"2025-09-08T19:17:54.393Z"}
+{"level":"info","message":"Validation de l'ordre de fabrication 39","service":"dolibarr-import","timestamp":"2025-09-08T19:17:54.395Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/39","service":"dolibarr-import","timestamp":"2025-09-08T19:17:54.396Z"}
+{"level":"info","message":"Ordre de fabrication 39 validé avec succès","service":"dolibarr-import","timestamp":"2025-09-08T19:17:54.592Z"}
+{"level":"info","message":"POST /api/manufacturing/produire/39","service":"dolibarr-import","timestamp":"2025-09-08T19:17:59.262Z"}
+{"level":"info","message":"Production de l'ordre de fabrication 39","service":"dolibarr-import","timestamp":"2025-09-08T19:17:59.263Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/39","service":"dolibarr-import","timestamp":"2025-09-08T19:17:59.264Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/39/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:17:59.490Z"}
+{"data":{"debug":{"source":"Routes.php:457 at route stage","stages":{"failure":["route","negotiate","message"],"success":["get"]}},"error":{"code":404,"message":"Not Found"}},"level":"error","message":"Dolibarr API Error 404:","service":"dolibarr-import","status":404,"timestamp":"2025-09-08T19:17:59.555Z","url":"/mos/39/lines"}
+{"level":"error","message":"Erreur production ordre 39: Not Found","service":"dolibarr-import","stack":"Error: Not Found\n    at DolibarrService.formatError (/home/antema/dolibarr-client/backend/src/services/dolibarrService.js:97:14)\n    at DolibarrService.get (/home/antema/dolibarr-client/backend/src/services/dolibarrService.js:63:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async produceOrder (/home/antema/dolibarr-client/backend/src/controller/ManufacturingController.js:245:26)","timestamp":"2025-09-08T19:17:59.558Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-09-08T19:23:16.736Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-09-08T19:23:16.741Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-09-08T19:23:16.742Z"}
+{"level":"info","message":"POST /api/manufacturing/produire/39","service":"dolibarr-import","timestamp":"2025-09-08T19:23:26.972Z"}
+{"level":"info","message":"Production de l'ordre de fabrication 39","service":"dolibarr-import","timestamp":"2025-09-08T19:23:26.976Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/39","service":"dolibarr-import","timestamp":"2025-09-08T19:23:26.977Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:23:27.232Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:23:27.343Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:23:27.483Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:23:27.484Z"}
+{"level":"info","message":"Production produit 407, qty=4","service":"dolibarr-import","timestamp":"2025-09-08T19:23:27.608Z"}
+{"data":{"debug":{"source":"api_stockmovements.class.php:205 at call stage","stages":{"failure":["call","message"],"success":["get","route","negotiate","authenticate","validate"]}},"error":{"code":503,"message":"Service Unavailable: Error when create stock movement : Cannot add or update a child row: a foreign key constraint fails (`dolibarr`.`llx_product_stock`, CONSTRAINT `fk_entrepot_entrepot_rowid` FOREIGN KEY (`fk_entrepot`) REFERENCES `llx_entrepot` (`rowid`))"}},"level":"error","message":"Dolibarr API Error 503:","service":"dolibarr-import","status":503,"timestamp":"2025-09-08T19:23:27.756Z","url":"/stockmovements"}
+{"level":"error","message":"Erreur production ordre 39: Service Unavailable: Error when create stock movement : Cannot add or update a child row: a foreign key constraint fails (`dolibarr`.`llx_product_stock`, CONSTRAINT `fk_entrepot_entrepot_rowid` FOREIGN KEY (`fk_entrepot`) REFERENCES `llx_entrepot` (`rowid`))","service":"dolibarr-import","stack":"Error: Service Unavailable: Error when create stock movement : Cannot add or update a child row: a foreign key constraint fails (`dolibarr`.`llx_product_stock`, CONSTRAINT `fk_entrepot_entrepot_rowid` FOREIGN KEY (`fk_entrepot`) REFERENCES `llx_entrepot` (`rowid`))\n    at DolibarrService.formatError (/home/antema/dolibarr-client/backend/src/services/dolibarrService.js:97:14)\n    at DolibarrService.post (/home/antema/dolibarr-client/backend/src/services/dolibarrService.js:72:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async produceOrder (/home/antema/dolibarr-client/backend/src/controller/ManufacturingController.js:271:9)","timestamp":"2025-09-08T19:23:27.760Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-09-08T19:27:32.997Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-09-08T19:27:33.037Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-09-08T19:27:33.039Z"}
+{"level":"info","message":"POST /api/manufacturing/produire/39","service":"dolibarr-import","timestamp":"2025-09-08T19:28:10.944Z"}
+{"level":"info","message":"Production de l'ordre de fabrication 39","service":"dolibarr-import","timestamp":"2025-09-08T19:28:10.969Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/39","service":"dolibarr-import","timestamp":"2025-09-08T19:28:10.972Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:28:11.281Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:28:11.837Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:28:11.966Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:28:11.967Z"}
+{"level":"info","message":"Production produit 407, qty=4","service":"dolibarr-import","timestamp":"2025-09-08T19:28:12.333Z"}
+{"data":{"debug":{"source":"Validator.php:436 at validate stage","stages":{"failure":["validate","message"],"success":["get","route","negotiate","authenticate"]}},"error":{"code":400,"message":"Bad Request: `warehouse_id` is required."}},"level":"error","message":"Dolibarr API Error 400:","service":"dolibarr-import","status":400,"timestamp":"2025-09-08T19:28:12.428Z","url":"/stockmovements"}
+{"level":"error","message":"Erreur production ordre 39: Bad Request: `warehouse_id` is required.","service":"dolibarr-import","stack":"Error: Bad Request: `warehouse_id` is required.\n    at DolibarrService.formatError (/home/antema/dolibarr-client/backend/src/services/dolibarrService.js:97:14)\n    at DolibarrService.post (/home/antema/dolibarr-client/backend/src/services/dolibarrService.js:72:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async produceOrder (/home/antema/dolibarr-client/backend/src/controller/ManufacturingController.js:271:9)","timestamp":"2025-09-08T19:28:12.442Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-09-08T19:32:59.181Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-09-08T19:32:59.189Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-09-08T19:32:59.190Z"}
+{"level":"info","message":"POST /api/manufacturing/produire/39","service":"dolibarr-import","timestamp":"2025-09-08T19:33:05.242Z"}
+{"level":"info","message":"Production de l'ordre de fabrication 39","service":"dolibarr-import","timestamp":"2025-09-08T19:33:05.251Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/39","service":"dolibarr-import","timestamp":"2025-09-08T19:33:05.252Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:33:05.655Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:33:05.756Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:33:05.869Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:33:05.870Z"}
+{"level":"info","message":"Production produit 407, qty=4","service":"dolibarr-import","timestamp":"2025-09-08T19:33:06.115Z"}
+{"data":{"debug":{"source":"Validator.php:436 at validate stage","stages":{"failure":["validate","message"],"success":["get","route","negotiate","authenticate"]}},"error":{"code":400,"message":"Bad Request: `warehouse_id` is required."}},"level":"error","message":"Dolibarr API Error 400:","service":"dolibarr-import","status":400,"timestamp":"2025-09-08T19:33:06.173Z","url":"/stockmovements"}
+{"level":"error","message":"Erreur production ordre 39: Bad Request: `warehouse_id` is required.","service":"dolibarr-import","stack":"Error: Bad Request: `warehouse_id` is required.\n    at DolibarrService.formatError (/home/antema/dolibarr-client/backend/src/services/dolibarrService.js:97:14)\n    at DolibarrService.post (/home/antema/dolibarr-client/backend/src/services/dolibarrService.js:72:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async produceOrder (/home/antema/dolibarr-client/backend/src/controller/ManufacturingController.js:267:9)","timestamp":"2025-09-08T19:33:06.182Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-09-08T19:35:23.314Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-09-08T19:35:23.329Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-09-08T19:35:23.330Z"}
+{"level":"info","message":"POST /api/manufacturing/produire/39","service":"dolibarr-import","timestamp":"2025-09-08T19:35:28.302Z"}
+{"level":"info","message":"Production de l'ordre de fabrication 39","service":"dolibarr-import","timestamp":"2025-09-08T19:35:28.335Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos/39","service":"dolibarr-import","timestamp":"2025-09-08T19:35:28.336Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100","service":"dolibarr-import","timestamp":"2025-09-08T19:35:28.862Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms/100/lines","service":"dolibarr-import","timestamp":"2025-09-08T19:35:28.937Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403","service":"dolibarr-import","timestamp":"2025-09-08T19:35:29.209Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404","service":"dolibarr-import","timestamp":"2025-09-08T19:35:29.210Z"}
+{"level":"info","message":"Production produit 407, qty=4","service":"dolibarr-import","timestamp":"2025-09-08T19:35:29.647Z"}
+{"data":{"debug":{"source":"Validator.php:436 at validate stage","stages":{"failure":["validate","message"],"success":["get","route","negotiate","authenticate"]}},"error":{"code":400,"message":"Bad Request: `warehouse_id` is required."}},"level":"error","message":"Dolibarr API Error 400:","service":"dolibarr-import","status":400,"timestamp":"2025-09-08T19:35:29.770Z","url":"/stockmovements"}
+{"level":"error","message":"Erreur production ordre 39: Bad Request: `warehouse_id` is required.","service":"dolibarr-import","stack":"Error: Bad Request: `warehouse_id` is required.\n    at DolibarrService.formatError (/home/antema/dolibarr-client/backend/src/services/dolibarrService.js:97:14)\n    at DolibarrService.post (/home/antema/dolibarr-client/backend/src/services/dolibarrService.js:72:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async produceOrder (/home/antema/dolibarr-client/backend/src/controller/ManufacturingController.js:273:9)","timestamp":"2025-09-08T19:35:29.773Z"}
+{"level":"info","message":"🚀 Backend server running on port 3001","service":"dolibarr-import","timestamp":"2025-09-08T19:54:11.681Z"}
+{"level":"info","message":"🌐 Frontend URL: http://localhost:3000","service":"dolibarr-import","timestamp":"2025-09-08T19:54:11.692Z"}
+{"level":"info","message":"🔗 Dolibarr API: http://localhost/dolibarr/htdocs/api/index.php","service":"dolibarr-import","timestamp":"2025-09-08T19:54:11.693Z"}
+{"level":"info","message":"GET /api/reset/confirm","service":"dolibarr-import","timestamp":"2025-09-08T19:54:30.140Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T19:54:30.143Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:54:35.062Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T19:54:35.695Z"}
+{"level":"info","message":"DELETE /api/reset/all","service":"dolibarr-import","timestamp":"2025-09-08T19:54:38.934Z"}
+{"level":"info","message":"Début de la réinitialisation des données Dolibarr (tout ou rien)","service":"dolibarr-import","timestamp":"2025-09-08T19:54:38.936Z"}
+{"level":"info","message":"Récupération des entrepôts...","service":"dolibarr-import","timestamp":"2025-09-08T19:54:38.937Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/warehouses","service":"dolibarr-import","timestamp":"2025-09-08T19:54:39.223Z"}
+{"level":"info","message":"Récupération des ordres de fabrication...","service":"dolibarr-import","timestamp":"2025-09-08T19:54:39.831Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T19:54:39.832Z"}
+{"level":"info","message":"Récupération des BOMs...","service":"dolibarr-import","timestamp":"2025-09-08T19:54:40.140Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T19:54:40.154Z"}
+{"level":"info","message":"Récupération des produits...","service":"dolibarr-import","timestamp":"2025-09-08T19:54:40.538Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:54:40.539Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/403/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:54:41.072Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/404/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:54:41.886Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/406/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:54:42.442Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/405/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:54:44.315Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products/407/stock","service":"dolibarr-import","timestamp":"2025-09-08T19:54:45.426Z"}
+{"level":"info","message":"Suppression des entrepôts...","service":"dolibarr-import","timestamp":"2025-09-08T19:54:46.319Z"}
+{"level":"info","message":"Suppression des ordres de fabrication...","service":"dolibarr-import","timestamp":"2025-09-08T19:54:50.733Z"}
+{"level":"info","message":"Suppression des BOMs...","service":"dolibarr-import","timestamp":"2025-09-08T19:54:58.072Z"}
+{"level":"info","message":"Suppression des produits...","service":"dolibarr-import","timestamp":"2025-09-08T19:54:58.507Z"}
+{"level":"info","message":"Réinitialisation des stocks...","service":"dolibarr-import","timestamp":"2025-09-08T19:55:00.215Z"}
+{"level":"info","message":"Réinitialisation terminée avec succès","service":"dolibarr-import","timestamp":"2025-09-08T19:55:00.217Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:55:18.685Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T19:55:18.700Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T19:55:18.701Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:55:18.859Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:55:18.871Z"}
+{"level":"info","message":"GET /api/manufacturing/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:55:19.242Z"}
+{"level":"info","message":"Fetching all manufacturing orders from Dolibarr","service":"dolibarr-import","timestamp":"2025-09-08T19:55:19.243Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/mos","service":"dolibarr-import","timestamp":"2025-09-08T19:55:19.244Z"}
+{"level":"info","message":"GET /api/products/liste","service":"dolibarr-import","timestamp":"2025-09-08T19:55:19.557Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:55:19.558Z"}
+{"level":"info","message":"POST /api/import/importAll","service":"dolibarr-import","timestamp":"2025-09-08T19:55:31.532Z"}
+{"level":"info","message":"Import starting: 5 produits, 2 BOMs","service":"dolibarr-import","timestamp":"2025-09-08T19:55:31.533Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:55:31.534Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T19:55:31.535Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/warehouses","service":"dolibarr-import","timestamp":"2025-09-08T19:55:31.535Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/products","service":"dolibarr-import","timestamp":"2025-09-08T19:55:31.785Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/warehouses","service":"dolibarr-import","timestamp":"2025-09-08T19:55:31.786Z"}
+{"level":"info","message":"Dolibarr GET request: http://localhost/dolibarr/htdocs/api/index.php/boms","service":"dolibarr-import","timestamp":"2025-09-08T19:55:33.175Z"}
+{"level":"info","message":"Import completed successfully: 5 produits, 2 BOMs créés","service":"dolibarr-import","timestamp":"2025-09-08T19:55:33.970Z"}

@@ -227,7 +227,7 @@ class ManufacturingController {
 
       // Récupération de l'ordre actuel
       const currentOrder = await dolibarrService.get(`/mos/${id}`);
-      
+      console.log('mos :', currentOrder);
       if (!currentOrder) {
         return res.status(404).json({
           success: false,
@@ -242,22 +242,50 @@ class ManufacturingController {
         });
       }
 
-      // Étape 1: Consommer les matières premières
-      logger.info(`Consommation des matières premières pour l'ordre ${id}`);
-      try {
-        await dolibarrService.post(`/mos/${id}/consumeandproduceall`, {
-          closemo: 1 // Fermer l'ordre après production
-        });
-      } catch (consumeError) {
-        // Si l'endpoint consumeandproduceall n'existe pas, essayer une approche alternative
-        logger.warn('Endpoint consumeandproduceall non disponible, utilisation méthode alternative');
-        
-        // Mise à jour du statut directement
-        await dolibarrService.put(`/mos/${id}`, {
-          status: 3, // État "fabriqué"
-          date_production: new Date().toISOString().split('T')[0]
+      // Détermination de l'entrepôt (warehouse_id) si nécessaire
+      const warehouseId = currentOrder.fk_warehouse; // à adapter selon ta configuration
+
+      // Récupérer les composants depuis la BOM si besoin
+      let components = [];
+      if (currentOrder.fk_bom) {
+        const bom = await bomsController.fetchBomWithComponents(currentOrder.fk_bom);
+        console.log('bommmmmmmmm :', bom);
+        components = bom?.components || [];
+      }
+
+      // Consommation des matières premières
+      for (const component of components) {
+        if (component.type === 'raw') { // type 'raw' ou selon ton mapping
+          logger.info(`Consommation produit ${component.fk_product}, qty=${component.qty}`);
+          await dolibarrService.post('/stockmovements', {
+            product_id: component.fk_product,
+            qty: -Math.abs(component.qty),
+            warehouse_id: warehouseId,
+            movement: 2, // sortie
+            label: `Consommation OF #${id}`
+          });
+        }
+      }
+
+      // Production du produit fini
+      if (currentOrder.fk_product && currentOrder.qty) {
+        logger.info(`Production produit ${currentOrder.fk_product}, qty=${currentOrder.qty}`);
+        await dolibarrService.post('/stockmovements', {
+          product_id: currentOrder.fk_product,
+          qty: Math.abs(currentOrder.qty),
+          warehouse_id: warehouseId,
+          movement: 1, // entrée
+          label: `Production OF #${id}`
         });
       }
+
+      // Mise à jour du statut de l'ordre en "fabriqué"
+      const updateData = {
+        status: 3, // fabriqué
+        date_production: new Date().toISOString().split('T')[0]
+      };
+
+      await dolibarrService.put(`/mos/${id}`, updateData);
 
       logger.info(`Ordre de fabrication ${id} produit avec succès`);
 
