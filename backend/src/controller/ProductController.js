@@ -1,4 +1,5 @@
 const dolibarrService = require('../services/dolibarrService');
+const logger = require('../utils/logger');
 
 class ProductController {
     async getProductById(productId) {

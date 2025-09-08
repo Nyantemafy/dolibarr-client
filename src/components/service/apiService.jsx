@@ -168,16 +168,18 @@ const apiService = {
       
       try {
         const result = JSON.parse(responseText);
-        return result.data || result;
+        // 🔥 ne renvoie pas seulement `result.data`, garde tout
+        return result; 
       } catch {
-        return { success: true, response: responseText };
+        return { success: true, raw: responseText };
       }
       
     } catch (error) {
       console.error(`Erreur PUT ${endpoint}:`, error);
       throw error;
     }
-  }
+}
+
 };
 
 export default apiService;

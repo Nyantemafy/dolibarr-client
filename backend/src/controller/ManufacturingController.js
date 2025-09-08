@@ -374,6 +374,164 @@ class ManufacturingController {
     }
   }
 
+  async updateManufacturingOrder(req, res) {
+    try {
+      const { id } = req.params;
+      let updateData = req.body;
+
+      if (!id || isNaN(id)) {
+        return res.status(400).json({ success: false, error: "ID invalide" });
+      }
+
+      updateData = cleanUpdateData(updateData);
+
+      const updated = await dolibarrService.put(`/mos/${id}`, updateData);
+
+      return res.json({
+        success: true,
+        message: "Ordre mis à jour avec succès",
+        data: {
+          id: parseInt(id),
+          ...updateData,
+          ...(updated || {})
+        }
+      });
+    } catch (error) {
+      console.error("Error updating manufacturing order:", error);
+      return res.status(500).json({
+        success: false,
+        error: "Erreur lors de la mise à jour",
+        details: error.message
+      });
+    }
+  }
+
+  async deleteManufacturingOrder(req, res) {
+    try {
+      const { id } = req.params;
+      
+      if (!id || isNaN(id)) {
+        return res.status(400).json({ 
+          success: false, 
+          error: "ID d'ordre de fabrication invalide" 
+        });
+      }
+
+      logger.info(`Tentative de suppression de l'ordre de fabrication ${id}`);
+
+      // 1. Vérifier si l'ordre existe
+      const order = await dolibarrService.get(`/mos/${id}`);
+      if (!order) {
+        return res.status(404).json({ 
+          success: false, 
+          error: "Ordre de fabrication non trouvé" 
+        });
+      }
+
+      // 2. Vérifier si l'ordre peut être supprimé (seuls les brouillons ou certains statuts)
+      // 9 pour annule
+      // if (order.status !== 0) { // 0 = brouillon
+      //   return res.status(400).json({ 
+      //     success: false, 
+      //     error: "Seuls les ordres en statut 'Brouillon' peuvent être supprimés" 
+      //   });
+      // }
+
+      // 3. Supprimer l'ordre
+      const result = await dolibarrService.delete(`/mos/${id}`);
+
+      logger.info(`Ordre de fabrication ${id} supprimé avec succès`);
+
+      res.json({
+        success: true,
+        message: 'Ordre de fabrication supprimé avec succès',
+        data: { id: parseInt(id) }
+      });
+
+    } catch (error) {
+      logger.error(`Erreur lors de la suppression de l'ordre ${req.params.id}:`, error);
+      
+      // Gestion des erreurs spécifiques
+      if (error.response?.status === 404) {
+        return res.status(404).json({ 
+          success: false, 
+          error: 'Ordre de fabrication non trouvé' 
+        });
+      }
+
+      res.status(500).json({
+        success: false,
+        error: 'Erreur lors de la suppression de l\'ordre de fabrication',
+        details: error.message
+      });
+    }
+  }
+
+  async deleteMultipleManufacturingOrders(req, res) {
+    try {
+      const { ids } = req.body;
+
+      if (!Array.isArray(ids) || ids.length === 0) {
+        return res.status(400).json({ 
+          success: false, 
+          error: "Liste d'IDs requise" 
+        });
+      }
+
+      logger.info(`Tentative de suppression de ${ids.length} ordres de fabrication`);
+
+      const results = [];
+      const errors = [];
+
+      for (const id of ids) {
+        try {
+          // Vérifier si l'ordre existe et peut être supprimé
+          const order = await dolibarrService.get(`/mos/${id}`);
+          
+          if (!order) {
+            errors.push({ id, error: 'Non trouvé' });
+            continue;
+          }
+
+          if (order.status !== 0) {
+            errors.push({ id, error: 'Statut non autorisé pour la suppression' });
+            continue;
+          }
+
+          // Supprimer l'ordre
+          await dolibarrService.delete(`/mos/${id}`);
+          results.push(id);
+
+          logger.info(`Ordre de fabrication ${id} supprimé avec succès`);
+
+        } catch (error) {
+          logger.error(`Erreur lors de la suppression de l'ordre ${id}:`, error);
+          errors.push({ id, error: error.message });
+        }
+      }
+
+      res.json({
+        success: errors.length === 0,
+        message: `Suppression de ${results.length} ordre(s) sur ${ids.length}`,
+        data: {
+          total: ids.length,
+          successful: results.length,
+          failed: errors.length,
+          results: results,
+          errors: errors
+        }
+      });
+
+    } catch (error) {
+      logger.error('Erreur lors de la suppression multiple des ordres:', error);
+      res.status(500).json({
+        success: false,
+        error: 'Erreur lors de la suppression multiple des ordres de fabrication',
+        details: error.message
+      });
+    }
+  }
+
   getStatusLabel(status) {
     const statusMap = {
       0: 'Brouillon',
@@ -386,5 +544,15 @@ class ManufacturingController {
   }
 
 }
+
+  function cleanUpdateData(data) {
+    const cleaned = {};
+    Object.entries(data).forEach(([key, value]) => {
+      if (value !== null && value !== "") {
+        cleaned[key] = value;
+      }
+    });
+    return cleaned;
+  }
 
 module.exports = new ManufacturingController();
