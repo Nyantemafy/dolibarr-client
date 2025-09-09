@@ -7,8 +7,8 @@ const CreateOfScreen = ({ onBack }) => {
   const [boms, setBoms] = useState([]);
   const [selectedBom, setSelectedBom] = useState('');
   const [quantity, setQuantity] = useState(1);
-  const [label, setLabel] = useState('');
-  const [description, setDescription] = useState('');
+  // const [label, setLabel] = useState('');
+  // const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
   const [loadingBoms, setLoadingBoms] = useState(true);
   const [error, setError] = useState('');
@@ -58,10 +58,10 @@ const CreateOfScreen = ({ onBack }) => {
     try {
       const orderData = {
         fk_bom: selectedBom,
-        qty: quantity,
-        label: label || `Ordre de fabrication - BOM #${selectedBom}`,
-        description: description
+        qty: quantity
       };
+      // label: label || `Ordre de fabrication - BOM #${selectedBom}`,
+      // description: description
 
       const response = await apiService.post('/api/manufacturing/create', orderData);
 
@@ -74,8 +74,8 @@ const CreateOfScreen = ({ onBack }) => {
         
         setSelectedBom('');
         setQuantity(1);
-        setLabel('');
-        setDescription('');
+        // setLabel('');
+        // setDescription('');
       } else {
         throw new Error(result.error || 'Erreur lors de la création');
       }
@@ -95,12 +95,12 @@ const CreateOfScreen = ({ onBack }) => {
     setSelectedBom(bomId);
     
     // Auto-générer le label si pas encore défini
-    if (!label && bomId) {
-      const selectedBomData = boms.find(bom => bom.id == bomId);
-      if (selectedBomData) {
-        setLabel(`Ordre - ${selectedBomData.label || selectedBomData.ref}`);
-      }
-    }
+    // if (!label && bomId) {
+    //   const selectedBomData = boms.find(bom => bom.id == bomId);
+    //   if (selectedBomData) {
+    //     setLabel(`Ordre - ${selectedBomData.label || selectedBomData.ref}`);
+    //   }
+    // }
   };
 
   return (
@@ -192,7 +192,7 @@ const CreateOfScreen = ({ onBack }) => {
           </div>
 
           {/* Label personnalisé */}
-          <div>
+          {/* <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Libellé de l'ordre
             </label>
@@ -206,10 +206,10 @@ const CreateOfScreen = ({ onBack }) => {
             <p className="text-sm text-gray-500 mt-1">
               Laissez vide pour générer automatiquement
             </p>
-          </div>
+          </div> */}
 
           {/* Description */}
-          <div>
+          {/* <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Description (optionnel)
             </label>
@@ -220,7 +220,7 @@ const CreateOfScreen = ({ onBack }) => {
               className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Informations complémentaires sur cet ordre..."
             />
-          </div>
+          </div> */}
 
           {/* Bouton de soumission */}
           <div className="pt-4 border-t">

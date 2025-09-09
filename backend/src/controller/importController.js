@@ -134,25 +134,31 @@ class ImportController {
         const initialStock = parseFloat(p.stock_initial) || 0;
         const initialPrice = parseFloat(p.valeur_stock_initial) || 0;
 
-        if (initialStock > 0) {
-          let warehouseId;
-          const key = p.entrepot.trim().toLowerCase();
-          
-          if (warehouseMap.has(key)) {
-            warehouseId = warehouseMap.get(key);
-          } else {
-            // Créer l'entrepôt
-            const newWarehouse = await dolibarrService.post('/warehouses', { 
-              ref: p.entrepot, 
-              label: p.entrepot,
-              statut: 1  
-            });
-            warehouseId = newWarehouse?.rowid || newWarehouse;
-            warehouseMap.set(key, warehouseId);
-            console.log(`✅ Nouvel entrepôt créé: ${p.entrepot} (ID=${warehouseId})`);
-          }
+        let warehouseId;
+        const key = p.entrepot.trim().toLowerCase();
 
-          // Ajouter le stock initial
+        if (warehouseMap.has(key)) {
+          warehouseId = warehouseMap.get(key);
+        } else {
+          // Créer l'entrepôt s'il n'existe pas
+          const newWarehouse = await dolibarrService.post('/warehouses', { 
+            ref: p.entrepot, 
+            label: p.entrepot,
+            statut: 1  
+          });
+          warehouseId = newWarehouse?.rowid || newWarehouse;
+          warehouseMap.set(key, warehouseId);
+          console.log(`✅ Nouvel entrepôt créé: ${p.entrepot} (ID=${warehouseId})`);
+        }
+
+        // 🔹 Toujours mettre à jour l'entrepôt par défaut, même si stock = 0 ou < 0
+        await dolibarrService.put(`/products/${productId}`, {
+          fk_default_warehouse: warehouseId
+        });
+        console.log(`✅ Entrepôt par défaut défini (${warehouseId}) pour produit ${p.ref}`);
+
+        // 🔹 Seulement si stock > 0 → on fait un mouvement de stock
+        if (initialStock > 0) {
           await dolibarrService.post('/stockmovements', {
             product_id: productId,
             qty: initialStock,
@@ -161,9 +167,9 @@ class ImportController {
             label: 'Stock initial import automatique'
           });
 
-          console.log(`✅ Stock initial ajouté pour produit ${p.ref}`);
+          console.log(`✅ Stock initial ajouté (${initialStock}) pour produit ${p.ref} dans l'entrepôt ${p.entrepot} (ID=${warehouseId})`);
         }
-      }
+      } 
 
       // ÉTAPE 4 : CRÉATION DES BOMs
       console.log('=== ÉTAPE 4 : CRÉATION DES BOMs ===');

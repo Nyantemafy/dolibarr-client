@@ -109,7 +109,6 @@ const ManufacturingOrderDetail = ({ orderId, setActiveTab }) => {
       setLoading(true);
 
       const updateData = {
-        label: editedOrder?.label || '',
         qty: Number(editedOrder?.qty || 0),
         bom_id: editedOrder?.bom?.id || null,
         date_start_planned: editedOrder?.date_start_planned || null,
@@ -237,19 +236,6 @@ const ManufacturingOrderDetail = ({ orderId, setActiveTab }) => {
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Référence</p>
                   <p className="text-gray-900 font-medium">{order?.ref || '—'}</p>
-                </div>
-                <div>
-                  <label className="block text-sm text-gray-600 mb-1">Libellé</label>
-                  {isEditing ? (
-                    <input
-                      type="text"
-                      value={editedOrder?.label || ''}
-                      onChange={(e) => handleChange('label', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  ) : (
-                    <p className="text-gray-900">{order?.label || '—'}</p>
-                  )}
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Nomenclature</p>

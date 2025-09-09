@@ -102,7 +102,6 @@ const ManufacturingOrdersPage = ({ setActiveTab, setSelectedOrderId }) => {
     // Préparer les données CSV
     const csvHeaders = [
       'Référence',
-      'Libellé',
       'Produit',
       'Quantité',
       'État',
@@ -185,7 +184,6 @@ const ManufacturingOrdersPage = ({ setActiveTab, setSelectedOrderId }) => {
       doc.setFont(undefined, 'normal');
       
       const details = [
-        `Libellé: ${order.label}`,
         `Produit: ${order.product?.label || order.product_ref}`,
         `Quantité: ${order.qty} unités`,
         `État: ${statusConfig.label}`,
@@ -233,7 +231,7 @@ const ManufacturingOrdersPage = ({ setActiveTab, setSelectedOrderId }) => {
     ]);
 
     // En-têtes du tableau
-    const headers = ['Référence', 'Libellé', 'Produit', 'Quantité', 'État', 'Date Création'];
+    const headers = ['Référence', 'Produit', 'Quantité', 'État', 'Date Création'];
 
     // Générer le tableau
     autoTable(doc, {
@@ -369,13 +367,6 @@ const ManufacturingOrdersPage = ({ setActiveTab, setSelectedOrderId }) => {
     if (filters.ref) {
       result = result.filter(order => 
         order.ref.toLowerCase().includes(filters.ref.toLowerCase())
-      );
-    }
-
-    // Filtre par libellé
-    if (filters.label) {
-      result = result.filter(order => 
-        order.label.toLowerCase().includes(filters.label.toLowerCase())
       );
     }
 
@@ -528,18 +519,6 @@ const ManufacturingOrdersPage = ({ setActiveTab, setSelectedOrderId }) => {
             />
           </div>
 
-          {/* Filtre par libellé */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Libellé</label>
-            <input
-              type="text"
-              value={filters.label}
-              onChange={(e) => setFilters({...filters, label: e.target.value})}
-              placeholder="Filtrer par libellé"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
           {/* Filtre par produit */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Produits</label>
@@ -656,7 +635,6 @@ const ManufacturingOrdersPage = ({ setActiveTab, setSelectedOrderId }) => {
                     </div>
                   </th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">Référence</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">Libellé</th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">Produit</th>
                   <th className="px-4 py-3 text-center text-sm font-medium text-gray-900">Quantité</th>
                   <th className="px-4 py-3 text-center text-sm font-medium text-gray-900">État</th>
@@ -688,11 +666,8 @@ const ManufacturingOrdersPage = ({ setActiveTab, setSelectedOrderId }) => {
                       </td>
 
                       <td className="px-4 py-3">
-                        <div className="text-gray-900">{order.label}</div>
-                      </td>
-                      <td className="px-4 py-3">
                         <div className="text-gray-900">
-                          <div className="font-medium">{order.product_ref}</div>
+                          <div className="font-medium">{order.product?.ref}</div>
                           <div className="text-sm text-gray-600">{order.product?.label}</div>
                         </div>
                       </td>
@@ -814,18 +789,13 @@ const ManufacturingOrdersPage = ({ setActiveTab, setSelectedOrderId }) => {
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Libellé</label>
-                  <p className="text-gray-900">{selectedOrder.label}</p>
-                </div>
-
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700">Produit à fabriquer</label>
                     <p className="text-gray-900">
-                      <span className="font-medium">{selectedOrder.product_ref}</span>
+                      <span className="font-medium">{selectedOrder.product?.ref}</span>
                       <br />
-                      <span className="text-sm text-gray-600">{selectedOrder.product_label}</span>
+                      <span className="text-sm text-gray-600">{selectedOrder.product?.label}</span>
                     </p>
                   </div>
                   <div>
@@ -847,7 +817,7 @@ const ManufacturingOrdersPage = ({ setActiveTab, setSelectedOrderId }) => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Nomenclature</label>
-                  <p className="text-gray-900">{selectedOrder.bom_ref}</p>
+                  <p className="text-gray-900">{selectedOrder.bom?.ref}</p>
                 </div>
 
 
