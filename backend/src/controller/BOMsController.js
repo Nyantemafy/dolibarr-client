@@ -151,7 +151,24 @@ class BOMsController {
     const { id } = req.params;
     try {
       const bomWithComponents = await this.fetchBomWithComponents(id);
-      res.json({ success: true, data: bomWithComponents });
+      if (!bomWithComponents) {
+        return res.status(404).json({ success: false, error: "BOM introuvable" });
+      }
+
+      // Ajouter le produit principal ici, sans toucher à fetchBomWithComponents
+      const productId = bomWithComponents.fk_product || bomWithComponents.product_id;
+      const product = productId
+        ? await productController.getProductById(productId)
+        : null;
+
+      res.json({ 
+        success: true, 
+        data: { 
+          ...bomWithComponents, 
+          product 
+        } 
+      });
+
     } catch (err) {
       res.status(500).json({ success: false, error: err.message });
     }

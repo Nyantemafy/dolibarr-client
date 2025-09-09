@@ -635,8 +635,9 @@ class ManufacturingController {
   function cleanUpdateData(data) {
     const cleaned = {};
     Object.entries(data).forEach(([key, value]) => {
-      if (value !== null && value !== "") {
-        cleaned[key] = value;
+      if (value !== null && value !== "") { 
+        if (key === "id") cleaned[key] = parseInt(value); 
+        else cleaned[key] = value;
       }
     });
     return cleaned;
