@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import apiService from '../components/service/apiService';
+import { ManufacturingService } from '../services/manufacturingService';
 
 export const useManufacturingOrders = (showNotification) => {
   const [orders, setOrders] = useState([]);
@@ -13,22 +13,22 @@ export const useManufacturingOrders = (showNotification) => {
     
     try {
       setLoading(true);
-      setError(null);
-      const response = await apiService.get(`/api/manufacturing/getById/${orderId}`);
-      setOrder(response?.data?.data || response?.data || null);
-    } catch (err) {
-      setError(err.message);
-      console.error("Erreur chargement ordre:", err);
+      const order = await ManufacturingService.getOrderById(orderId);
+      setOrder(order);
+      return order;
+    } catch (error) {
+      showNotification('Erreur lors du chargement de l\'ordre', 'error');
+      throw error;
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [showNotification]);
 
-  const loadOrders = async () => {
+  const loadOrders = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await apiService.get('/api/manufacturing/liste');
-      setOrders(response.data || []);
+      const ordersData = await ManufacturingService.getOrders();
+      setOrders(ordersData || []);
     } catch (error) {
       showNotification(
         'Erreur lors du chargement des ordres de fabrication: ' + error.message,
@@ -38,12 +38,12 @@ export const useManufacturingOrders = (showNotification) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [showNotification]);
 
-  const validateOrder = async (orderId) => {
+  const validateOrder = useCallback(async (orderId) => {
     try {
       setActionLoading(prev => ({ ...prev, [`validate_${orderId}`]: true }));
-      await apiService.post(`/api/manufacturing/validation/${orderId}`);
+      await ManufacturingService.validateOrder(orderId);
       
       setOrders(prev =>
         prev.map(order => 
@@ -57,12 +57,12 @@ export const useManufacturingOrders = (showNotification) => {
     } finally {
       setActionLoading(prev => ({ ...prev, [`validate_${orderId}`]: false }));
     }
-  };
+  }, [showNotification]);
 
-  const produceOrder = async (orderId) => {
+  const produceOrder = useCallback(async (orderId) => {
     try {
       setActionLoading(prev => ({ ...prev, [`produce_${orderId}`]: true }));
-      await apiService.post(`/api/manufacturing/produire/${orderId}`);
+      await ManufacturingService.produceOrder(orderId);
 
       setOrders(prev =>
         prev.map(order => 
@@ -76,12 +76,12 @@ export const useManufacturingOrders = (showNotification) => {
     } finally {
       setActionLoading(prev => ({ ...prev, [`produce_${orderId}`]: false }));
     }
-  };
+  }, [showNotification]);
 
   const updateOrder = useCallback(async (orderId, updateData) => {
     try {
       setLoading(true);
-      const response = await apiService.put(`/api/manufacturing/update/${orderId}`, updateData);
+      const response = await ManufacturingService.updateOrder(orderId, updateData);
       
       if (response?.success) {
         setOrder(prev => ({ ...prev, ...updateData }));
@@ -98,14 +98,14 @@ export const useManufacturingOrders = (showNotification) => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [showNotification]);
 
-  const deleteOrders = async (orderIds) => {
+  const deleteOrders = useCallback(async (orderIds) => {
     try {
       setActionLoading(prev => ({ ...prev, delete: true }));
       
       await Promise.all(
-        orderIds.map(id => apiService.delete(`/api/manufacturing/delete/${id}`))
+        orderIds.map(id => ManufacturingService.deleteOrder(id))
       );
       
       setOrders(prev => prev.filter(order => !orderIds.includes(order.id)));
@@ -118,7 +118,7 @@ export const useManufacturingOrders = (showNotification) => {
     } finally {
       setActionLoading(prev => ({ ...prev, delete: false }));
     }
-  };
+  }, [showNotification]);
 
   return {
     orders,
