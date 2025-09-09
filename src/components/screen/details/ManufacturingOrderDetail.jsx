@@ -5,7 +5,7 @@ import { useBOMs } from '../../../hooks/useBOMs';
 import { exportDetailsService } from '../../../services/exportDetailsService';
 import apiService from '../../service/apiService';
 
-import OrdersHeader from '../../ui/order/OrdersHeader';
+import OrderHeaderDetaille from '../../ui/order/OrderHeaderDetaille';
 import OrderGeneralInfo from '../../ui/order/OrderGeneralInfo';
 import OrderPlanning from '../../ui/order/OrderPlanning';
 import OrderComponents from '../../ui/order/OrderComponents';
@@ -155,7 +155,7 @@ const ManufacturingOrderDetail = ({ orderId, setActiveTab }) => {
   return (
     <div id="order-detail-content" className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-6xl mx-auto">
-        <OrdersHeader 
+        <OrderHeaderDetaille 
           order={order} 
           onBack={() => setActiveTab('orders')} 
         />
