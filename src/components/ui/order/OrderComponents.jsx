@@ -5,10 +5,14 @@ const OrderComponents = ({
   components, 
   orderQty, 
   editedOrder, 
-  isEditing 
+  isEditing ,
+  bom,
 }) => {
   const currentQty = isEditing ? editedOrder?.qty : orderQty;
   const componentsToDisplay = components || [];
+  const bomQte = bom?.qty || 0;
+  console.log('bom dans component', bom);
+  console.log('bom dans component', bomQte);
 
   return (
     <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
@@ -46,7 +50,7 @@ const OrderComponents = ({
                     {component?.product?.label || component?.product_label || '—'}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    {(component?.qty || 0) * (currentQty || 1)}
+                    {((component?.qty || 0) * (currentQty || 1)) / bomQte }
                   </td>
                 </tr>
               ))}

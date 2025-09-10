@@ -14,6 +14,7 @@ import OrderActions from '../../ui/order/OrderActions';
 const ManufacturingOrderDetail = ({ orderId, setActiveTab }) => {
   const { order, loading, setOrder, updateOrder, getById } = useManufacturingOrders(); 
   const { boms } = useBOMs();
+  const [bom, setBom] = useState(null);
   
   const [isEditing, setIsEditing] = useState(false);
   const [editedOrder, setEditedOrder] = useState(null);
@@ -23,6 +24,13 @@ const ManufacturingOrderDetail = ({ orderId, setActiveTab }) => {
       getById(orderId);
     }
   }, [orderId, getById]);
+
+  useEffect(() => {
+    if (order) {
+      console.log("🟢 Order reçu :", order);
+      setBom(order?.bom);
+    }
+  }, [order]);
 
   const handleBOMChange = async (bomId) => {
     if (!bomId) return;
@@ -183,6 +191,7 @@ const ManufacturingOrderDetail = ({ orderId, setActiveTab }) => {
           orderQty={order?.qty}
           editedOrder={editedOrder}
           isEditing={isEditing}
+          bom={bom}
         />
 
         <OrderActions
