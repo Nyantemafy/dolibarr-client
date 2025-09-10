@@ -12,7 +12,6 @@ export const useStockManagement = () => {
   
   const { showNotification } = useNotification();
 
-  // Correction: useCallback avec dépendances vides pour loadStockData
   const loadStockData = useCallback(async () => {
     try {
       setLoading(true);
@@ -23,9 +22,8 @@ export const useStockManagement = () => {
     } finally {
       setLoading(false);
     }
-  }, [showNotification]); // Ajout de showNotification comme dépendance
+  }, [showNotification]); 
 
-  // Correction: useCallback pour loadProductMovements
   const loadProductMovements = useCallback(async (productId) => {
     try {
       return await StockService.getProductMovements(productId);
@@ -35,7 +33,6 @@ export const useStockManagement = () => {
     }
   }, []);
 
-  // Correction: useCallback pour viewProductDetails
   const viewProductDetails = useCallback(async (product) => {
     try {
       const movements = await loadProductMovements(product.id);
@@ -45,7 +42,6 @@ export const useStockManagement = () => {
     }
   }, [loadProductMovements, showNotification]);
 
-  // Correction: useCallback pour handleSort
   const handleSort = useCallback((key) => {
     setSortConfig(prev => ({
       key,

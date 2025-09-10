@@ -7,6 +7,34 @@ class ManufacturingController {
   constructor() {
     this.getManufacturingOrderById = this.getManufacturingOrderById.bind(this);
     this.fetchOrderWithDetails = this.fetchOrderWithDetails.bind(this);
+    this.getDefaultWarehouse = this.getDefaultWarehouse.bind(this);
+    this.validateOrderById = this.validateOrderById.bind(this);
+    this.produceOrderById = this.produceOrderById.bind(this);
+    this.createBatchManufacturingOrders = this.createBatchManufacturingOrders.bind(this);
+    this.createManufacturingOrder = this.createManufacturingOrder.bind(this);
+    this.buildManufacturingOrderData = this.buildManufacturingOrderData.bind(this);
+  }
+
+  async buildManufacturingOrderData(fk_bom, qty, label, description) {
+    const bom = await dolibarrService.get(`/boms/${fk_bom}`);
+    const fk_product = bom.fk_product;
+
+    const product = await dolibarrService.get(`/products/${fk_product}`);
+    const fk_warehouse = product.fk_default_warehouse;
+
+      return {
+        fk_bom,
+        fk_product,
+        qty: parseFloat(qty),
+        label: label || `Ordre de fabrication - BOM #${fk_bom}`,
+        ref: label ? label.replace(/\s+/g, '_') : `OF_${fk_bom}_${Date.now()}`,
+        mrptype: 0,
+        description: description || '',
+        status: 0,
+        date_creation: new Date().toISOString().split('T')[0],
+        fk_warehouse,
+        fk_warehouse_source: fk_warehouse
+      };
   }
 
   async createManufacturingOrder(req, res) {
@@ -27,57 +55,12 @@ class ManufacturingController {
         });
       }
 
-      // Récupérer la BOM
-      let fk_product;
-      try {
-        const bom = await dolibarrService.get(`/boms/${fk_bom}`);
-        fk_product = bom.fk_product;
-        if (!fk_product) {
-          return res.status(400).json({
-            success: false,
-            error: 'La BOM sélectionnée n’a pas de produit associé'
-          });
-        }
-      } catch (error) {
-        return res.status(404).json({
-          success: false,
-          error: 'BOM introuvable'
-        });
-      }
-
-      // Récupérer le produit pour obtenir le warehouse par défaut
-      let fk_warehouse;
-      try {
-        const product = await dolibarrService.get(`/products/${fk_product}`);
-        fk_warehouse = product.fk_default_warehouse;
-        if (!fk_warehouse) {
-          return res.status(400).json({
-            success: false,
-            error: 'Le produit n’a pas de warehouse par défaut'
-          });
-        }
-      } catch (error) {
-        return res.status(404).json({
-          success: false,
-          error: 'Produit introuvable'
-        });
-      }
-
-      const orderData = {
-        fk_bom: fk_bom,
-        fk_product: fk_product,
-        qty: parseFloat(qty),
-        label: label || `Ordre de fabrication - BOM #${fk_bom}`,
-        ref: label ? label.replace(/\s+/g, '_') : `OF_${fk_bom}_${Date.now()}`,
-        mrptype: 0,
-        description: description || '',
-        status: 0,
-        date_creation: new Date().toISOString().split('T')[0],
-        fk_warehouse: fk_warehouse,          
-        fk_warehouse_source: fk_warehouse   
-      };
-
-      logger.info('Creating manufacturing order:', orderData);
+      const orderData = await this.buildManufacturingOrderData(
+        req.body.fk_bom,
+        req.body.qty,
+        req.body.label,
+        req.body.description
+      );
 
       const createdOrder = await dolibarrService.post('/mos', orderData);
       
@@ -191,6 +174,90 @@ class ManufacturingController {
     return { ...order, product, bom, components };
   }
 
+  async validateOrderById(orderId) {
+    logger.info(`Validation de l'ordre de fabrication ${orderId}`);
+
+    const currentOrder = await dolibarrService.get(`/mos/${orderId}`);
+    if (!currentOrder) throw new Error('Ordre de fabrication non trouvé');
+    if (currentOrder.status !== 0) throw new Error('Seuls les ordres en brouillon peuvent être validés');
+
+    const validationData = {
+      status: 1,
+      date_valid: new Date().toISOString().split('T')[0]
+    };
+
+    const result = await dolibarrService.put(`/mos/${orderId}`, validationData);
+    logger.info(`Ordre ${orderId} validé`);
+    return result;
+  }
+
+  async produceOrderById(orderId) {
+    const currentOrder = await dolibarrService.get(`/mos/${orderId}`);
+    if (!currentOrder) throw new Error('Ordre de fabrication non trouvé');
+    if (![1, 2].includes(Number(currentOrder.status))) throw new Error('OF non validé / état incompatible');
+
+    const lines = currentOrder.lines || [];
+    if (lines.length === 0) throw new Error('OF ne contient aucune ligne');
+
+    const productWhCache = new Map();
+
+    const resolveWarehouseForLine = async (line) => {
+      if (line.fk_warehouse) return line.fk_warehouse;
+      if (currentOrder.fk_warehouse) return currentOrder.fk_warehouse;
+
+      const productId = line.fk_product || line.product_id;
+      if (!productId) return null;
+
+      if (productWhCache.has(productId)) return productWhCache.get(productId);
+
+      const wh = await this.getDefaultWarehouse(productId);
+      productWhCache.set(productId, wh);
+      return wh;
+    };
+
+    const toConsumeLines = lines.filter(l => l.role === 'toconsume');
+    const toProduceLines = lines.filter(l => l.role === 'toproduce');
+
+    const arraytoconsume = await Promise.all(
+      toConsumeLines.map(async (line) => {
+        const objectid = line.rowid || line.id;
+        if (!objectid) throw new Error(`Missing row id for MO line (toconsume): ${JSON.stringify(line)}`);
+        const fk_warehouse = await resolveWarehouseForLine(line);
+        if (!fk_warehouse) throw new Error(`No warehouse for product ${line.fk_product}`);
+        return { objectid, qty: Number(line.qty || 0), fk_warehouse };
+      })
+    );
+
+    const arraytoproduce = await Promise.all(
+      toProduceLines.map(async (line) => {
+        const objectid = line.rowid || line.id;
+        if (!objectid) throw new Error(`Missing row id for MO line (toproduce): ${JSON.stringify(line)}`);
+        const fk_warehouse = await resolveWarehouseForLine(line);
+        if (!fk_warehouse) throw new Error(`No warehouse for product ${line.fk_product}`);
+        return { objectid, qty: Number(line.qty || 0), fk_warehouse };
+      })
+    );
+
+    const payload = {
+      inventorylabel: `Production OF ${currentOrder.ref}`,
+      inventorycode: `PROD${Date.now()}${orderId}`,
+      autoclose: 1,
+      arraytoconsume,
+      arraytoproduce
+    };
+
+    const response = await dolibarrService.post(`/mos/${orderId}/produceandconsume`, payload);
+
+    // Mettre à jour l'état MO
+    await dolibarrService.put(`/mos/${orderId}`, {
+      status: 3,
+      date_production: new Date().toISOString().split('T')[0]
+    });
+
+    logger.info(`Production de l'OF ${orderId} terminée`);
+    return { orderId, response };
+}
+
   async validateOrder(req, res) {
     try {
       const { id } = req.params;
@@ -239,66 +306,102 @@ class ManufacturingController {
       });
     }
   }
-  
+
+  async getDefaultWarehouse(productId) {
+    if (!productId) return null;
+    try {
+      const product = await dolibarrService.get(`/products/${productId}`);
+      // Certains retours peuvent utiliser fk_default_warehouse ou default_warehouse_id
+      return product?.fk_default_warehouse ?? product?.default_warehouse_id ?? null;
+    } catch (err) {
+      // Pas trouvé ou erreur API -> on renverra null et on gérera plus bas
+      logger.warn(`getDefaultWarehouse: impossible de récupérer produit ${productId}: ${err.message}`);
+      return null;
+    }
+  }
+
   async produceOrder(req, res) {
     const id = req.params.id;
-
     try {
-      // 1. Récupérer l'OF
+      // 1) Charger l'OF complet (avec lignes)
       const currentOrder = await dolibarrService.get(`/mos/${id}`);
-      if (!currentOrder) {
-        return res.status(404).json({ success: false, error: "OF non trouvé" });
+      if (!currentOrder) return res.status(404).json({ success: false, error: "OF non trouvé" });
+
+      // vérifier état
+      if (![1, 2].includes(Number(currentOrder.status))) {
+        return res.status(400).json({ success: false, error: "OF non validé / état incompatible" });
       }
-      if (![1, 2].includes(currentOrder.status)) {
-        return res.status(400).json({ success: false, error: "OF non validé" });
-      }
-      if (!currentOrder.lines || currentOrder.lines.length === 0) {
+
+      const lines = currentOrder.lines || [];
+      if (lines.length === 0) {
         return res.status(400).json({ success: false, error: "OF ne contient aucune ligne" });
       }
 
-      // 2. Construire arraytoconsume et arraytoproduce
-      const arraytoconsume = currentOrder.lines
-        .filter(line => line.role === "toconsume")
-        .map(line => ({
-          objectid: line.fk_product,
-          qty: Number(line.qty),
-          fk_warehouse: line.fk_warehouse || currentOrder.fk_warehouse
-        }));
+      // cache pour limiter appels produits
+      const productWhCache = new Map();
 
-      const arraytoproduce = currentOrder.lines
-        .filter(line => line.role === "toproduce")
-        .map(line => ({
-          objectid: line.fk_product,
-          qty: Number(line.qty),
-          fk_warehouse: line.fk_warehouse || currentOrder.fk_warehouse
-        }));
+      const resolveWarehouseForLine = async (line) => {
+        // priorité : ligne -> OF -> produit.default_warehouse
+        if (line.fk_warehouse) return line.fk_warehouse;
+        if (currentOrder.fk_warehouse) return currentOrder.fk_warehouse;
 
-      const data = {
-        inventorylabel: `Production OF ${currentOrder.ref}`,
-        inventorycode: `PROD${Date.now()}${id}`,
-        autoclose: 1
+        const productId = line.fk_product || line.product_id;
+        if (!productId) return null;
+
+        if (productWhCache.has(productId)) return productWhCache.get(productId);
+
+        const wh = await this.getDefaultWarehouse(productId);
+        productWhCache.set(productId, wh);
+        return wh;
       };
 
-      logger.info("▶️ Production OF", {
-        id,
-        ref: currentOrder.ref,
-        warehouse: currentOrder.fk_warehouse,
-        payload: data
-      });
+      // 2) Construire arraytoconsume et arraytoproduce (ATTENTION: objectid = rowid de la ligne MO)
+      const toConsumeLines = lines.filter(l => l.role === "toconsume" || l.role === "toconsume"); // tolérance
+      const toProduceLines = lines.filter(l => l.role === "toproduce" || l.role === "toproduce");
 
-      // 4. Appeler Dolibarr
-      const response = await dolibarrService.post(`/mos/${id}/produceandconsumeall`, data);
+      const arraytoconsume = await Promise.all(
+        toConsumeLines.map(async (line) => {
+          const objectid = line.rowid || line.id; // utiliser la propriété existante (vérifie dans ton retour)
+          if (!objectid) throw new Error(`Missing row id for MO line (toconsume): ${JSON.stringify(line)}`);
+          const fk_warehouse = await resolveWarehouseForLine(line);
+          if (!fk_warehouse) throw new Error(`No warehouse found for product ${line.fk_product} (line ${objectid})`);
+          return { objectid, qty: Number(line.qty || 0), fk_warehouse };
+        })
+      );
 
-      // 5. Mettre à jour le statut
+      const arraytoproduce = await Promise.all(
+        toProduceLines.map(async (line) => {
+          const objectid = line.rowid || line.id;
+          if (!objectid) throw new Error(`Missing row id for MO line (toproduce): ${JSON.stringify(line)}`);
+          const fk_warehouse = await resolveWarehouseForLine(line);
+          if (!fk_warehouse) throw new Error(`No warehouse found for product ${line.fk_product} (line ${objectid})`);
+          return { objectid, qty: Number(line.qty || 0), fk_warehouse };
+        })
+      );
+
+      const payload = {
+        inventorylabel: `Production OF ${currentOrder.ref}`,
+        inventorycode: `PROD${Date.now()}${id}`,
+        autoclose: 1,
+        arraytoconsume,
+        arraytoproduce
+      };
+
+      logger.info("▶️ Production OF", { id, payload, ref: currentOrder.ref });
+
+      // 3) Appel Dolibarr
+      const response = await dolibarrService.post(`/mos/${id}/produceandconsume`, payload);
+
+      // 4) Si succès, mettre à jour l'état MO (et date production)
       await dolibarrService.put(`/mos/${id}`, {
         status: 3,
-        date_production: new Date().toISOString().split('T')[0]
+        date_production: new Date().toISOString().split("T")[0]
       });
 
       return res.json({
         success: true,
         message: "Production terminée",
-        data: { id: parseInt(id), status: 3, response }
+        data: { id: Number(id), status: 3, dolibarrResponse: response }
       });
 
     } catch (error) {
@@ -312,54 +415,6 @@ class ManufacturingController {
         error: "Erreur production OF",
         details: error.message,
         dolibarrError: error.response?.data || null
-      });
-    }
-  }
-
-  async produceOrderWithArray(req, res) {
-    try {
-      const { id } = req.params;
-      logger.info(`Production de l'ordre de fabrication ${id}`);
-
-      // Vérifier que l’OF existe
-      const currentOrder = await dolibarrService.get(`/mos/${id}`);
-      if (!currentOrder) {
-        return res.status(404).json({ success: false, error: "Ordre de fabrication non trouvé" });
-      }
-
-      if (currentOrder.status !== 1) {
-        return res.status(400).json({ success: false, error: "Seuls les ordres validés peuvent être produits" });
-      }
-
-      // Récupérer le dépôt
-      const productDetails = await dolibarrService.get(`/products/${currentOrder.fk_product}`);
-      let warehouseId = productDetails.fk_default_warehouse;
-
-      // Appel à produceandconsumeall (laisser Dolibarr gérer)
-      const response = await dolibarrService.post(`/mos/${id}/produceandconsumeall`, {
-        inventorylabel: `Production OF #${id}`,
-        inventorycode: `PRODUCEAPI-${new Date().toISOString().split("T")[0]}`,
-        autoclose: 1
-      });
-
-      // Mettre à jour le statut de l’OF (facultatif si autoclose fait déjà)
-      await dolibarrService.put(`/mos/${id}`, {
-        status: 3,
-        date_production: new Date().toISOString().split("T")[0]
-      });
-
-      res.json({
-        success: true,
-        message: "Production terminée avec succès",
-        data: { id, response }
-      });
-
-    } catch (error) {
-      logger.error(`Erreur production ordre ${req.params.id}:`, error);
-      res.status(500).json({
-        success: false,
-        error: "Erreur lors de la production de l'ordre de fabrication",
-        details: error.message
       });
     }
   }
@@ -378,52 +433,29 @@ class ManufacturingController {
       const errors = [];
 
       for (let i = 0; i < orders.length; i++) {
-        const order = orders[i];
-
         try {
-          // 1. Récupération du BOM
-          const bom = await dolibarrService.get(`/boms/${order.bom_id}`);
+          const currentOrder = orders[i];
 
-          // 2. Création de l'ordre de fabrication
-          const orderData = {
-            ref: `MO-BATCH-${Date.now()}-${i + 1}`,
-            label: order.label || `Fabrication lot ${bom.ref}`,
-            fk_bom: order.bom_id,
-            fk_product: bom.fk_product,
-            qty: parseFloat(order.qty),
-            mrptype: 0,
-            status: 0, // Brouillon
-            date_creation: new Date().toISOString(),
-            fk_user_creat: 1
-          };
+          // ⚡ Construire les données de l'ordre
+          const orderData = await this.buildManufacturingOrderData(
+            currentOrder.bom_id,
+            currentOrder.qty,
+            currentOrder.label
+          );
 
-          const createdOrderId = await dolibarrService.post('/mos', orderData);
+          const createdOrder = await dolibarrService.post('/mos', orderData);
 
-           // Valide
-          await dolibarrService.put(`/mos/${createdOrderId}`, {
-            status: 1,
-            date_valid: new Date().toISOString().split('T')[0]
-          });
+          // Récupération de l'ordre complet
+          const createdOrderInfo = await dolibarrService.get(`/mos/${createdOrder}`);
 
-          // Produire
-          try {
-            await dolibarrService.post(`/mos/${createdOrderId}/consumeandproduceall`, { closemo: 1 });
-          } catch {
-            await dolibarrService.put(`/mos/${createdOrderId}`, {
-              status: 3,
-              date_production: new Date().toISOString().split('T')[0]
-            });
-          }
-
-          // 5. Récupération finale pour infos
-          const createdOrderInfo = await dolibarrService.get(`/mos/${createdOrderId}`);
+          await this.validateOrderById(createdOrder);
+          await this.produceOrderById(createdOrder);
 
           results.push({
             order_index: i,
-            bom_id: order.bom_id,
-            bom_ref: bom.ref,
-            qty: order.qty,
-            mo_id: createdOrderId,
+            bom_id: currentOrder.bom_id,
+            qty: currentOrder.qty,
+            mo_id: createdOrder,
             mo_ref: createdOrderInfo.ref,
             status: 'success'
           });
@@ -432,8 +464,8 @@ class ManufacturingController {
           logger.error(`Erreur ordre ${i}:`, error);
           errors.push({
             order_index: i,
-            bom_id: order.bom_id,
-            qty: order.qty,
+            bom_id: orders[i].bom_id,
+            qty: orders[i].qty,
             error: error.message,
             status: 'error'
           });
@@ -446,8 +478,8 @@ class ManufacturingController {
           total_orders: orders.length,
           successful: results.length,
           failed: errors.length,
-          results: results,
-          errors: errors
+          results,
+          errors
         }
       });
 
@@ -455,7 +487,7 @@ class ManufacturingController {
       logger.error('Erreur création lot ordres fabrication:', error);
       res.status(500).json({
         success: false,
-        error: 'Erreur lors de la création du lot d\'ordres de fabrication',
+        error: "Erreur lors de la création du lot d'ordres de fabrication",
         details: error.message
       });
     }

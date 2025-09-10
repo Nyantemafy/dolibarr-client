@@ -13,6 +13,7 @@ export class StockService {
   static async getProductMovements(productId) {
     try {
       const response = await apiService.get(`/api/stock/movements/${productId}`);
+      console.log('response mouvements', response);
       return response.data || [];
     } catch (error) {
       throw new Error('Erreur lors du chargement des mouvements: ' + error.message);

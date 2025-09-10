@@ -9,12 +9,6 @@ const StockTable = ({
   onViewDetails,
   loading 
 }) => {
-  const SortIcon = ({ column }) => {
-    if (sortConfig.key !== column) return <ChevronDown className="w-4 h-4 opacity-30" />;
-    return sortConfig.direction === 'asc' ? 
-      <ChevronUp className="w-4 h-4" /> : 
-      <ChevronDown className="w-4 h-4" />;
-  };
 
   if (loading) {
     return (
@@ -66,8 +60,6 @@ const StockTable = ({
               onSort={onSort} 
               center 
             />
-            <th className="px-4 py-3 text-center text-sm font-medium text-gray-900">Statut</th>
-            <th className="px-4 py-3 text-center text-sm font-medium text-gray-900">Valeur</th>
             <th className="px-4 py-3 text-center text-sm font-medium text-gray-900">Actions</th>
           </tr>
         </thead>
@@ -138,17 +130,6 @@ const StockTableRow = ({ item, onViewDetails }) => {
       </td>
       <td className="px-4 py-3 text-center">
         <span className="font-bold text-lg text-gray-900">{item.stock_final}</span>
-      </td>
-      <td className="px-4 py-3 text-center">
-        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${statusConfig.color}`}>
-          <span className="mr-1">{statusConfig.icon}</span>
-          {statusConfig.label}
-        </span>
-      </td>
-      <td className="px-4 py-3 text-center">
-        <span className="font-medium text-gray-900">
-          {(item.stock_final * (item.valeur_unitaire || 0)).toFixed(2)}€
-        </span>
       </td>
       <td className="px-4 py-3 text-center">
         <button

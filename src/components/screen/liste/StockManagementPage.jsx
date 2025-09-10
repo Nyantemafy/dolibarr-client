@@ -25,10 +25,9 @@ const StockManagementPage = () => {
     setSelectedProduct
   } = useStockManagement();
 
-  // Correction: Chargement initial seulement au montage du composant
   useEffect(() => {
     loadStockData();
-  }, []); // Tableau de dépendances vide pour exécuter seulement au montage
+  }, []); 
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
