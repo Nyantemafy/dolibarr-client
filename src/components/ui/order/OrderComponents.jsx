@@ -5,14 +5,16 @@ const OrderComponents = ({
   components, 
   orderQty, 
   editedOrder, 
-  isEditing ,
+  isEditing,
   bom,
 }) => {
+  // Déterminer quels composants afficher
+  const componentsToDisplay = isEditing ? 
+    (editedOrder?.components || []) : 
+    (components || []);
+
   const currentQty = isEditing ? editedOrder?.qty : orderQty;
-  const componentsToDisplay = components || [];
-  const bomQte = bom?.qty || 0;
-  console.log('bom dans component', bom);
-  console.log('bom dans component', bomQte);
+  const bomQte = bom?.qty || 1; // Éviter la division par zéro
 
   return (
     <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
@@ -36,7 +38,10 @@ const OrderComponents = ({
                   Désignation
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Quantité requise
+                  Quantité par unité
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Quantité totale
                 </th>
               </tr>
             </thead>
@@ -50,7 +55,10 @@ const OrderComponents = ({
                     {component?.product?.label || component?.product_label || '—'}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    {((component?.qty || 0) * (currentQty || 1)) / bomQte }
+                    {component.qty || 0}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {((component.qty || 0) * (currentQty || 1)) / bomQte}
                   </td>
                 </tr>
               ))}
@@ -60,7 +68,9 @@ const OrderComponents = ({
       ) : (
         <div className="p-8 text-center">
           <Package className="mx-auto mb-2 text-gray-400" size={48} />
-          <p className="text-gray-600">Aucun composant listé</p>
+          <p className="text-gray-600">
+            {isEditing ? "Sélectionnez un produit pour voir ses composants" : "Aucun composant listé"}
+          </p>
         </div>
       )}
     </div>

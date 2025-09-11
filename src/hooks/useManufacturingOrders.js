@@ -82,6 +82,7 @@ export const useManufacturingOrders = (showNotification) => {
     try {
       setLoading(true);
       const response = await ManufacturingService.updateOrder(orderId, updateData);
+      console.log(response);
       
       if (response?.success) {
         setOrder(prev => ({ ...prev, ...updateData }));

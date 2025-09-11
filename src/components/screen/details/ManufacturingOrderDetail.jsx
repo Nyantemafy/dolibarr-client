@@ -1,9 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { RefreshCw, ClipboardList } from 'lucide-react';
 import { useManufacturingOrders } from '../../../hooks/useManufacturingOrders';
-import { useBOMs } from '../../../hooks/useBOMs';
+import { useProducts } from '../../../hooks/useProducts';
 import { exportDetailsService } from '../../../services/exportDetailsService';
-import apiService from '../../service/apiService';
 
 import OrderHeaderDetaille from '../../ui/order/OrderHeaderDetaille';
 import OrderGeneralInfo from '../../ui/order/OrderGeneralInfo';
@@ -13,7 +12,7 @@ import OrderActions from '../../ui/order/OrderActions';
 
 const ManufacturingOrderDetail = ({ orderId, setActiveTab }) => {
   const { order, loading, setOrder, updateOrder, getById } = useManufacturingOrders(); 
-  const { boms } = useBOMs();
+  const { finishedProducts } = useProducts();
   const [bom, setBom] = useState(null);
   
   const [isEditing, setIsEditing] = useState(false);
@@ -26,62 +25,78 @@ const ManufacturingOrderDetail = ({ orderId, setActiveTab }) => {
   }, [orderId, getById]);
 
   useEffect(() => {
-    if (order) {
-      console.log("🟢 Order reçu :", order);
+    if (order && finishedProducts.length > 0) {
+      console.log("🟢 Product reçu :", finishedProducts);
       setBom(order?.bom);
     }
   }, [order]);
 
-  const handleBOMChange = async (bomId) => {
-    if (!bomId) return;
+  const handleBOMChange = async (productId) => {
+    if (!productId) return;
 
-    const selectedBOM = boms.find(b => b.id === Number(bomId));
+    const selectedProduct = finishedProducts.find(
+      (p) => String(p.id) === String(productId)
+    );
+
+    console.log('📦 Produit sélectionné:', selectedProduct);
+    console.log('🏭 BOMs disponibles:', selectedProduct?.boms);
+    console.log('🔧 Composants disponibles:', selectedProduct?.bom?.lines);
 
     try {
-      const response = await apiService.get(`/api/boms/${bomId}/with-components`);
-      const fullBOM = response?.data || selectedBOM;
+      // Trouver le produit avec ses BOM dans finishedProducts
+      const productWithBom = finishedProducts.find(p => String(p.id) === String(productId));
+      
+      if (productWithBom && productWithBom.boms && productWithBom.boms.length > 0) {
+        // Prendre la première BOM (ou vous pourriez laisser choisir)
+        const mainBom = productWithBom.boms[0];
+        
+        // // Extraire les composants de la BOM
+        // const components = mainBom.lines ? mainBom.lines.map(line => ({
+        //   id: line.id,
+        //   fk_product: line.fk_product,
+        //   qty: line.qty,
+        //   product: {
+        //     id: line.fk_product,
+        //     ref: line.product_ref || `PROD_${line.fk_product}`,
+        //     label: line.product_label || `Produit ${line.fk_product}`,
+        //   }
+        // })) : [];
 
-      const product = fullBOM.product
-        ? {
-            id: fullBOM.product.id,
-            ref: fullBOM.product.ref,
-            label: fullBOM.product.label || fullBOM.product.ref,
+        setEditedOrder(prev => ({
+          ...prev,
+          product: {
+            id: productWithBom.id,
+            ref: productWithBom.ref,
+            label: productWithBom.label
+          },
+          bom: {
+            id: mainBom.id,
+            ref: mainBom.ref,
+            label: mainBom.label
           }
-        : {
-            id: fullBOM.product_id,
-            ref: fullBOM.product_ref,
-            label: fullBOM.product_label || fullBOM.product_ref,
-          };
+        }));
+      } else {
+        // Fallback si pas de BOM trouvée
+        setEditedOrder(prev => ({
+          ...prev,
+          product: {
+            id: selectedProduct.id,
+            ref: selectedProduct.ref,
+            label: selectedProduct.label
+          }
+        }));
+      }
 
-      setEditedOrder(prev => ({
-        ...prev,
-        bom: {
-          id: fullBOM.id,
-          ref: fullBOM.ref,
-          label: fullBOM.label,
-        },
-        product,
-        components: fullBOM.components?.map(line => ({
-          ...line,
-          product: line.product || {
-            id: line.fk_product,
-            ref: line.product_ref || `PROD_${line.fk_product}`,
-            label: line.product_label || `Produit ${line.fk_product}`,
-          }
-        })) || []
-      }));
     } catch (error) {
-      console.error("❌ Erreur lors de la récupération du BOM complet:", error);
-
+      console.error("❌ Erreur lors de la récupération des composants:", error);
+      
       setEditedOrder(prev => ({
         ...prev,
-        bom: selectedBOM,
         product: {
-          id: selectedBOM?.product_id,
-          ref: selectedBOM?.product_ref,
-          label: selectedBOM?.product_label || selectedBOM?.product_ref,
-        },
-        components: prev?.components || []
+          id: selectedProduct.id,
+          ref: selectedProduct.ref,
+          label: selectedProduct.label
+        }
       }));
     }
   };
@@ -109,9 +124,8 @@ const ManufacturingOrderDetail = ({ orderId, setActiveTab }) => {
     if (result.success) {
       setOrder(prev => ({
         ...prev,
-        bom: editedOrder.bom,
+        fk_bom: editedOrder.bom,
         product: editedOrder.product,
-        components: editedOrder.components,
       }));
 
       setIsEditing(false);
@@ -173,7 +187,7 @@ const ManufacturingOrderDetail = ({ orderId, setActiveTab }) => {
             order={order}
             editedOrder={editedOrder}
             isEditing={isEditing}
-            boms={boms}
+            products={finishedProducts || []}
             onBOMChange={handleBOMChange}
             onFieldChange={handleFieldChange}
           />

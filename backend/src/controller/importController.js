@@ -113,8 +113,20 @@ class ImportController {
           throw new Error(`ERREUR CRITIQUE: Produit ${p.ref} existe déjà (validation a échoué)`);
         }
 
+        console.log(`➡ Produit type=${p.produit_type}`);
+
+        const dolibarrPayload = {
+          ...p,
+          finished: p.produit_type.toLowerCase().includes('matière') ? 0 : 1
+        };
+
         // Création du produit
-        const createdProduct = await dolibarrService.post('/products', p);
+        const createdProduct = await dolibarrService.post('/products', dolibarrPayload);
+        const productIdd = createdProduct;
+
+        const verifyProduct = await dolibarrService.get(`/products/${productIdd}`);
+        console.log(`Produit vérifié: ref=${verifyProduct.ref}, finished=${verifyProduct.finished}`);
+
         let productId = null;
 
         if (typeof createdProduct === 'number') {

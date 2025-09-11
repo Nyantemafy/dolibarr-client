@@ -5,7 +5,7 @@ const OrderGeneralInfo = ({
   order, 
   editedOrder, 
   isEditing, 
-  boms, 
+  products, 
   onBOMChange, 
   onFieldChange 
 }) => {
@@ -25,34 +25,30 @@ const OrderGeneralInfo = ({
           
           <div>
             <p className="text-sm text-gray-600 mb-1">Nomenclature</p>
-            {isEditing ? (
-              <select
-                value={editedOrder?.bom?.id || ''}
-                onChange={(e) => onBOMChange(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="">— Choisir une BOM —</option>
-                {boms.map((b) => (
-                  <option key={b.id} value={b.id}>
-                    {b.ref} - {b.label}
-                  </option>
-                ))}
-              </select>
-            ) : (
-              <p className="text-gray-900 font-medium">{order?.bom?.ref || '—'}</p>
-            )}
+            <p className="text-gray-900 font-medium">{order?.bom?.ref || '—'}</p>
           </div>
         </div>
 
         <div className="space-y-4">
           <div>
             <p className="text-sm text-gray-600 mb-1">Produit à fabriquer</p>
-            <p className="text-gray-900 font-medium">
-                {isEditing 
-                    ? `${editedOrder?.product?.ref || '—'} - ${editedOrder?.product?.label || '—'}`
-                    : `${order?.product?.ref || '—'} - ${order?.product?.label || '—'}`
-                }
-            </p>
+            <p className="text-gray-900 font-medium"></p>
+            {isEditing ? (
+              <select
+                value={editedOrder?.product?.id || ''}
+                onChange={(e) => onBOMChange(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="">— Choisir une Produit —</option>
+                {products.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.ref} - {p.label}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <p className="text-gray-900 font-medium">{order?.product?.ref || '—'} - {order?.product?.label || '—'}</p>
+            )}
           </div>
           
           <div>

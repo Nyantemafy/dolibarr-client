@@ -52,7 +52,7 @@ export class ImportService {
       ref: item.produit_ref?.toString().trim(),
       label: item.produit_nom?.toString().trim(),
       entrepot: item.entrepot?.toString().trim(),
-      type: item.produit_type === 'Service' ? 1 : 0,
+      produit_type: item.produit_type?.toString().trim(),
       status: 1,
       status_buy: 1,
       status_sell: 1,

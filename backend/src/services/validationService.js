@@ -16,7 +16,10 @@ const productSchema = Joi.object({
     'string.empty': 'Le entrepot du produit est obligatoire',
     'any.required': 'Le entrepot du produit est obligatoire'
   }),
-  type: Joi.number().valid(0, 1).default(0),
+  produit_type: Joi.string().required().messages({
+    'string.empty': 'Le produit_type du produit est obligatoire',
+    'any.required': 'Le produit_type du produit est obligatoire'
+  }),
   status: Joi.number().valid(0, 1).default(1),
   status_buy: Joi.number().valid(0, 1).default(1),
   status_sell: Joi.number().valid(0, 1).default(1),
@@ -256,7 +259,7 @@ class ValidationService {
     }
 
     // Validation cohérence prix/type
-    if (product.type === 1 && initialStock > 0) { // Service avec stock
+    if (initialStock > 0) { // Service avec stock
       result.warnings.push('Un service ne devrait pas avoir de stock initial');
     }
 

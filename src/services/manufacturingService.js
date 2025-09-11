@@ -18,7 +18,7 @@ export class ManufacturingService {
 
   static async updateOrder(orderId, updateData) {
     const response = await apiService.put(`/api/manufacturing/update/${orderId}`, updateData);
-    return response.data;
+    return response;
   }
 
   static async deleteOrder(orderId) {
