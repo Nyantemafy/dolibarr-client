@@ -9,4 +9,10 @@ export class WarehousesService {
       throw new Error('Erreur lors du chargement des BOM: ' + error.message);
     }
   }
+
+  static async create(ref, label = '') {
+    const response = await apiService.post('/api/warehouse/create', { ref, label });
+    return response;
+  }
+
 }

@@ -9,6 +9,10 @@ class StockController {
     this.fetchStockMovementsForProduct = this.fetchStockMovementsForProduct.bind(this);
     this.mapWithConcurrency = this.mapWithConcurrency.bind(this);
     this.getStockList = this.getStockList.bind(this);
+    this.transferStock = this.transferStock.bind(this);
+    this.bulkCorrectStock = this.bulkCorrectStock.bind(this);
+    this.bulkTransferStock = this.bulkTransferStock.bind(this);
+    this._doTransfer = this._doTransfer.bind(this);
   }
 
   async fetchAllProducts() {
@@ -185,13 +189,7 @@ class StockController {
     }
   }
 
-  async transferStock(req, res) {
-    const { productId, warehouseFromId, warehouseToId, quantity } = req.body;
-
-    if (!productId || !warehouseFromId || !warehouseToId || !quantity) {
-      return res.status(400).json({ error: "Données manquantes" });
-    }
-
+  async _doTransfer(productId, warehouseFromId, warehouseToId, quantity) {
     try {
       // 1️⃣ Retirer du stock source
       await dolibarrService.post('/stockmovements', {
@@ -211,77 +209,102 @@ class StockController {
         movementlabel: `Transfert depuis entrepôt ${warehouseFromId}`
       });
 
-      res.status(200).json({ message: 'Transfert effectué avec succès' });
+      return { success: true };
     } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Erreur lors du transfert' });
+      console.error(`Erreur transfert produit ${productId}:`, err.message);
+      return { success: false, error: err.message };
     }
   }
 
-  async bulkCorrectStock(req, res) {
-    const { minQty, maxQty, warehouseId, action, quantity } = req.body;
+  async transferStock(req, res) {
+    const { productId, warehouseFromId, warehouseToId, quantity } = req.body;
 
-    console.log("=== bulkCorrectStock appelé ===");
-    console.log("Données reçues:", { minQty, maxQty, warehouseId, action, quantity });
-
-    if (!warehouseId || !action || !quantity || minQty == null || maxQty == null) {
-      console.log("Erreur: données manquantes");
+    if (!productId || !warehouseFromId || !warehouseToId || !quantity) {
       return res.status(400).json({ error: "Données manquantes" });
     }
 
-    try {
-      console.log("Récupération de tous les produits");
-      const products = await dolibarrService.get('/products');
-      console.log(`Nombre de produits récupérés: ${products.length}`);
+    const result = await this._doTransfer(productId, warehouseFromId, warehouseToId, quantity);
 
-      // 1️⃣ Récupérer le stock de chaque produit dans l'entrepôt
-      const productsWithStock = [];
-      for (const product of products) {
-        const stockData = await dolibarrService.get(`/products/${product.id}/stock`, { warehouse_id: warehouseId });
-        const stockQty = stockData?.stock || 0;
-        console.log(`Produit ${product.id} - stock dans l'entrepôt ${warehouseId}: ${stockQty}`);
-        productsWithStock.push({ ...product, stock: stockQty });
-      }
-
-      // 2️⃣ Filtrer selon minQty et maxQty
-      const filtered = [];
-
-      for (const product of products) {
-        // récupérer le stock dans l'entrepôt donné
-        const stockData = await dolibarrService.get(`/products/${product.id}/stock`);
-        const stock = stockData.stock_warehouses?.[warehouseId]?.real || 0;
-
-        console.log(`Produit ${product.id} - stock dans l'entrepôt ${warehouseId}: ${stock}`);
-
-        if (stock >= minQty && stock <= maxQty) {
-          filtered.push(product);
-        }
-      }
-
-      // 3️⃣ Appliquer la correction
-      const qtyChange = action === 'increase' ? quantity : -quantity;
-      console.log("Quantité à appliquer sur chaque produit:", qtyChange);
-
-      for (const product of filtered) {
-        console.log(`Application de la correction sur produit ${product.id}`);
-        const result = await dolibarrService.post('/stockmovements', {
-          product_id: product.id,
-          warehouse_id: warehouseId,
-          qty: qtyChange,
-          movementcode: `CORR-${Date.now()}`,
-          movementlabel: `Correction stock`
-        });
-        console.log(`Résultat pour produit ${product.id}:`, result);
-      }
-
-      console.log("Correction appliquée pour tous les produits filtrés");
-      res.status(200).json({ message: 'Correction appliquée', count: filtered.length });
-
-    } catch (err) {
-      console.error("Erreur lors de la correction de stock:", err);
-      res.status(500).json({ error: 'Erreur lors de la correction de stock' });
+    if (result.success) {
+      return res.status(200).json({ message: 'Transfert effectué avec succès' });
+    } else {
+      return res.status(500).json({ error: result.error });
     }
   }
+
+async bulkCorrectStock(req, res) {
+  const { minQty, maxQty, warehouseId, action, quantity } = req.body;
+
+  console.log("=== bulkCorrectStock appelé ===");
+  console.log("Données reçues:", { minQty, maxQty, warehouseId, action, quantity });
+
+  // Vérification des données
+  if (!warehouseId || !action || !quantity || minQty == null || maxQty == null) {
+    console.log("Erreur: données manquantes");
+    return res.status(400).json({ error: "Données manquantes" });
+  }
+
+  try {
+    console.log("Récupération de tous les produits");
+    const products = await dolibarrService.get('/products');
+    console.log(`Nombre de produits récupérés: ${products.length}`);
+
+    const affectedProducts = [];
+
+    // Conversion en nombres pour comparaison
+    const min = Number(minQty);
+    const max = Number(maxQty);
+    const qtyChange = action === 'increase' ? Number(quantity) : -Number(quantity);
+
+    for (const product of products) {
+      try {
+        // Récupérer le stock actuel dans l'entrepôt
+        const stockData = await dolibarrService.get(`/products/${product.id}/stock`);
+        const oldQty = Number(stockData.stock_warehouses?.[warehouseId]?.real || 0);
+
+        console.log(`Produit ${product.id} - oldQty: ${oldQty}, min: ${min}, max: ${max}`);
+
+        // Filtrer selon minQty et maxQty
+        if (oldQty >= min && oldQty <= max) {
+          // Appliquer la correction
+          const result = await dolibarrService.post('/stockmovements', {
+            product_id: product.id,
+            warehouse_id: warehouseId,
+            qty: qtyChange,
+            movementcode: `CORR-${Date.now()}`,
+            movementlabel: `Correction stock`
+          });
+
+          const newQty = oldQty + qtyChange;
+
+          affectedProducts.push({
+            id: product.id,
+            ref: product.ref || "N/A",
+            label: product.label || "Sans nom",
+            oldQty,
+            newQty
+          });
+
+          console.log(`Produit ${product.id} corrigé: ancien stock ${oldQty} → nouveau stock ${newQty}`);
+        }
+      } catch (err) {
+        console.error(`❌ Erreur pour le produit ${product.id}:`, err.message);
+      }
+    }
+
+    console.log("Correction appliquée pour tous les produits filtrés");
+    res.status(200).json({
+      message: 'Correction appliquée',
+      count: affectedProducts.length,
+      products: affectedProducts
+    });
+
+  } catch (err) {
+    console.error("Erreur lors de la correction de stock:", err);
+    res.status(500).json({ error: 'Erreur lors de la correction de stock' });
+  }
+}
+
 
   async bulkTransferStock(req, res) {
     const { sourceWarehouseId, destinationWarehouseId, quantity } = req.body;
@@ -291,33 +314,67 @@ class StockController {
     }
 
     try {
-      // 1️⃣ Récupérer tous les produits dans l'entrepôt source
-      const products = await dolibarrService.get('/products', { warehouse_id: sourceWarehouseId });
+      const products = await dolibarrService.get('/products');
+      let transferCount = 0;
+      let transferred = []; // liste des refs transférés
+      let skipped = [];
+      let errors = [];
 
       for (const product of products) {
-        // 2️⃣ Retirer du stock source
-        await dolibarrService.post('/stockmovements', {
-          product_id: product.id,
-          warehouse_id: sourceWarehouseId,
-          qty: -quantity,
-          movementcode: `TRANS-${Date.now()}`,
-          movementlabel: `Transfert vers entrepôt ${destinationWarehouseId}`
-        });
+        try {
+          // 🔎 Vérifier le stock dispo
+          const stockData = await dolibarrService.get(`/products/${product.id}/stock`);
+          const sourceStock = parseInt(stockData.stock_warehouses?.[sourceWarehouseId]?.real || 0);
 
-        // 3️⃣ Ajouter au stock destination
-        await dolibarrService.post('/stockmovements', {
-          product_id: product.id,
-          warehouse_id: destinationWarehouseId,
-          qty: quantity,
-          movementcode: `TRANS-${Date.now()}`,
-          movementlabel: `Transfert depuis entrepôt ${sourceWarehouseId}`
-        });
+          if (sourceStock >= quantity) {
+            // ✅ Tentative de transfert
+            const result = await this._doTransfer(product.id, sourceWarehouseId, destinationWarehouseId, quantity);
+            if (result.success) {
+              transferCount++;
+              transferred.push({ ref: product.ref, label: product.label });
+            } else {
+              errors.push({ ref: product.ref, label: product.label, reason: result.error });
+            }
+          } else {
+            // ⚠️ Pas assez de stock → on ignore mais on log
+            console.log(`⚠️ Produit ${product.ref} ignoré : stock insuffisant (${sourceStock})`);
+            skipped.push({ ref: product.ref, label: product.label, reason: "Stock insuffisant" });
+          }
+        } catch (err) {
+          console.error(`❌ Erreur produit ${product.ref}:`, err.message);
+          errors.push({ ref: product.ref, label: product.label, reason: err.message });
+        }
       }
 
-      res.status(200).json({ message: 'Transfert effectué', count: products.length });
+      res.status(200).json({
+        message: 'Transfert en masse terminé',
+        transferred,
+        skipped,
+        errors
+      });
+
     } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Erreur lors du transfert de stock' });
+      console.error("Erreur bulkTransferStock:", err);
+      res.status(500).json({ error: 'Erreur lors du transfert de stock', details: err.message });
+    }
+  }
+
+  async getProductsByWarehouse(req, res) {
+    try {
+      const warehouseId = parseInt(req.params.id, 10);
+      if (!warehouseId) return res.status(400).json({ success: false, error: 'warehouseId manquant' });
+
+      // Récupérer tous les produits
+      const products = await dolibarrService.get('/products');
+
+      // Filtrer ceux qui ont fk_default_warehouse = warehouseId
+      const filtered = (products || []).filter(p => Number(p.fk_default_warehouse) === warehouseId);
+
+      res.json({ success: true, data: filtered });
+
+    } catch (err) {
+      logger.error('Erreur getProductsByWarehouse', err);
+      res.status(500).json({ success: false, error: 'Impossible de récupérer les produits', details: err.message });
     }
   }
 

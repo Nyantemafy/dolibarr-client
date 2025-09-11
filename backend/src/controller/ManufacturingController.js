@@ -258,6 +258,47 @@ class ManufacturingController {
     return { orderId, response };
 }
 
+  async cancelOrderById(req, res) {
+    const id = req.params.id;
+    try {
+      // 1) Récupérer l'ordre pour vérifier qu'il existe
+      const currentOrder = await dolibarrService.get(`/mos/${id}`);
+      if (!currentOrder) {
+        return res.status(404).json({
+          success: false,
+          error: 'Ordre de fabrication non trouvé'
+        });
+      }
+
+      // 2) Vérifier si l'ordre est dans un état qui peut être annulé
+      // Ici, on autorise seulement les OF validés ou en production (status 1 ou 3)
+      if (![1, 3].includes(Number(currentOrder.status))) {
+        return res.status(400).json({
+          success: false,
+          error: 'Seuls les ordres validés ou en production peuvent être annulés'
+        });
+      }
+
+      // 3) Remettre l'OF en brouillon
+      const result = await dolibarrService.put(`/mos/${id}`, { status: 9 });
+
+      logger.info(`Ordre de fabrication ${id} annulé avec succès`);
+
+      return res.json({
+        success: true,
+        message: 'Ordre de fabrication annulé avec succès',
+        data: result
+      });
+    } catch (error) {
+      logger.error(`Erreur annulation ordre ${id}:`, error);
+      return res.status(500).json({
+        success: false,
+        error: 'Erreur lors de l\'annulation de l\'ordre de fabrication',
+        details: error.message
+      });
+    }
+  }
+
   async validateOrder(req, res) {
     try {
       const { id } = req.params;
@@ -304,6 +345,20 @@ class ManufacturingController {
         error: 'Erreur lors de la validation de l\'ordre de fabrication',
         details: error.message
       });
+    }
+  }
+
+  async reopenOrder(req, res) {
+    const id = req.params.id;
+    try {
+      const currentOrder = await dolibarrService.get(`/mos/${id}`);
+      if (!currentOrder) return res.status(404).json({ success: false, error: "OF non trouvé" });
+      if (currentOrder.status !== 9) return res.status(400).json({ success: false, error: "Seuls les OF annulés peuvent être rouverts" });
+
+      const result = await dolibarrService.put(`/mos/${id}`, { status: 1 });
+      return res.json({ success: true, message: "OF rouvert avec succès", data: result });
+    } catch (err) {
+      return res.status(500).json({ success: false, error: err.message });
     }
   }
 

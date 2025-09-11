@@ -12,12 +12,19 @@ export class StockService {
 
   static async bulkCorrect(payload) {
     const response = await apiService.post('/api/stock/bulk-correct', payload);
-    return response.data;
+    return response;
   }
 
   static async bulkTransfer(payload) {
     const response = await apiService.post('/api/stock/bulk-transfer', payload);
-    return response.data;
+    console.log('result bulkTransfer', response);
+    return response;
+  }
+
+  static async getProductsByWarehouse(warehouseId) {
+    if (!warehouseId) return [];
+    const response = await apiService.get(`/api/stock/warehouse/${warehouseId}/products`);
+    return response.data || [];
   }
    
   static async getStockList() {

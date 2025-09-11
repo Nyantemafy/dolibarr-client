@@ -9,4 +9,9 @@ export class BomService {
       throw new Error('Erreur lors du chargement des BOM: ' + error.message);
     }
   }
+
+  static async create(bomData) {
+    const response = await apiService.post('/api/boms/creat', bomData);
+    return response;
+  }
 }

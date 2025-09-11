@@ -11,7 +11,9 @@ router.post('/orders/batch', ManufacturingController.createBatchManufacturingOrd
 router.get("/getById/:id", ManufacturingController.getManufacturingOrderById);
 router.get("/fetchdetail/:id", ManufacturingController.fetchOrderWithDetails);
 router.put('/update/:id', ManufacturingController.updateManufacturingOrder);
-router.delete('/delete/:id', ManufacturingController.deleteManufacturingOrder);
+router.delete('/delete/:id', ManufacturingController.deleteManufacturingOrder); 
 router.post('/delete-multiple', ManufacturingController.deleteMultipleManufacturingOrders);
+router.post('/cancel/:id', ManufacturingController.cancelOrderById);
+router.post('/reopen/:id', ManufacturingController.reopenOrder);
 
 export default router;

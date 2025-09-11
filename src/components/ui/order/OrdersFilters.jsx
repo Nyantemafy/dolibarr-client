@@ -70,6 +70,22 @@ const OrdersFilters = ({ filters, setFilters, productLabels, onResetFilters }) =
       </div>
 
       <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Nomenclature</label>
+        <select
+          value={filters.bom}
+          onChange={(e) => setFilters({ ...filters, bom: e.target.value })}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="">Toutes les BOM</option>
+          {filters.bomOptions?.map((bom) => (
+            <option key={bom.id} value={bom.id}>
+              {bom.ref}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">Date de création (début)</label>
         <input
           type="date"

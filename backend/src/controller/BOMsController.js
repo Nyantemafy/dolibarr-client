@@ -174,6 +174,48 @@ class BOMsController {
     }
   }
 
+  async createBOM(req, res) {
+    const { label, type, quantity, productId, warehouseId } = req.body;
+
+    console.log('=== Données reçues pour création de BOM ===');
+    console.log('label       :', label);
+    console.log('type        :', type);
+    console.log('quantity    :', quantity);
+    console.log('productId   :', productId);
+    console.log('warehouseId :', warehouseId);
+    console.log('req.body    :', req.body);
+
+    if (!label || !type || !quantity || !productId || !warehouseId) {
+      return res.status(400).json({ success: false, error: 'Tous les champs sont obligatoires' });
+    }
+
+    try {
+      const payload = {
+        ref: label,
+        label,
+        mrptype: type === 'manufacturing' ? 0 : 1,
+        qty: parseFloat(quantity),
+        fk_product: productId,
+        fk_warehouse: warehouseId,
+        status: 1
+      };
+
+      const result = await dolibarrService.post('/mos', payload); // endpoint Dolibarr BOM (Manufacturing Orders)
+
+      res.status(201).json({
+        success: true,
+        data: result
+      });
+    } catch (error) {
+      logger.error('Error creating BOM:', error);
+      res.status(500).json({
+        success: false,
+        error: 'Erreur lors de la création du BOM',
+        details: error.message
+      });
+    }
+  }
+
 }
 
 module.exports = new BOMsController();

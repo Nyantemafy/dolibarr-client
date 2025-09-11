@@ -33,6 +33,16 @@ export class ManufacturingService {
     await apiService.post(`/api/manufacturing/produire/${orderId}`);
   }
 
+  static async cancelOrder(orderId) {
+    const response = await apiService.post(`/api/manufacturing/cancel/${orderId}`);
+    return response.data;
+  }
+
+  static async reopenOrder(orderId) {
+    const response = await apiService.post(`/api/manufacturing/reopen/${orderId}`);
+    return response.data;
+  }
+
   static async batchCreateOrders(orders) {
     const response = await apiService.post('/api/manufacturing/orders/batch', { orders });
     return response.data;

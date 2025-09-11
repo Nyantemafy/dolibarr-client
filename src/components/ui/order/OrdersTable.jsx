@@ -71,6 +71,7 @@ const OrdersTable = memo(({
               </th>
               <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">Référence</th>
               <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">Produit</th>
+              <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">Nomenclature</th>
               <th className="px-4 py-3 text-center text-sm font-medium text-gray-900">Quantité</th>
               <th className="px-4 py-3 text-center text-sm font-medium text-gray-900">État</th>
               <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">Date création</th>
@@ -104,6 +105,11 @@ const OrdersTable = memo(({
                     <div className="text-gray-900">
                       <div className="font-medium">{order.product?.ref}</div>
                       <div className="text-sm text-gray-600">{order.product?.label}</div>
+                    </div>
+                  </td>
+                  <td className="px-4 py-3">
+                    <div className="text-gray-900">
+                      <div className="font-medium">{order.bom?.ref}</div>
                     </div>
                   </td>
                   <td className="px-4 py-3 text-center">

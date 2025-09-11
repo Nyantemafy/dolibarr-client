@@ -18,6 +18,7 @@ const Navigation = ({ activeTab, setActiveTab, customMenuItems = [], onAddMenuIt
         { id: 'stock', label: 'Stock', icon: ClipboardList },
         { id: 'manufacturing', label: 'Fabrication', icon: Factory },
         { id: 'orders', label: 'Ordres de fabrication', icon: ClipboardList },
+        { id: 'validation-dynamic', label: 'Validation dynamic', icon: ClipboardList },
       ]
     },
     'creer': {
@@ -27,9 +28,12 @@ const Navigation = ({ activeTab, setActiveTab, customMenuItems = [], onAddMenuIt
         { id: 'create-order', label: 'Ordre de fabrication', icon: Factory },
         { id: 'multiple-product', label: 'Fabrication Multiqple', icon: Factory },
         { id: 'creat-product', label: 'Cree une produit', icon: Factory },
+        { id: 'creat-entrepo', label: 'Cree une entrepo', icon: Factory },
+        { id: 'creat-bom', label: 'Cree une bom', icon: Factory },
         { id: 'correct-stock', label: 'Corriger une stock', icon: Factory },
         { id: 'transfer-stock', label: 'Transfer stock', icon: Factory },
-        { id: 'stock-management', label: 'Stock Management', icon: Factory },
+        { id: 'stock-correction', label: 'Correction Stock Dynamic', icon: Factory },
+        { id: 'stock-transfer', label: 'Transfer Stock Dynamic', icon: Factory },
       ]
     },
     'dashboard': {

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 
 export const useOrderFilters = (orders) => {
   const [filters, setFilters] = useState({
@@ -9,8 +9,22 @@ export const useOrderFilters = (orders) => {
     qtyMin: '',
     qtyMax: '',
     dateFrom: '',
-    dateTo: ''
+    dateTo: '',
+    bom: '',
+    bomOptions: []
   });
+
+  useEffect(() => {
+    const boms = orders
+      .map(order => order.bom)      // récupérer la BOM de chaque ordre
+      .filter(Boolean)              // enlever les null/undefined
+      .reduce((acc, bom) => {
+        if (!acc.find(b => b.id === bom.id)) acc.push(bom); // unique par id
+        return acc;
+      }, []);
+
+    setFilters(prev => ({ ...prev, bomOptions: boms }));
+  }, [orders]);
 
   const filteredOrders = useMemo(() => {
     let result = [...orders];
@@ -29,6 +43,10 @@ export const useOrderFilters = (orders) => {
       result = result.filter(order => order.fk_product === parseInt(filters.product));
     }
 
+    if (filters.bom) {
+      result = result.filter(order => order.bom?.id === parseInt(filters.bom));
+    }
+    
     if (filters.qtyMin) {
       result = result.filter(order => order.qty >= parseInt(filters.qtyMin));
     }
