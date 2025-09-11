@@ -1,6 +1,25 @@
 import apiService from '../components/service/apiService';;
 
 export class StockService {
+  static async transferStock(payload) {
+    try {
+      const response = await apiService.post('/api/stock/transfer', payload);
+      return response.data;
+    } catch (err) {
+      throw new Error('Erreur lors du transfert de stock: ' + err.message);
+    }
+  }
+
+  static async bulkCorrect(payload) {
+    const response = await apiService.post('/api/stock/bulk-correct', payload);
+    return response.data;
+  }
+
+  static async bulkTransfer(payload) {
+    const response = await apiService.post('/api/stock/bulk-transfer', payload);
+    return response.data;
+  }
+   
   static async getStockList() {
     try {
       const response = await apiService.get('/api/stock/liste');

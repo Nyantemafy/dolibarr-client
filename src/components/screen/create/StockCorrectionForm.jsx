@@ -10,7 +10,7 @@ const StockCorrectionForm = () => {
   const [warehouses, setWarehouses] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState('');
   const [selectedWarehouse, setSelectedWarehouse] = useState('');
-  const [actionType, setActionType] = useState('add'); // add ou remove
+  const [actionType, setActionType] = useState('add'); 
   const [quantity, setQuantity] = useState('');
   const [purchasePrice, setPurchasePrice] = useState('');
   const [loading, setLoading] = useState(false);

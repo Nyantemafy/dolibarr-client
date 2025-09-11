@@ -28,6 +28,8 @@ const Navigation = ({ activeTab, setActiveTab, customMenuItems = [], onAddMenuIt
         { id: 'multiple-product', label: 'Fabrication Multiqple', icon: Factory },
         { id: 'creat-product', label: 'Cree une produit', icon: Factory },
         { id: 'correct-stock', label: 'Corriger une stock', icon: Factory },
+        { id: 'transfer-stock', label: 'Transfer stock', icon: Factory },
+        { id: 'stock-management', label: 'Stock Management', icon: Factory },
       ]
     },
     'dashboard': {
