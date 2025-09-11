@@ -18,6 +18,7 @@ const Navigation = ({ activeTab, setActiveTab, customMenuItems = [], onAddMenuIt
         { id: 'stock', label: 'Stock', icon: ClipboardList },
         { id: 'manufacturing', label: 'Fabrication', icon: Factory },
         { id: 'orders', label: 'Ordres de fabrication', icon: ClipboardList },
+        { id: 'validation-dynamic', label: 'Validation dynamic', icon: ClipboardList },
       ]
     },
     'creer': {
@@ -25,6 +26,14 @@ const Navigation = ({ activeTab, setActiveTab, customMenuItems = [], onAddMenuIt
       icon: Plus,
       items: [
         { id: 'create-order', label: 'Ordre de fabrication', icon: Factory },
+        { id: 'multiple-product', label: 'Fabrication Multiqple', icon: Factory },
+        { id: 'creat-product', label: 'Cree une produit', icon: Factory },
+        { id: 'creat-entrepo', label: 'Cree une entrepo', icon: Factory },
+        { id: 'creat-bom', label: 'Cree une bom', icon: Factory },
+        { id: 'correct-stock', label: 'Corriger une stock', icon: Factory },
+        { id: 'transfer-stock', label: 'Transfer stock', icon: Factory },
+        { id: 'stock-correction', label: 'Correction Stock Dynamic', icon: Factory },
+        { id: 'stock-transfer', label: 'Transfer Stock Dynamic', icon: Factory },
       ]
     },
     'dashboard': {
@@ -181,52 +190,6 @@ const Navigation = ({ activeTab, setActiveTab, customMenuItems = [], onAddMenuIt
             }
           })}
         </ul>
-        
-        {/* Formulaire pour ajouter un nouvel élément */}
-        <div className="mt-6 pt-6 border-t border-gray-700">
-          {showAddForm ? (
-            <div className="bg-gray-900 p-3 rounded-lg">
-              <h3 className="text-sm font-semibold mb-2">Ajouter au menu</h3>
-              <input
-                type="text"
-                placeholder="Nom de l'élément"
-                className="w-full p-2 mb-2 rounded bg-gray-800 text-white text-sm"
-                value={newItem.label}
-                onChange={(e) => setNewItem({...newItem, label: e.target.value})}
-              />
-              <select
-                className="w-full p-2 mb-2 rounded bg-gray-800 text-white text-sm"
-                value={newItem.category}
-                onChange={(e) => setNewItem({...newItem, category: e.target.value})}
-              >
-                <option value="liste">Liste</option>
-                <option value="creer">Créer</option>
-              </select>
-              <div className="flex space-x-2">
-                <button
-                  onClick={handleAddItem}
-                  className="flex-1 py-1 px-2 bg-blue-600 text-white rounded text-sm"
-                >
-                  Ajouter
-                </button>
-                <button
-                  onClick={() => setShowAddForm(false)}
-                  className="flex-1 py-1 px-2 bg-gray-600 text-white rounded text-sm"
-                >
-                  Annuler
-                </button>
-              </div>
-            </div>
-          ) : (
-            <button
-              onClick={() => setShowAddForm(true)}
-              className="w-full flex items-center justify-center px-3 py-2 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"
-            >
-              <Plus size={16} className="mr-2" />
-              Ajouter un élément
-            </button>
-          )}
-        </div>
         
         {/* Liens additionnels en bas */}
         <div className="mt-8 pt-8 border-t border-gray-700">

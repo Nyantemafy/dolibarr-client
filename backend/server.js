@@ -10,6 +10,8 @@ import importRoutes from './src/routes/import.js';
 import stockRoutes from './src/routes/stock.js';
 import manufacturingRoutes from './src/routes/manufacturing.js';
 import bomsRoutes from './src/routes/boms.js';
+import productsRoutes from './src/routes/products.js';
+import warehouseRoutes from './src/routes/warehouse.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -27,9 +29,11 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/api/warehouse', warehouseRoutes);
 app.use('/api/reset', resetRoutes);
 app.use('/api/import', importRoutes);
 app.use('/api/boms', bomsRoutes);
+app.use('/api/products', productsRoutes);
 app.use('/api/manufacturing', manufacturingRoutes);
 app.use('/api/stock', stockRoutes);
 
