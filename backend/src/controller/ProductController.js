@@ -28,6 +28,39 @@ class ProductController {
     }
   }
 
+  async deleteProduct(req, res) {
+    const productId = req.params.id;
+
+    if (!productId) {
+      return res.status(400).json({ error: "L'ID du produit est obligatoire" });
+    }
+
+    try {
+      const response = await dolibarrService.delete(`/products/${productId}`);
+      res.status(200).json({
+        success: true,
+        message: `Produit ${productId} supprimé avec succès`,
+        data: response
+      });
+    } catch (err) {
+      console.error('Erreur Dolibarr delete:', err);
+
+      // ✅ Gérer le cas 409 (produit utilisé)
+      if (err.response?.status === 409) {
+        return res.status(409).json({
+          success: false,
+          error: `Impossible de supprimer le produit ${productId}, il est utilisé dans d'autres enregistrements`
+        });
+      }
+
+      res.status(500).json({
+        success: false,
+        error: `Erreur lors de la suppression du produit ${productId}`,
+        details: err.message
+      });
+    }
+  }
+
   async updateProduct(req, res) {
     const productId = req.params.id;
     const productData = req.body;

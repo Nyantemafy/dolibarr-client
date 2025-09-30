@@ -2,6 +2,7 @@ const csvService = require('../services/csvService');
 const dolibarrService = require('../services/dolibarrService');
 const validationService = require('../services/validationService');
 const logger = require('../utils/logger');
+const stockController = require("./StockController");
 
 class ImportController {
   async previewImport(req, res) {
@@ -168,6 +169,8 @@ class ImportController {
           fk_default_warehouse: warehouseId
         });
         console.log(`✅ Entrepôt par défaut défini (${warehouseId}) pour produit ${p.ref}`);
+
+        stockController.saveStockInitial(p.ref, initialStock);
 
         // 🔹 Seulement si stock > 0 → on fait un mouvement de stock
         if (initialStock > 0) {

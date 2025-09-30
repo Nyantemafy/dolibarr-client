@@ -122,14 +122,14 @@ const ProductTable = memo(({
         </button>
 
         {/* Bouton Supprimer */}
-        <button
+        {/* <button
           onClick={() => onDelete(product.id)}
           disabled={actionLoading[`delete_${product.id}`]}
           className="text-red-600 hover:text-red-800 p-1 rounded"
           title="Supprimer le produit"
         >
           <Trash2 size={16} />
-        </button>
+        </button> */}
       </div>
     )
   };

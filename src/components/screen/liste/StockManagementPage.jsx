@@ -36,7 +36,7 @@ const StockManagementPage = () => {
         loading={loading}
       />
 
-      <StockStats statistics={statistics} />
+      {/* <StockStats statistics={statistics} /> */}
       
       <StockFilters
         searchTerm={searchTerm}

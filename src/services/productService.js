@@ -60,6 +60,9 @@ export class ProductService {
   }
 
   static async deleteProduct(ProductId) {
-    await apiService.delete(`/api/products/delete/${ProductId}`);
+    console.log('ProductId', ProductId);
+    const response = await apiService.delete(`/api/products/delete/${ProductId}`);
+    console.log('Response ProductId', response);
+    return response.data || [];
   }
 }

@@ -57,8 +57,10 @@ export const useProducts = (showNotification) => {
     try {
       setActionLoading(prev => ({ ...prev, delete: true }));
       
+      const ids = Array.isArray(ProductIds) ? ProductIds : [ProductIds]; // 👈 sécurité
+
       await Promise.all(
-        ProductIds.map(id => ProductService.deleteProduct(id))
+        ids.map(id => ProductService.deleteProduct(id))
       );
       
       setProductLabels(prev => prev.filter(order => !ProductIds.includes(order.id)));

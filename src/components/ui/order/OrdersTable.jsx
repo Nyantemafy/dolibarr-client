@@ -123,8 +123,8 @@ const OrdersTable = memo(({
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center text-sm text-gray-600">
-                      <Calendar className="mr-1" size={14} />
-                      {formatDate(order.date_creation)}
+                        <Calendar className="mr-1" size={14} />
+                        {formatDate(order.date_creation * 1000)}
                     </div>
                   </td>
                   <td className="px-4 py-3 text-center">

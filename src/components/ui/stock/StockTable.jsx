@@ -137,7 +137,8 @@ const StockTableRow = ({ item, onViewDetails }) => {
           className="text-blue-600 hover:text-blue-800 p-1 rounded"
           title="Voir les mouvements"
         >
-          <Eye size={16} />
+          Mouvement
+          {/* <Eye size={16} /> */}
         </button>
       </td>
     </tr>

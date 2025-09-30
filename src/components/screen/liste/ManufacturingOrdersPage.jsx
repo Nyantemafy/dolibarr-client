@@ -115,7 +115,7 @@ const ManufacturingOrdersPage = ({ setActiveTab, setSelectedOrderId }) => {
     <div className="p-6 max-w-7xl mx-auto">
       <OrdersHeader onRefresh={loadOrders} loading={loading} />
       
-      <OrdersStats orders={orders} />
+      {/* <OrdersStats orders={orders} /> */}
       
       <SelectionActions 
         selectedCount={selectedOrders.size}

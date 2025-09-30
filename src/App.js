@@ -2,16 +2,13 @@ import React, { useState } from 'react';
 import Navigation from './Navigation';
 import DashboardScreen from './components/screen/DashboardScreen';
 import StockManagementPage from './components/screen/liste/StockManagementPage';
-import ValidationStatusPage from './components/screen/liste/ValidationStatusPage';
+import StatistiquePage from './components/screen/liste/StatistiquePage'
 import FileImportScreen from './components/screen/FileImportScreen';
 import CreateOfScreen from './components/screen/create/CreateOfScreen';
 import CreateBOMScreen from './components/screen/create/CreateBOMScreen';
 import CreateWarehouseScreen from './components/screen/create/CreateWarehouseScreen';
 import StockDynamicPage from './components/screen/create/StockDynamicPage';
-import StockCorrectionPage from './components/screen/create/StockCorrectionPage';
-import StockTransferPage from './components/screen/create/StockTransferPage';
 import StockCorrectionForm from './components/screen/create/StockCorrectionForm';
-import StockTransferForm from './components/screen/create/StockTransferForm';
 import CreateProductScreen from './components/screen/create/CreateProductScreen';
 import BatchManufacturingPage from './components/screen/create/BatchManufacturingPage';
 import ManufacturingOrdersPage from './components/screen/liste/ManufacturingOrdersPage';
@@ -36,8 +33,6 @@ function App() {
         return <DashboardScreen />;
       case 'correct-stock':
         return <StockCorrectionForm />;
-      case 'transfer-stock':
-        return <StockTransferForm />;
       case 'creat-product':
         return <CreateProductScreen />;
       case 'creat-bom':
@@ -63,13 +58,9 @@ function App() {
       case 'multiple-product':
         return <BatchManufacturingPage />;
       case 'import':
-        return <FileImportScreen />;
-      case 'stock-correction':
-        return <StockCorrectionPage />;
-      case 'validation-dynamic':
-        return <ValidationStatusPage />;
-      case 'stock-transfer':
-        return <StockTransferPage />; 
+        return <FileImportScreen />; 
+      case 'statistique':
+        return <StatistiquePage />; 
       default:
         // For custom menu items
         return <div className="p-6">Contenu de {activeTab}</div>;

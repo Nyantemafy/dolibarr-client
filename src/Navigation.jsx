@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Upload, Package, Warehouse, Factory, ClipboardList, Home, Plus, Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
+import { Upload, Package, Factory, ClipboardList, Home, Plus, Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 
 const Navigation = ({ activeTab, setActiveTab, customMenuItems = [], onAddMenuItem }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedSections, setExpandedSections] = useState({});
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [newItem, setNewItem] = useState({ label: '', category: 'liste' });
 
   // Menu de base avec structure hiérarchique
   const baseMenuStructure = {
@@ -14,11 +12,9 @@ const Navigation = ({ activeTab, setActiveTab, customMenuItems = [], onAddMenuIt
       icon: ClipboardList,
       items: [
         { id: 'products', label: 'Produits', icon: Package },
-        { id: 'warehouses', label: 'Entrepôts', icon: Warehouse },
         { id: 'stock', label: 'Stock', icon: ClipboardList },
-        { id: 'manufacturing', label: 'Fabrication', icon: Factory },
         { id: 'orders', label: 'Ordres de fabrication', icon: ClipboardList },
-        { id: 'validation-dynamic', label: 'Validation dynamic', icon: ClipboardList },
+        { id: 'statistique', label: 'Statistique', icon: ClipboardList},
       ]
     },
     'creer': {
@@ -31,9 +27,6 @@ const Navigation = ({ activeTab, setActiveTab, customMenuItems = [], onAddMenuIt
         { id: 'creat-entrepo', label: 'Cree une entrepo', icon: Factory },
         { id: 'creat-bom', label: 'Cree une bom', icon: Factory },
         { id: 'correct-stock', label: 'Corriger une stock', icon: Factory },
-        { id: 'transfer-stock', label: 'Transfer stock', icon: Factory },
-        { id: 'stock-correction', label: 'Correction Stock Dynamic', icon: Factory },
-        { id: 'stock-transfer', label: 'Transfer Stock Dynamic', icon: Factory },
       ]
     },
     'dashboard': {
@@ -79,18 +72,6 @@ const Navigation = ({ activeTab, setActiveTab, customMenuItems = [], onAddMenuIt
       ...prev,
       [section]: !prev[section]
     }));
-  };
-
-  const handleAddItem = () => {
-    if (newItem.label.trim() && onAddMenuItem) {
-      onAddMenuItem({
-        ...newItem,
-        id: `custom-${Date.now()}`,
-        icon: ClipboardList // Icône par défaut
-      });
-      setNewItem({ label: '', category: 'liste' });
-      setShowAddForm(false);
-    }
   };
 
   return (

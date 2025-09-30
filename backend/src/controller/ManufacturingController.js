@@ -13,11 +13,29 @@ class ManufacturingController {
     this.createBatchManufacturingOrders = this.createBatchManufacturingOrders.bind(this);
     this.createManufacturingOrder = this.createManufacturingOrder.bind(this);
     this.buildManufacturingOrderData = this.buildManufacturingOrderData.bind(this);
+    this.getstockProduct = this.getstockProduct.bind(this);
   }
 
-  async buildManufacturingOrderData(fk_bom, qty, label, description) {
+  async getstockProduct(idProduct) {
+    try {
+      const product = await dolibarrService.get(`/products/${idProduct}/stock`);
+      console.log("stock product ====", product);
+      return product;
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ success: false, error: error.message });
+    }
+  }
+
+  async buildManufacturingOrderData(fk_bom, qty, label, description, date_creation ) {
     const bom = await dolibarrService.get(`/boms/${fk_bom}`);
     const fk_product = bom.fk_product;
+
+    const timestamp = date_creation 
+    ? Math.floor(new Date(date_creation).getTime() / 1000)
+    : Math.floor(Date.now() / 1000);
+
+    console.log("date_creation ========",date_creation );
 
     const product = await dolibarrService.get(`/products/${fk_product}`);
     const fk_warehouse = product.fk_default_warehouse;
@@ -31,7 +49,7 @@ class ManufacturingController {
         mrptype: 0,
         description: description || '',
         status: 0,
-        date_creation: new Date().toISOString().split('T')[0],
+        date_creation: timestamp,
         fk_warehouse,
         fk_warehouse_source: fk_warehouse
       };
@@ -39,7 +57,7 @@ class ManufacturingController {
 
   async createManufacturingOrder(req, res) {
     try {
-      const { fk_bom, qty, label, description } = req.body;
+      const { fk_bom, qty, label, description, date_creation } = req.body;
 
       if (!fk_bom || !qty) {
         return res.status(400).json({
@@ -59,7 +77,8 @@ class ManufacturingController {
         req.body.fk_bom,
         req.body.qty,
         req.body.label,
-        req.body.description
+        req.body.description,
+        req.body.date_creation
       );
 
       const createdOrder = await dolibarrService.post('/mos', orderData);
@@ -82,6 +101,7 @@ class ManufacturingController {
           fk_bom: fk_bom,
           qty: qty,
           label: orderData.label,
+          dateCreation: orderData.date_creation,
           status: 'brouillon'
         }
       });
@@ -193,6 +213,7 @@ class ManufacturingController {
 
   async produceOrderById(orderId) {
     const currentOrder = await dolibarrService.get(`/mos/${orderId}`);
+    console.log('produire en cours ===========')
     if (!currentOrder) throw new Error('Ordre de fabrication non trouvé');
     if (![1, 2].includes(Number(currentOrder.status))) throw new Error('OF non validé / état incompatible');
 
@@ -486,6 +507,7 @@ class ManufacturingController {
 
       const results = [];
       const errors = [];
+      const skipped = [];
 
       for (let i = 0; i < orders.length; i++) {
         try {
@@ -495,22 +517,58 @@ class ManufacturingController {
           const orderData = await this.buildManufacturingOrderData(
             currentOrder.bom_id,
             currentOrder.qty,
-            currentOrder.label
+            currentOrder.label,
+            '',
+            currentOrder.date_creation
           );
 
-          const createdOrder = await dolibarrService.post('/mos', orderData);
+          // Créer l'ordre
+          const createdOrderId = await dolibarrService.post('/mos', orderData);
+          const createdOrderInfo = await dolibarrService.get(`/mos/${createdOrderId}`);
 
-          // Récupération de l'ordre complet
-          const createdOrderInfo = await dolibarrService.get(`/mos/${createdOrder}`);
+          // Vérifier les composants à consommer
+          const bomLines = createdOrderInfo.lines || [];
+          const toConsume = bomLines.filter(l => l.role === 'toconsume');
 
-          await this.validateOrderById(createdOrder);
-          await this.produceOrderById(createdOrder);
+          let canProduce = true;
+          for (const line of toConsume) {
+            const consomQty = line.qty;
+            const productId = line.fk_product;
+
+            const stock = await dolibarrService.get(`/products/${productId}/stock`);
+
+            if (consomQty > stock.stock_reel) {
+              canProduce = false;
+              break;
+            }
+          }
+
+          if (!canProduce) {
+            // Supprimer l'ordre si pas faisable
+            await dolibarrService.delete(`/mos/${createdOrderId}`);
+
+            skipped.push({
+              order_index: i,
+              bom_id: currentOrder.bom_id,
+              qty: currentOrder.qty,
+              mo_ref: currentOrder.label,
+              reason: "Stock insuffisant"
+            });
+
+            console.log("skipped ====== ",skipped);
+
+            continue; // on passe à l'ordre suivant
+          }
+
+          // Si stock OK → valider et produire
+          await this.validateOrderById(createdOrderId);
+          await this.produceOrderById(createdOrderId);
 
           results.push({
             order_index: i,
             bom_id: currentOrder.bom_id,
             qty: currentOrder.qty,
-            mo_id: createdOrder,
+            mo_id: createdOrderId,
             mo_ref: createdOrderInfo.ref,
             status: 'success'
           });
@@ -527,14 +585,17 @@ class ManufacturingController {
         }
       }
 
+      // Réponse
       res.json({
         success: errors.length === 0,
         data: {
           total_orders: orders.length,
           successful: results.length,
           failed: errors.length,
+          skipped: skipped.length,
           results,
-          errors
+          errors,
+          skipped
         }
       });
 
