@@ -102,7 +102,13 @@ const TableHeader = ({ column, label, sortConfig, onSort, center = false }) => {
 
 const StockTableRow = ({ item, onViewDetails }) => {
   const statusConfig = StockService.getStockStatus(item.stock_final);
-  const movementTrend = item.total_movements > 0 ? 'positive' : item.total_movements < 0 ? 'negative' : 'neutral';
+  // const movementTrend = item.total_movements > 0 ? 'positive' : item.total_movements < 0 ? 'negative' : 'neutral';
+
+  const movementTrend = item.total_movements > 0 
+    ? 'positive' 
+    : item.total_movements < 0 
+      ? 'negative' 
+      : 'yellow'; // neutre devient jaune
   
   return (
     <tr className="hover:bg-gray-50">
