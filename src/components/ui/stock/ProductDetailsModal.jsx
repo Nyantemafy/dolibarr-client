@@ -54,7 +54,8 @@ const ProductSummary = ({ product }) => (
           product.total_movements > 0 ? 'text-green-600' : 
           product.total_movements < 0 ? 'text-red-600' : 'text-gray-600'
         }`}>
-          {product.total_movements > 0 ? '+' : ''}{product.total_movements}
+          {/* {product.total_movements > 0 ? '+' : ''}{product.total_movements} */}
+          {product.total_movements}
         </p>
       </div>
       <div>

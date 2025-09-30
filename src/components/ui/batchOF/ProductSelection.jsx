@@ -3,13 +3,15 @@ import { Package, Plus } from 'lucide-react';
 
 const ProductSelection = ({ 
   boms, 
+  dateCreation,
+  setDateCreation,
   filteredBoms, 
   selectedBom, 
   quantity, 
   bomLoading, 
   onBomChange, 
   onQuantityChange, 
-  onAddToQueue 
+  onAddToQueue
 }) => {
   const selectedBomData = boms.find(b => b.id == selectedBom);
 
@@ -62,6 +64,18 @@ const ProductSelection = ({
             min="1"
             value={quantity}
             onChange={(e) => onQuantityChange(Math.max(1, parseInt(e.target.value) || 1))}
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Date de fabrication (optionnel)
+          </label>
+          <input
+            type="date"
+            value={dateCreation}
+            onChange={(e) => setDateCreation(e.target.value)}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>

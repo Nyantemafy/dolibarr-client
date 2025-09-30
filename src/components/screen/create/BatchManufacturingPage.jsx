@@ -23,6 +23,8 @@ const BatchManufacturingPage = () => {
     setManufacturingQueue,
     setQuantity,
     setSearchTerm,
+    dateCreation,
+    setDateCreation,
     loadBoms,
     addToQueue,
     removeFromQueue,
@@ -78,6 +80,8 @@ const BatchManufacturingPage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <ProductSelection
           boms={boms}
+          dateCreation={dateCreation}
+          setDateCreation={setDateCreation}
           filteredBoms={filteredBoms}
           selectedBom={selectedBom}
           quantity={quantity}

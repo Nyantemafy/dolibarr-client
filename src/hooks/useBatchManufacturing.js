@@ -11,6 +11,7 @@ export const useBatchManufacturing = () => {
   const [bomLoading, setBomLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [manufacturingResults, setManufacturingResults] = useState(null);
+  const [dateCreation, setDateCreation] = useState('');
 
   const loadBoms = async () => {
     try {
@@ -42,6 +43,7 @@ export const useBatchManufacturing = () => {
       product_ref: bom.product_ref,
       product_label: bom.product_label,
       quantity: parseInt(quantity),
+      date_creation: dateCreation || null,
       totalValue: parseInt(quantity) * (bom.product_price || 0)
     };
   };
@@ -60,7 +62,8 @@ export const useBatchManufacturing = () => {
       const orders = manufacturingQueue.map(item => ({
         bom_id: item.bom_id,
         qty: item.quantity,
-        label: `Fabrication lot ${item.bom_ref} - Qté: ${item.quantity}`
+        label: `Fabrication lot ${item.bom_ref} - Qté: ${item.quantity}`,
+        date_creation: item.date_creation
       }));
 
       const results = await BatchService.startBatchManufacturing(orders);
@@ -96,6 +99,8 @@ export const useBatchManufacturing = () => {
     manufacturingResults,
     filteredBoms,
     queueSummary,
+    dateCreation,
+    setDateCreation,
     setSelectedBom,
     setQuantity,
     setSearchTerm,

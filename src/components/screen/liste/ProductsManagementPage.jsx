@@ -86,7 +86,11 @@ const ProductsManagementPage = ({ setActiveTab, setSelectedProductId }) => {
   };
 
   const handleDeleteSelected = async () => {
-    const selectedIds = Array.from(selectedProducts);
+    const selectedIds = Array.isArray(selectedProducts) 
+    ? selectedProducts 
+    : [selectedProducts];
+    console.log(selectedIds)
+ 
     if (selectedIds.length === 0) {
       showNotification('Aucun produit sélectionné', 'warning');
       return;
@@ -127,7 +131,7 @@ const ProductsManagementPage = ({ setActiveTab, setSelectedProductId }) => {
         buttonText="Actualiser"
       />
       
-      <ProductStats products={productLabels} />
+      {/* <ProductStats products={productLabels} /> */}
       
       <SelectionActions 
         selectedCount={selectedProducts.size}

@@ -4,6 +4,7 @@ import { BomService } from '../services/bomService';
 
 export const useOrderForm = () => {
   const [boms, setBoms] = useState([]);
+  const [dateCreation, setDateCreation] = useState('');
   const [selectedBom, setSelectedBom] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [label, setLabel] = useState('');
@@ -69,10 +70,13 @@ export const useOrderForm = () => {
     setError('');
     setSuccess('');
 
+    console.log("dateCreation log ::::", dateCreation);
+    
     try {
       const orderData = {
         fk_bom: selectedBom,
-        qty: quantity
+        qty: quantity,
+        date_creation: dateCreation
       };
         // label: label || OrderService.generateDefaultLabel(selectedBom, boms),
         // description: description
@@ -111,6 +115,8 @@ export const useOrderForm = () => {
     setSuccess,
     handleBomChange,
     submitOrder,
-    resetForm
+    resetForm,
+    dateCreation,
+    setDateCreation,
   };
 };

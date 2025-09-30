@@ -1,5 +1,6 @@
 const dolibarrService = require('../services/dolibarrService');
 const logger = require('../utils/logger');
+const stockController = require("./StockController");
 
 class ResetController {
   async resetAllData(req, res) {
@@ -85,6 +86,8 @@ class ResetController {
         }
       }
 
+      await stockController.clearStocks();
+      
       logger.info('Réinitialisation terminée avec succès');
       return res.json({
         success: true,

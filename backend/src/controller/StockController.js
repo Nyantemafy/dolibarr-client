@@ -1,5 +1,9 @@
 const dolibarrService = require('../services/dolibarrService');
 const logger = require('../utils/logger');
+const fs = require("fs");
+const path = require("path");
+
+const stockFile = path.join(__dirname, "../data/stocks.json");
 
 class StockController {
 
@@ -13,6 +17,62 @@ class StockController {
     this.bulkCorrectStock = this.bulkCorrectStock.bind(this);
     this.bulkTransferStock = this.bulkTransferStock.bind(this);
     this._doTransfer = this._doTransfer.bind(this);
+
+    this.saveStockInitial = this.saveStockInitial.bind(this);
+    this.readStocks = this.readStocks.bind(this);
+    this.clearStocks = this.clearStocks.bind(this);
+  }
+
+  // 🔹 Écrire un stock_initial dans le fichier
+  saveStockInitial(productRef, stockInitial) {
+    try {
+      let data = [];
+
+      if (fs.existsSync(stockFile)) {
+        const content = fs.readFileSync(stockFile, "utf-8").trim();
+        if (content) {
+          data = JSON.parse(content);
+        } else {
+          // fichier vide → réinitialiser
+          data = [];
+        }
+      }
+
+      data.push({
+        ref: productRef,
+        stock_initial: stockInitial,
+        date: new Date().toISOString()
+      });
+
+      fs.writeFileSync(stockFile, JSON.stringify(data, null, 2), "utf-8");
+      console.log(`✅ Stock initial enregistré pour ${productRef}: ${stockInitial}`);
+
+    } catch (err) {
+      console.error("❌ Erreur saveStockInitial:", err);
+    }
+  }
+
+  // 🔹 Lire le fichier et renvoyer en liste
+  readStocks() {
+    try {
+      if (!fs.existsSync(stockFile)) return [];
+      const content = fs.readFileSync(stockFile, "utf-8").trim();
+      if (!content) return [];  // fichier vide
+      return JSON.parse(content);
+    } catch (err) {
+      console.error("❌ Erreur readStocks:", err);
+      return [];
+    }
+  }
+
+  // 🔹 Effacer le contenu du fichier
+  clearStocks() {
+    try {
+      fs.writeFileSync(stockFile, JSON.stringify([], null, 2), "utf-8");
+      console.log("✅ stocks.json vidé");
+    } catch (err) {
+      console.error("❌ Erreur clearStocks:", err);
+    }
   }
 
   async fetchAllProducts() {
@@ -388,13 +448,27 @@ function calculateStockSummary(product, stockInfo = [], movements = []) {
   const stockValue = stockInfo.reduce((s, w) => s + ((parseFloat(w.stock_reel) || 0) * (parseFloat(product.price) || 0)), 0);
 
   // Tri des mouvements par date croissante pour trouver le premier
-  const sortedMovements = [...movements].sort(
-    (a, b) => (a.datem || a.date) - (b.datem || b.date)
-  );
+  // const sortedMovements = [...movements].sort(
+  //   (a, b) => (a.datem || a.date) - (b.datem || b.date)
+  // );
 
-  // Stock initial = quantité du premier mouvement entrant (>0)
-  const firstEntry = sortedMovements.find(m => parseFloat(m.qty) > 0);
-  const stockInitial = firstEntry ? parseFloat(firstEntry.qty) : 0;
+  // // Stock initial = quantité du premier mouvement entrant (>0)
+  // const firstEntry = sortedMovements.find(m => parseFloat(m.qty) > 0);
+  // const stockInitial = firstEntry ? parseFloat(firstEntry.qty) : 0;
+
+  // Lire stocks.json
+  const savedStocks = require("./StockController").readStocks(); 
+  const savedEntry = savedStocks.find(s => s.ref === product.ref);
+
+  let stockInitial;
+  if (savedEntry) {
+    stockInitial = parseFloat(savedEntry.stock_initial) || 0;
+  } else {
+    // fallback sur les mouvements si pas trouvé dans le JSON
+    const firstEntry = sortedMovements.find(m => parseFloat(m.qty) > 0);
+    stockInitial = firstEntry ? parseFloat(firstEntry.qty) : 0;
+  }
+
 
   const totalMovements = Math.abs(stockInitial - currentStock);
 

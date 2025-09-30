@@ -7,7 +7,7 @@ import CreateOrderHeader from '../../ui/CreatOF/CreateOrderHeader';
 import FormMessage from '../../ui/CreatOF/FormMessage';
 import BOMSelect from '../../ui/CreatOF/BOMSelect';
 import QuantityInput from '../../ui/CreatOF/QuantityInput';
-import TextInput from '../../ui/CreatOF/TextInput';
+import DateInput from '../../ui/CreatOF/DateInput';
 import SubmitButton from '../../ui/CreatOF/SubmitButton';
 
 const CreateOfScreen = ({ onBack }) => {
@@ -24,9 +24,9 @@ const CreateOfScreen = ({ onBack }) => {
     setSelectedBom,
     setQuantity,
     setLabel,
-    setDescription,
-    setError,
-    submitOrder
+    submitOrder,
+    dateCreation,
+    setDateCreation
   } = useOrderForm();
 
   const [notification, setNotification] = React.useState(null);
@@ -90,6 +90,11 @@ const CreateOfScreen = ({ onBack }) => {
           <QuantityInput
             value={quantity}
             onChange={setQuantity}
+          />
+
+          <DateInput
+            dateValue={dateCreation}
+            onChange={setDateCreation}
           />
 
           {/* <TextInput
