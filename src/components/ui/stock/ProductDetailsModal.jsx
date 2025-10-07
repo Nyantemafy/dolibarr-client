@@ -19,7 +19,7 @@ const ProductDetailsModal = ({ product, onClose }) => {
             </button>
           </div>
 
-          {/* <ProductSummary product={product} /> */}
+          <ProductSummary product={product} />
           <MovementList movements={product.movements} />
           
           <div className="mt-6 flex justify-end">
@@ -36,39 +36,65 @@ const ProductDetailsModal = ({ product, onClose }) => {
   );
 };
 
-const ProductSummary = ({ product }) => (
-  <div className="bg-gray-50 rounded-lg p-4 mb-6">
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div>
-        <label className="block text-sm font-medium text-gray-700">Produit</label>
-        <p className="font-medium text-gray-900">{product.product_ref}</p>
-        <p className="text-sm text-gray-600">{product.product_label}</p>
+const ProductSummary = ({ product }) => {
+  // 🧮 Calculer les totaux ajouté et enlevé
+  const totalAdded = product.movements
+    ?.filter(m => m.qty > 0)
+    .reduce((sum, m) => sum + m.qty, 0) || 0;
+
+  const totalRemoved = product.movements
+    ?.filter(m => m.qty < 0)
+    .reduce((sum, m) => sum + Math.abs(m.qty), 0) || 0;
+
+  return (
+    <div className="bg-gray-50 rounded-lg p-4 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Produit</label>
+          <p className="font-medium text-gray-900">{product.product_ref}</p>
+          <p className="text-sm text-gray-600">{product.product_label}</p>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Stock Initial</label>
+          <p className="text-lg font-bold text-blue-600">{product.stock_initial}</p>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Mouvements</label>
+          <p
+            className={`text-lg font-bold ${
+              product.total_movements > 0
+                ? 'text-green-600'
+                : product.total_movements < 0
+                ? 'text-red-600'
+                : 'text-gray-600'
+            }`}
+          >
+            {product.total_movements}
+          </p>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Stock Final</label>
+          <p className="text-lg font-bold text-gray-900">{product.stock_final}</p>
+        </div>
       </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-700">Stock Initial</label>
-        <p className="text-lg font-bold text-blue-600">{product.stock_initial}</p>
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-700">Mouvements</label>
-        <p className={`text-lg font-bold ${
-          product.total_movements > 0 ? 'text-green-600' : 
-          product.total_movements < 0 ? 'text-red-600' : 'text-gray-600'
-        }`}>
-          {/* {product.total_movements > 0 ? '+' : ''}{product.total_movements} */}
-          {product.total_movements}
-        </p>
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-700">Stock Final</label>
-        <p className="text-lg font-bold text-gray-900">{product.stock_final}</p>
+
+      {/* ✅ Cadres totaux ajoutés/enlevés */}
+      <div className="grid grid-cols-2 gap-4 mt-4">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
+          <h4 className="text-sm font-medium text-green-700">Total ajouté</h4>
+          <p className="text-xl font-bold text-green-600">+{totalAdded}</p>
+        </div>
+        <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+          <h4 className="text-sm font-medium text-red-700">Total enlevé</h4>
+          <p className="text-xl font-bold text-red-600">-{totalRemoved}</p>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const MovementList = ({ movements }) => (
   <div>
-    {/* <h4 className="font-medium text-gray-900 mb-3">Historique des mouvements</h4> */}
     {movements && movements.length > 0 ? (
       <div className="max-h-60 overflow-y-auto border rounded-lg">
         <table className="w-full text-sm">
@@ -87,20 +113,30 @@ const MovementList = ({ movements }) => (
                   {new Date(movement.date).toLocaleDateString('fr-FR')}
                 </td>
                 <td className="px-3 py-2 text-center">
-                  <span className={`font-medium ${
-                    movement.qty > 0 ? 'text-green-600' : 'text-red-600'
-                  }`}>
-                    {movement.qty > 0 ? '+' : ''}{movement.qty}
+                  <span
+                    className={`font-medium ${
+                      movement.qty > 0 ? 'text-green-600' : 'text-red-600'
+                    }`}
+                  >
+                    {movement.qty > 0 ? '+' : ''}
+                    {movement.qty}
                   </span>
                 </td>
                 <td className="px-3 py-2">
-                  <span className={`px-2 py-1 rounded text-xs ${
-                    movement.type === 'entry' ? 'bg-green-100 text-green-800' :
-                    movement.type === 'exit' ? 'bg-red-100 text-red-800' :
-                    'bg-blue-100 text-blue-800'
-                  }`}>
-                    {movement.type === 'entry' ? 'Entrée' :
-                     movement.type === 'exit' ? 'Sortie' : 'Mouvement'}
+                  <span
+                    className={`px-2 py-1 rounded text-xs ${
+                      movement.type === 'entry'
+                        ? 'bg-green-100 text-green-800'
+                        : movement.type === 'exit'
+                        ? 'bg-red-100 text-red-800'
+                        : 'bg-blue-100 text-blue-800'
+                    }`}
+                  >
+                    {movement.type === 'entry'
+                      ? 'Entrée'
+                      : movement.type === 'exit'
+                      ? 'Sortie'
+                      : 'Mouvement'}
                   </span>
                 </td>
                 <td className="px-3 py-2 text-gray-700">
