@@ -33,6 +33,13 @@ const ResultsSummary = ({ results }) => (
       value={results.successful}
       color="green"
     />
+
+    <ResultCard
+      icon={Package}
+      title="Ignorés"
+      value={results.skipped?.length || 0}
+      color="orange"
+    />
     
     {results.failed > 0 && (
       <ResultCard
@@ -111,13 +118,40 @@ const ResultsDetails = ({ results }) => (
         )}
       />
     )}
+
+    {/* 💥 Nouvelle section : Fabrications ignorées (stock insuffisant) */}
+    {results.skipped?.length > 0 && (
+      <ResultsSection
+        title="Fabrications ignorées (Stock insuffisant)"
+        icon={Package}
+        color="orange"
+        items={results.skipped}
+        renderItem={(skip) => (
+          <div>
+            <div className="font-medium text-gray-800">
+              BOM ID: {skip.bom_id} - Qté: {skip.qty}
+            </div>
+            <div className="text-xs text-gray-600 mb-2">{skip.reason}</div>
+            <ul className="ml-4 list-disc text-sm text-gray-700">
+              {skip.missing_products?.map((p, i) => (
+                <li key={i}>
+                  {p.product_label} ({p.product_ref}) – Manque: {p.missing_qty}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      />
+    )}
   </div>
 );
+
 
 const ResultsSection = ({ title, icon: Icon, color, items, renderItem }) => {
   const colors = {
     green: { bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-900' },
-    red: { bg: 'bg-red-50', border: 'border-red-200', text: 'text-red-900' }
+    red: { bg: 'bg-red-50', border: 'border-red-200', text: 'text-red-900' },
+    orange: { bg: 'bg-orange-50', border: 'border-orange-200', text: 'text-orange-900' }
   };
 
   const colorConfig = colors[color] || colors.green;

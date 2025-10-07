@@ -495,7 +495,7 @@ class ManufacturingController {
     }
   }
 
-  async createBatchManufacturingOrders(req, res) {
+    async createBatchManufacturingOrders(req, res) {
     try {
       const { orders } = req.body;
 
@@ -531,20 +531,36 @@ class ManufacturingController {
           const toConsume = bomLines.filter(l => l.role === 'toconsume');
 
           let canProduce = true;
+          const missingProducts = [];
+
           for (const line of toConsume) {
             const consomQty = line.qty;
             const productId = line.fk_product;
-
             const stock = await dolibarrService.get(`/products/${productId}/stock`);
 
-            if (consomQty > stock.stock_reel) {
+            const availableQty = stock.stock_reel || 0;
+
+            if (consomQty > availableQty) {
               canProduce = false;
-              break;
+
+              // Calcul de la quantité manquante
+              const missingQty = consomQty - availableQty;
+
+              // Récupérer infos produit (ex: nom)
+              const productInfo = await dolibarrService.get(`/products/${productId}`);
+
+              missingProducts.push({
+                product_id: productId,
+                product_ref: productInfo.ref,
+                product_label: productInfo.label,
+                required_qty: consomQty,
+                available_qty: availableQty,
+                missing_qty: missingQty
+              });
             }
           }
 
           if (!canProduce) {
-            // Supprimer l'ordre si pas faisable
             await dolibarrService.delete(`/mos/${createdOrderId}`);
 
             skipped.push({
@@ -552,12 +568,11 @@ class ManufacturingController {
               bom_id: currentOrder.bom_id,
               qty: currentOrder.qty,
               mo_ref: currentOrder.label,
-              reason: "Stock insuffisant"
+              reason: "Stock insuffisant",
+              missing_products: missingProducts   
             });
 
-            console.log("skipped ====== ",skipped);
-
-            continue; // on passe à l'ordre suivant
+            continue; 
           }
 
           // Si stock OK → valider et produire
@@ -608,6 +623,120 @@ class ManufacturingController {
       });
     }
   }
+
+  // async createBatchManufacturingOrders(req, res) {
+  //   try {
+  //     const { orders } = req.body;
+
+  //     if (!Array.isArray(orders) || orders.length === 0) {
+  //       return res.status(400).json({ success: false, error: 'Liste des ordres requise' });
+  //     }
+
+  //     logger.info(`Création de ${orders.length} ordres de fabrication en lot`);
+
+  //     const results = [];
+  //     const errors = [];
+  //     const skipped = [];
+
+  //     for (let i = 0; i < orders.length; i++) {
+  //       try {
+  //         const currentOrder = orders[i];
+
+  //         // ⚡ Construire les données de l'ordre
+  //         const orderData = await this.buildManufacturingOrderData(
+  //           currentOrder.bom_id,
+  //           currentOrder.qty,
+  //           currentOrder.label,
+  //           '',
+  //           currentOrder.date_creation
+  //         );
+
+  //         // Créer l'ordre
+  //         const createdOrderId = await dolibarrService.post('/mos', orderData);
+  //         const createdOrderInfo = await dolibarrService.get(`/mos/${createdOrderId}`);
+
+  //         // Vérifier les composants à consommer
+  //         const bomLines = createdOrderInfo.lines || [];
+  //         const toConsume = bomLines.filter(l => l.role === 'toconsume');
+
+  //         let canProduce = true;
+  //         for (const line of toConsume) {
+  //           const consomQty = line.qty;
+  //           const productId = line.fk_product;
+
+  //           const stock = await dolibarrService.get(`/products/${productId}/stock`);
+
+  //           if (consomQty > stock.stock_reel) {
+  //             canProduce = false;
+  //             break;
+  //           }
+  //         }
+
+  //         if (!canProduce) {
+  //           // Supprimer l'ordre si pas faisable
+  //           await dolibarrService.delete(`/mos/${createdOrderId}`);
+
+  //           skipped.push({
+  //             order_index: i,
+  //             bom_id: currentOrder.bom_id,
+  //             qty: currentOrder.qty,
+  //             mo_ref: currentOrder.label,
+  //             reason: "Stock insuffisant"
+  //           });
+
+  //           console.log("skipped ====== ",skipped);
+
+  //           continue; // on passe à l'ordre suivant
+  //         }
+
+  //         // Si stock OK → valider et produire
+  //         await this.validateOrderById(createdOrderId);
+  //         await this.produceOrderById(createdOrderId);
+
+  //         results.push({
+  //           order_index: i,
+  //           bom_id: currentOrder.bom_id,
+  //           qty: currentOrder.qty,
+  //           mo_id: createdOrderId,
+  //           mo_ref: createdOrderInfo.ref,
+  //           status: 'success'
+  //         });
+
+  //       } catch (error) {
+  //         logger.error(`Erreur ordre ${i}:`, error);
+  //         errors.push({
+  //           order_index: i,
+  //           bom_id: orders[i].bom_id,
+  //           qty: orders[i].qty,
+  //           error: error.message,
+  //           status: 'error'
+  //         });
+  //       }
+  //     }
+
+  //     // Réponse
+  //     res.json({
+  //       success: errors.length === 0,
+  //       data: {
+  //         total_orders: orders.length,
+  //         successful: results.length,
+  //         failed: errors.length,
+  //         skipped: skipped.length,
+  //         results,
+  //         errors,
+  //         skipped
+  //       }
+  //     });
+
+  //   } catch (error) {
+  //     logger.error('Erreur création lot ordres fabrication:', error);
+  //     res.status(500).json({
+  //       success: false,
+  //       error: "Erreur lors de la création du lot d'ordres de fabrication",
+  //       details: error.message
+  //     });
+  //   }
+  // }
 
   async updateManufacturingOrder(req, res) {
     try {
