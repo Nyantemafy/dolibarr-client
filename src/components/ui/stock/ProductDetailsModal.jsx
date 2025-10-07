@@ -19,7 +19,7 @@ const ProductDetailsModal = ({ product, onClose }) => {
             </button>
           </div>
 
-          <ProductSummary product={product} />
+          {/* <ProductSummary product={product} /> */}
           <MovementList movements={product.movements} />
           
           <div className="mt-6 flex justify-end">
@@ -68,7 +68,7 @@ const ProductSummary = ({ product }) => (
 
 const MovementList = ({ movements }) => (
   <div>
-    <h4 className="font-medium text-gray-900 mb-3">Historique des mouvements</h4>
+    {/* <h4 className="font-medium text-gray-900 mb-3">Historique des mouvements</h4> */}
     {movements && movements.length > 0 ? (
       <div className="max-h-60 overflow-y-auto border rounded-lg">
         <table className="w-full text-sm">

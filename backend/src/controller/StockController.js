@@ -445,16 +445,10 @@ function calculateStockSummary(product, stockInfo = [], movements = []) {
   const currentStock = stockInfo.reduce((s, w) => s + (parseFloat(w.stock_reel) || 0), 0);
 
   // Valeur stock = stock réel * prix unitaire produit
-  const stockValue = stockInfo.reduce((s, w) => s + ((parseFloat(w.stock_reel) || 0) * (parseFloat(product.price) || 0)), 0);
-
-  // Tri des mouvements par date croissante pour trouver le premier
-  // const sortedMovements = [...movements].sort(
-  //   (a, b) => (a.datem || a.date) - (b.datem || b.date)
-  // );
-
-  // // Stock initial = quantité du premier mouvement entrant (>0)
-  // const firstEntry = sortedMovements.find(m => parseFloat(m.qty) > 0);
-  // const stockInitial = firstEntry ? parseFloat(firstEntry.qty) : 0;
+  const stockValue = stockInfo.reduce(
+    (s, w) => s + ((parseFloat(w.stock_reel) || 0) * (parseFloat(product.price) || 0)),
+    0
+  );
 
   // Lire stocks.json
   const savedStocks = require("./StockController").readStocks(); 
@@ -465,21 +459,28 @@ function calculateStockSummary(product, stockInfo = [], movements = []) {
     stockInitial = parseFloat(savedEntry.stock_initial) || 0;
   } else {
     // fallback sur les mouvements si pas trouvé dans le JSON
+    const sortedMovements = [...movements].sort((a, b) => new Date(a.datem || a.date) - new Date(b.datem || b.date));
     const firstEntry = sortedMovements.find(m => parseFloat(m.qty) > 0);
     stockInitial = firstEntry ? parseFloat(firstEntry.qty) : 0;
   }
 
+  // ✅ Calcul du total de mouvements réels
+  const totalMovements = movements.reduce((sum, mvt) => {
+    const qty = parseFloat(mvt.qty) || 0;
+    return sum + Math.abs(qty); // on additionne la valeur absolue de chaque mouvement
+  }, 0);
 
-  const totalMovements = Math.abs(stockInitial - currentStock);
-
-  const lastMovementDate = movements.length > 0 ? (movements[movements.length - 1].datem || movements[movements.length - 1].date) : null;
+  // ✅ Date du dernier mouvement
+  const lastMovementDate = movements.length > 0
+    ? (movements[movements.length - 1].datem || movements[movements.length - 1].date)
+    : null;
 
   return {
     id: product.id || product.rowid,
     product_ref: product.ref || 'N/A',
     product_label: product.label || product.name || 'N/A',
-    stock_initial: stockInitial,       
-    total_movements: totalMovements,
+    stock_initial: stockInitial,
+    total_movements: totalMovements, // ✅ volume total des mouvements
     stock_final: currentStock,
     valeur_unitaire: parseFloat(product.price) || 0,
     valeur_stock: stockValue,
@@ -488,6 +489,46 @@ function calculateStockSummary(product, stockInfo = [], movements = []) {
     raw_movements_count: movements.length
   };
 }
+
+// function calculateStockSummary(product, stockInfo = [], movements = []) {
+//   // Stock réel total (stock final)
+//   const currentStock = stockInfo.reduce((s, w) => s + (parseFloat(w.stock_reel) || 0), 0);
+
+//   // Valeur stock = stock réel * prix unitaire produit
+//   const stockValue = stockInfo.reduce((s, w) => s + ((parseFloat(w.stock_reel) || 0) * (parseFloat(product.price) || 0)), 0);
+
+//   // Lire stocks.json
+//   const savedStocks = require("./StockController").readStocks(); 
+//   const savedEntry = savedStocks.find(s => s.ref === product.ref);
+
+//   let stockInitial;
+//   if (savedEntry) {
+//     stockInitial = parseFloat(savedEntry.stock_initial) || 0;
+//   } else {
+//     // fallback sur les mouvements si pas trouvé dans le JSON
+//     const firstEntry = sortedMovements.find(m => parseFloat(m.qty) > 0);
+//     stockInitial = firstEntry ? parseFloat(firstEntry.qty) : 0;
+//   }
+
+
+//   const totalMovements = Math.abs(stockInitial - currentStock);
+
+//   const lastMovementDate = movements.length > 0 ? (movements[movements.length - 1].datem || movements[movements.length - 1].date) : null;
+
+//   return {
+//     id: product.id || product.rowid,
+//     product_ref: product.ref || 'N/A',
+//     product_label: product.label || product.name || 'N/A',
+//     stock_initial: stockInitial,       
+//     total_movements: totalMovements,
+//     stock_final: currentStock,
+//     valeur_unitaire: parseFloat(product.price) || 0,
+//     valeur_stock: stockValue,
+//     last_movement_date: lastMovementDate,
+//     raw_stock_info: stockInfo,
+//     raw_movements_count: movements.length
+//   };
+// }
 
 
 

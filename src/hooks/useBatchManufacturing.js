@@ -67,6 +67,7 @@ export const useBatchManufacturing = () => {
       }));
 
       const results = await BatchService.startBatchManufacturing(orders);
+      console.log("batch result : ", results);
       setManufacturingResults(results);
       setManufacturingQueue([]);
       return results;

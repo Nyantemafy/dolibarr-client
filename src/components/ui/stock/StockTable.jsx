@@ -116,7 +116,14 @@ const StockTableRow = ({ item, onViewDetails }) => {
         <span className="font-medium text-gray-900">{item.stock_initial}</span>
       </td>
       <td className="px-4 py-3 text-center">
+
         <div className="flex items-center justify-center">
+          <span className="font-medium text-gray-900">
+            {item.total_movements > 0 ? '' : ''}{item.total_movements}
+          </span>
+        </div>
+
+        {/* <div className="flex items-center justify-center">
           {movementTrend === 'positive' && <TrendingUp className="text-green-500 mr-1" size={14} />}
           {movementTrend === 'negative' && <TrendingDown className="text-red-500 mr-1" size={14} />}
           <span className={`font-medium ${
@@ -126,7 +133,7 @@ const StockTableRow = ({ item, onViewDetails }) => {
           }`}>
             {item.total_movements > 0 ? '+' : ''}{item.total_movements}
           </span>
-        </div>
+        </div> */}
       </td>
       <td className="px-4 py-3 text-center">
         <span className="font-bold text-lg text-gray-900">{item.stock_final}</span>
